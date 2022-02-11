@@ -12,3 +12,5 @@ As a user I can report: An innapropriate review.
 As an administrator, I can view: All pages that users see and a page dedicated to reported reviews.
 As an administrator, I can delete: Reported comments deemed innappropriate.
 As an administrator, I can comment: On reviews.
+
+--------------------------------------------------------------------------------------
