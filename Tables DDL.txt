@@ -1,0 +1,26 @@
+database
+
+user:
+  user_id autoincrement primary key
+  first name: varchar(20)
+  last name: varchar(20)
+  password: varchar(20)
+  email: varchar(20)
+
+
+review:
+  user_id: forging key references users id
+  review_id: autoincrement primary key
+  content: Text
+  rating: int (1-5)
+  location_id: foreign key references Location(location_id)
+  Time: DateTime
+  ReplyToReview
+
+
+location:
+location_id: autoincrement primary key
+city: varchar(20),
+country: varchar(20),
+state: varchar(20),
+
