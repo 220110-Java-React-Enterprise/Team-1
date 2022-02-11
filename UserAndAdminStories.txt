@@ -13,5 +13,4 @@ As an administrator, I can view: All pages that users see and a page dedicated t
 As an administrator, I can delete: Reported comments deemed innappropriate.
 As an administrator, I can comment: On reviews.
 
------------------------------------------------------------------------------------
-test3
+--------------------------------------------------------------------------------------
