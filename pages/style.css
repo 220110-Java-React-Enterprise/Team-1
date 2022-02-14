@@ -8,16 +8,20 @@ header {
 }
 
 main {
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-areas:
+		"heading heading heading heading"
+		". leftmid rightmid ."
+		". description comments .";
 	row-gap: 20px;
+	grid-template-columns: 1fr 3fr 3fr 1fr;
+	grid-template-rows: auto auto auto;
+	color: #2c2c2c;
+	background-color: rgb(245, 249, 247);
 }
 
-.row {
-	flex-direction: row;
-	flex-wrap: nowrap;
-	align-items: center;
-	width: 100%;
+.heading {
+	grid-area: heading;
 }
 
 .left-mid > img {
@@ -28,20 +32,21 @@ main {
 
 .left-mid {
 	grid-area: leftmid;
-	display: inline;
 }
 
 .right-mid {
 	grid-area: rightmid;
-	display: inline-block;
 }
 
 .main-text {
-	grid-area: maintext;
+	grid-area: description;
 }
 
 .comments {
 	grid-area: comments;
+}
+
+h2 {
 }
 
 body {
