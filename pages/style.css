@@ -12,7 +12,7 @@ main {
 	grid-template-areas:
 		"heading heading heading heading"
 		". leftmid rightmid ."
-		". description comments .";
+		". leftbottom rightbottom .";
 	row-gap: 20px;
 	grid-template-columns: 1fr 3fr 3fr 1fr;
 	grid-template-rows: auto auto auto;
@@ -38,15 +38,26 @@ main {
 	grid-area: rightmid;
 }
 
-.main-text {
-	grid-area: description;
+.left-bottom {
+	grid-area: leftbottom;
 }
 
-.comments {
-	grid-area: comments;
+.right-bottom {
+	grid-area: rightbottom;
+}
+
+.register-box {
+	border-radius: 20px;
+	background: #e0e0e0;
+	box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+	padding: 10px;
+	margin: 10px;
 }
 
 h2 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family: "Signika Negative", sans-serif;
 }
 
 body {
@@ -54,6 +65,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	box-sizing: border-box;
+	font-family: "Scope One", serif;
 }
 
 html {
