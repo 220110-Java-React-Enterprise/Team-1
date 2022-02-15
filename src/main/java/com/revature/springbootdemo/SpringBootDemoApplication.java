@@ -2,6 +2,8 @@ package com.revature.springbootdemo;
 
 import com.revature.springbootdemo.DAOs.UsersDAO;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.revature.springbootdemo.utils.FileLogger;
+import org.apache.coyote.Response;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,19 +14,20 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.net.MalformedURLException;
-import java.util.Collections;
+import java.net.NetworkInterface;
+import java.util.*;
 
 //for api
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.testng.annotations.Test;
@@ -99,6 +102,11 @@ public class SpringBootDemoApplication {
 */
 
 
+	static FileLogger fileLogger;
+	private static String PropertiesPath = "src/main/resources/Keys.properties";
+	//C:\Users\ahmed\IdeaProjects\Ahmad\Team-1\src\main\resources\Keys.properties
+
+
 	//private UsersDAO userRepository;
 
 	/*** METHODS ****
@@ -109,11 +117,16 @@ public class SpringBootDemoApplication {
 		SpringApplication app = new SpringApplication(SpringBootDemoApplication.class);
 		app.setDefaultProperties(Collections
 				.singletonMap("server.port", "8080"));
+		InitializeLogger(); //initialize fileLogger variable.
 		app.run(args);
 		//userRepository = new UserRepository();
 		//SpringApplication.run(SpringBootDemoApplication.class, args);
 	}
 
+	public static void InitializeLogger()
+	{
+		fileLogger = FileLogger.getFileLogger();
+	}
 
 	//login method, get username and password and verify they exists
 	@GetMapping ("/register")
@@ -138,6 +151,33 @@ public class SpringBootDemoApplication {
 		//r.setMessage("testing");
 	}
 
+	public List<String> ReadKeys()
+	{
+		try {
+			Properties props = new Properties();
+			FileReader fr = new FileReader(PropertiesPath);
+			ClassLoader cl = SpringBootDemoApplication.class.getClassLoader();
+			try (InputStream stream = cl.getResourceAsStream("Keys.properties")) {
+				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(PropertiesPath));
+				props.load(bis);
+				String NinjaKey = props.getProperty("NinjaKey");
+				String MapKey = props.getProperty("MapKey");
+				ArrayList<String> keys  =new ArrayList<String>();
+				keys.add(NinjaKey);
+				keys.add(MapKey);
+				return keys;
+			}
+			catch(Exception exc)
+			{
+				System.out.println("Error in reading Kye's properties file: " + exc.getMessage());
+				fileLogger.log(exc);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	//api: for cities information. get city name from the CityForm and returns information about it (longitude, latitude, population, etc)
 	@GetMapping ("/api")
 	public String useAPI(@RequestParam(value = "myCity", defaultValue = "San Francisco") String cityName) {
@@ -149,7 +189,18 @@ public class SpringBootDemoApplication {
 		//*********** the API keys *****************
 		String NinjaCityKey = ""; //ninjacity city key
 		String MapKey = ""; //google map keygit
+		List<String> keys = ReadKeys();
+        if (keys != null)
+			System.out.println("success reading keys");
+		else
+		{
+			fileLogger.log("Error in reading key's property file");
+			System.out.println("Error in reading key's property file");
+			return "Error in reading key's property file";
+		}
 
+		NinjaCityKey = keys.get(0);
+		MapKey = keys.get(1);
 
 		try {
 			url = new URL("https://api.api-ninjas.com/v1/city?name=" + cityName);
@@ -178,9 +229,11 @@ public class SpringBootDemoApplication {
 			e.printStackTrace();
 		}
 
+
+		String FilePath= new File("data.html").getAbsolutePath();
 		try {
-			String filepath = "data.html";
-			File f = new File(filepath);
+			//String filepath = "data.html";
+			File f = new File(FilePath);
 			FileWriter sw = new FileWriter(f);
 			BufferedWriter bw = new BufferedWriter(sw);
 			bw.write("<h1>Data about " + cityName +"</h1></br>" + result);
@@ -191,25 +244,36 @@ public class SpringBootDemoApplication {
 
 
 		String mapHTML =
-				"<frameset cols = \"30%,70%\">" +
-				"<iframe" +
-				"width=\"450\"" +
-				"height=\"250\"" +
-				"frameborder=\"0\" style=\"border:0\"" +
-				"src=\"https://www.google.com/maps/embed/v1/place?key=" + "MapKey&q=" + cityName + "\" allowfullscreen>" +
-				"</iframe>";
-
-						/*
-						"<iframe " +
-						"width=\"450\"" +
-						"height=\"250\"" +
-						"src =\"data.html\">" +
-						"</iframe>" +
-						"</frameset>";
-*/
+				"<frameset rows = \"30%,70%\">" +
+				"<frame" + " width=\"100%\"" + " height=\"250\"" + " frameborder=\"0\" style=\"border:0\"" +
+				" src=\"https://www.google.com/maps/embed/v1/place?key=" + MapKey + "&q=" + cityName + "\" allowfullscreen />" +
+				"<iframe " +
+						" srcdoc=\"" + "<h1>Data about " + cityName +"</h1></br>" + result.replaceAll("\"", "") + "\" />" +
+						"<noframes>" +
+						   "<body>Your browser doens't support frames</body>" +
+	                    "</noframes>" +
+                "</frameset>";
 		//result += mapHTML;
 		//*****************
-		return result + mapHTML;
+		//return result + mapHTML;
+
+		//***** For testing *********
+		FilePath= new File("result.html").getAbsolutePath();
+		File f = new File(FilePath);
+		try {
+			//String filepath = "data.html";
+			FileWriter sw = new FileWriter(f);
+			BufferedWriter bw = new BufferedWriter(sw);
+			bw.write(mapHTML);
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		Response r= new Response();
+		//r.setMessage("done");
+		r.setMessage(mapHTML);
+		return mapHTML;
 	}
 
 
