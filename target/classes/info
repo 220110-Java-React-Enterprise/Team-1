@@ -1,0 +1,7 @@
+spring.datasource.url=dbproject3.cljn76gwtmyk.us-east-2.rds.amazonaws.com
+spring.datasource.username=admin
+spring.datasource.password=999999999
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.jpa.database-platform=org.hibernate.dialect.MariaDB103Dialet
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=create
