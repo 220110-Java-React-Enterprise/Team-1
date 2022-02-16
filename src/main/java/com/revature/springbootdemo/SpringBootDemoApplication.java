@@ -1,28 +1,21 @@
 package com.revature.springbootdemo;
 
-import com.revature.springbootdemo.DAOs.UsersDAO;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.revature.springbootdemo.utils.FileLogger;
+import com.revature.springbootdemo.beans.models.UserModel;
+import com.revature.springbootdemo.beans.repositories.UserRepo;
+import com.revature.springbootdemo.beans.utils.ApplicationContextProvider;
+import com.revature.springbootdemo.beans.utils.FileLogger;
 import org.apache.coyote.Response;
-import org.junit.Before;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.net.MalformedURLException;
-import java.net.NetworkInterface;
 import java.util.*;
 
 //for api
@@ -30,17 +23,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.testng.annotations.Test;
-
-import javax.activation.DataSource;
-
-import static org.junit.Assert.assertThat;
 
 //@SpringBootApplication
-@SpringBootApplication(scanBasePackages={"com.revature.springbootdemo","com.revature.springbootdemo.DAOs",
-		"com.revature.springbootdemo.utils", "com.revature.springbootdemo.Annotations"})
+@SpringBootApplication(scanBasePackages={"com.revature.springbootdemo.beans"})
 @RestController
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SpringBootDemoApplication {
 
 	/*
@@ -104,6 +91,7 @@ public class SpringBootDemoApplication {
 
 	static FileLogger fileLogger;
 	private static String PropertiesPath = "src/main/resources/Keys.properties";
+	static UserRepo userRepo;
 	//C:\Users\ahmed\IdeaProjects\Ahmad\Team-1\src\main\resources\Keys.properties
 
 
@@ -121,6 +109,22 @@ public class SpringBootDemoApplication {
 		app.run(args);
 		//userRepository = new UserRepository();
 		//SpringApplication.run(SpringBootDemoApplication.class, args);
+		/**
+		 * David's user persistence check
+		 *
+		 *
+		 * */
+
+//		SpringApplication.run(SpringBootDemoApplication.class, args);
+		ApplicationContext context = ApplicationContextProvider.getApplicationContext();
+		 userRepo = context.getBean(UserRepo.class);
+
+		UserModel user = new UserModel("David", "Alvarado", "abc123", "fake123@gmail.com");
+		userRepo.save(user);
+
+
+
+
 	}
 
 	public static void InitializeLogger()
@@ -132,10 +136,13 @@ public class SpringBootDemoApplication {
 	@GetMapping ("/register")
 	@ResponseBody
 	public String Login(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
-						@RequestParam(value = "LastnameField", defaultValue = "userLast") String LastName,
+						@RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
 						@RequestParam(value = "myPassword", defaultValue = "1111") String Password,
 						@RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
-		return String.format("Hello %s and %s and %s nad %s", FirstName, LastName, Password, Email);
+
+		UserModel user = new UserModel(FirstName, LastName, Password, Email);
+		userRepo.save(user);
+		return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
 
 		//Response r = new Response();
 		//r.setMessage("testing");

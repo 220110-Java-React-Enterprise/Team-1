@@ -1,4 +1,4 @@
-package utils;
+package com.revature.springbootdemo.beans.utils;
 
 import java.io.FileWriter;
 import java.io.Writer;
