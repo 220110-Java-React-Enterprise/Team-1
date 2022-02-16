@@ -26,67 +26,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 //@SpringBootApplication
 @SpringBootApplication(scanBasePackages={"com.revature.springbootdemo.beans"})
-@RestController
+//@RestController
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SpringBootDemoApplication {
 
-	/*
-	//@Autowired (required = true)
-	@Autowired
-	private UserRepository userRepository;
 
-	//Repository
-	@Repository
-	public interface UserRepository extends CrudRepository<UsersDAO, Long> {
-		public List<UsersDAO> findAll();
-	}
-
-	@Before
-	public void initialize() {
-		//mvc = MockMvcBuilders.standaloneSetup(myController).build();
-	}
-
-
-	//configuration is accomplished using a pom.xml and could be also done here
-	@Bean
-	public DataSource getDataSource() {
-		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-		//dataSourceBuilder.username("SA");
-		//dataSourceBuilder.password("");
-		return (DataSource) dataSourceBuilder.build();
-	}
-
-
-
-	@Test
-	public void whenCalledSave_thenCorrectNumberOfUsers() {
-		userRepository.save(new UsersDAO(9,"Bob", "BobLast", "2222", "bob@domain.com"));
-		List<UsersDAO> users = (List<UsersDAO>) userRepository.findAll();
-		//assertThat(users.size()).isEqualTo(1);
-	}
-
-
-
-
-	//@Bean (type = "com.revature.springbootdemo.SpringBootDemoApplication$UserRepositor")
-	public CommandLineRunner run(UserRepository userRepository) throws Exception {
-		return (String[] args) -> {
-			UsersDAO user1 = new UsersDAO(9,"Bob", "BobLast", "2222", "bob@domain.com");
-			UsersDAO user2 = new UsersDAO(9,"Harley", "Harley", "3333", "Harley@domain.com");
-			userRepository.save(user1);
-			userRepository.save(user2);
-			userRepository.findAll().forEach(user -> System.out.println(user));
-		};
-	}
-	*/
-
-
-	/*
-	@RequestMapping(method=RequestMethod.GET)
-	public List<UsersDAO> getAllUsers(){
-		return (List<UsersDAO>) userRepository.findAll();
-	}
-*/
 
 
 	static FileLogger fileLogger;
@@ -98,7 +42,7 @@ public class SpringBootDemoApplication {
 	//private UsersDAO userRepository;
 
 	/*** METHODS ****
-	*/
+	 */
 	//main method: print a testing message, configure the port of the server to 8080
 	public static void main(String[] args) {
 		//System.out.println("printing");
@@ -107,22 +51,19 @@ public class SpringBootDemoApplication {
 				.singletonMap("server.port", "8080"));
 		InitializeLogger(); //initialize fileLogger variable.
 		app.run(args);
-		//userRepository = new UserRepository();
-		//SpringApplication.run(SpringBootDemoApplication.class, args);
+
 		/**
 		 * David's user persistence check
 		 *
 		 *
 		 * */
 
-//		SpringApplication.run(SpringBootDemoApplication.class, args);
-		ApplicationContext context = ApplicationContextProvider.getApplicationContext();
-		 userRepo = context.getBean(UserRepo.class);
-
-		UserModel user = new UserModel("David", "Alvarado", "abc123", "fake123@gmail.com");
-		userRepo.save(user);
-
-
+////		SpringApplication.run(SpringBootDemoApplication.class, args);
+//		ApplicationContext context = ApplicationContextProvider.getApplicationContext();
+//		userRepo = context.getBean(UserRepo.class);
+//
+//		UserModel user = new UserModel("David", "Alvarado", "abc123", "fake123@gmail.com");
+//		userRepo.save(user);
 
 
 	}
@@ -133,20 +74,20 @@ public class SpringBootDemoApplication {
 	}
 
 	//login method, get username and password and verify they exists
-	@GetMapping ("/register")
-	@ResponseBody
-	public String Login(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
-						@RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
-						@RequestParam(value = "myPassword", defaultValue = "1111") String Password,
-						@RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
-
-		UserModel user = new UserModel(FirstName, LastName, Password, Email);
-		userRepo.save(user);
-		return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
-
-		//Response r = new Response();
-		//r.setMessage("testing");
-	}
+//	@GetMapping ("/register")
+//	@ResponseBody
+//	public String Login(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
+//						@RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
+//						@RequestParam(value = "myPassword", defaultValue = "1111") String Password,
+//						@RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
+//
+//		UserModel user = new UserModel(FirstName, LastName, Password, Email);
+//		userRepo.save(user);
+//		return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
+//
+//		//Response r = new Response();
+//		//r.setMessage("testing");
+//	}
 
 	//login method, get username and password and verify they exists
 	@GetMapping ("/login")
@@ -197,7 +138,7 @@ public class SpringBootDemoApplication {
 		String NinjaCityKey = ""; //ninjacity city key
 		String MapKey = ""; //google map keygit
 		List<String> keys = ReadKeys();
-        if (keys != null)
+		if (keys != null)
 			System.out.println("success reading keys");
 		else
 		{
@@ -252,14 +193,14 @@ public class SpringBootDemoApplication {
 
 		String mapHTML =
 				"<frameset rows = \"30%,70%\">" +
-				"<frame" + " width=\"100%\"" + " height=\"250\"" + " frameborder=\"0\" style=\"border:0\"" +
-				" src=\"https://www.google.com/maps/embed/v1/place?key=" + MapKey + "&q=" + cityName + "\" allowfullscreen />" +
-				"<iframe " +
+						"<frame" + " width=\"100%\"" + " height=\"250\"" + " frameborder=\"0\" style=\"border:0\"" +
+						" src=\"https://www.google.com/maps/embed/v1/place?key=" + MapKey + "&q=" + cityName + "\" allowfullscreen />" +
+						"<iframe " +
 						" srcdoc=\"" + "<h1>Data about " + cityName +"</h1></br>" + result.replaceAll("\"", "") + "\" />" +
 						"<noframes>" +
-						   "<body>Your browser doens't support frames</body>" +
-	                    "</noframes>" +
-                "</frameset>";
+						"<body>Your browser doens't support frames</body>" +
+						"</noframes>" +
+						"</frameset>";
 		//result += mapHTML;
 		//*****************
 		//return result + mapHTML;
