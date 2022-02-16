@@ -22,11 +22,11 @@ public class UserModel {
     @Column
     private String email;
 
-    public UserModel() {
+    public UserModel() {     //  no arg Constructor
     }
 
-    public UserModel(String firstName, String lastName, String password, String email) {
-        this.ID = ID;
+    public UserModel( String firstName, String lastName, String password, String email) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;

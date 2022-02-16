@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
  * Interface includes: 2 methods to get the singleton, and 2 methods to input info to be logged
  */
 public class FileLogger {
+
     //What do we need to set this up as a singleton?
     //private constructor
     //private static reference to singleton object
