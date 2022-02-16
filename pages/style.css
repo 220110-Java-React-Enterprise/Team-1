@@ -11,6 +11,7 @@ main {
 .logo {
 	margin: auto;
 	height: 100%;
+	box-sizing: border-box;
 }
 
 .logo > span {
@@ -23,19 +24,29 @@ main {
 }
 
 .logo > img {
-	position: fixed;
-	left: 200px;
+	position: relative;
+	top: -350px;
+	left: -80px;
 	z-index: -1;
 	width: 400px;
 	height: 212px;
 }
 
-.logo > input {
-	position: relative;
-	margin: auto;
-	z-index: 10;
+input {
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
-	width: 50%;
+	width: 200px;
+	border-radius: 4px;
+}
+
+#submit {
+	margin-top: 0.5vh;
+	background-color: #01a2e8;
+	border-radius: 4px;
+	border: 0px;
+	height: 3ch;
+	display: block;
 }
 
 h2 {
