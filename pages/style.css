@@ -3,18 +3,56 @@
 */
 
 main {
+}
+
+/* this is the layout for main which has a grid */
+.data-layout-container {
+	display: grid;
+	grid-template-areas:
+		"header header header"
+		". leftmid rightmid ."
+		". maintext comments .";
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 3fr 1fr;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+.test-layout-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	box-sizing: border-box;
+	margin-top: 100px;
+}
+
+.test-limit-width {
+	width: 80%;
+	margin: auto;
+}
+
+#review-input-box {
+	width: 100%;
+	height: 5vh;
+}
+
+/* this is the layout used on the initial loading of screen (centered vert/horiz) */
+.splash-layout {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
 
-.logo {
+.splash-search {
 	margin: auto;
 	height: 100%;
 	box-sizing: border-box;
 }
 
-.logo > span {
+.splash-search > span {
 	font-family: "Licorice", cursive;
 	font-size: 10em;
 	/* font-family: 'Zeyada', cursive; */
@@ -22,7 +60,7 @@ main {
 	display: inline;
 }
 
-.logo > img {
+.splash-search > img {
 	position: relative;
 	top: -350px;
 	left: -80px;
@@ -36,7 +74,7 @@ main {
 	animation-duration: 2s;
 	animation-iteration-count: 1;
 	animation-delay: 250ms;
-	animation-timing-function: ease-in;
+	animation-timing-function: linear;
 }
 
 @keyframes takeoff {
@@ -59,19 +97,19 @@ main {
 	}
 	50% {
 		left: 0px;
-		top: -363px;
+		top: -359px;
 	}
 	60% {
 		left: 60px;
-		top: -367px;
+		top: -364px;
 	}
 	70% {
 		left: 120px;
-		top: -372px;
+		top: -370px;
 	}
 	80% {
 		left: 200px;
-		top: -380px;
+		top: -378px;
 	}
 	90% {
 		left: 300px;

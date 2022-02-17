@@ -6,7 +6,7 @@
 window.onload = (event) => {
 	console.log("Page is loaded.. register?");
 	// submit button handler
-	document.getElementById('submit').addEventListener('click', (event) => {
+	document.getElementById('button-search').addEventListener('click', (event) => {
 		// TODO: Take out preventDefault if we want the form to be submitted (this is debug) *********
 		event.preventDefault();
 		doTakeoff();
@@ -42,4 +42,23 @@ function hideLoginOverlay()
 	console.log("Login overlay hidden");
 	document.getElementById('login').classList.remove("login-boxes-visible");
 	document.getElementById('login').classList.add("hidden");
+}
+
+
+/*
+The main page will be a grid defined like this:
+
+header	header	header	header
+		topleft	topright
+		midleft	midright
+		lowleft	lowright
+footer	footer	footer	footer
+
+* Subject to change!!
+
+*/
+
+// This will add city data to the top right (ex. statistics)
+function addCityData() {
+
 }

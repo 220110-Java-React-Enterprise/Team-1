@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-	<title>Project 1</title>
+	<title>Project 2</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Licorice&family=Zeyada&display=swap" rel="stylesheet"> 
@@ -9,15 +9,26 @@
 </head>
 
 <body>
-	<main>
-		<div class="logo">
+	<main class="splash-layout">
+		<div class="splash-search">
 			<span class="title">TravelBuddy</span>
 			<form action="localhost" method="post">
 				<input type="text" placeholder="Where are you headed?">
-				<input type="submit" value="Let's go!" id="submit" />
+				<input type="submit" value="Let's go!" id="button-search" />
+				<!-- onclick="window.location.href = 'https://website.com/my-account';" --> 
 			</form>
 			<img src="image/buddy.gif" id="buddy-logo">
 			
+		</div>
+
+		<div id="search-results" class="hidden">
+			Your search has returned <span id="search-result-count">many</span> results. <br />
+			Please select one of the following to narrow down your search results:
+			<table id="results-table">
+				<tr><td>San Antonio, TX</td><td>US</td></tr>
+				<tr><td>San Antonio</td><td>CL</td></tr>
+				<tr><td>San Antonio</td><td>VE</td></tr>
+			</table>
 		</div>
 
 		<div id="login" class="hidden">
