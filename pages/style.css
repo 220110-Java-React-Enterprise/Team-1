@@ -33,7 +33,7 @@ main {
 
 .takeoff-animation {
 	animation-name: takeoff;
-	animation-duration: 3s;
+	animation-duration: 2s;
 	animation-iteration-count: 1;
 	animation-delay: 250ms;
 	animation-timing-function: ease-in;
@@ -41,33 +41,33 @@ main {
 
 @keyframes takeoff {
 	0% {
-		left: -75px;
+		left: -77px;
 	}
 	10% {
-		left: -65px;
+		left: -73px;
 	}
 	20% {
-		left: -55px;
+		left: -68px;
 	}
 	30% {
-		left: -40px;
-		top: -355px;
+		left: -55px;
+		top: -352px;
 	}
 	40% {
-		left: -25px;
-		top: -360px;
+		left: -30px;
+		top: -355px;
 	}
 	50% {
 		left: 0px;
-		top: -365px;
+		top: -363px;
 	}
 	60% {
-		left: 30px;
-		top: -370px;
+		left: 60px;
+		top: -367px;
 	}
 	70% {
-		left: 100px;
-		top: -375px;
+		left: 120px;
+		top: -372px;
 	}
 	80% {
 		left: 200px;
@@ -75,11 +75,11 @@ main {
 	}
 	90% {
 		left: 300px;
-		top: -385px;
+		top: -390px;
 	}
 	100% {
 		left: 1000px;
-		top: -500px;
+		top: -400px;
 	}
 }
 
@@ -138,6 +138,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	height: 100%;
+	background-color: rgb(245, 249, 247);
 }
 
 html {
