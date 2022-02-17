@@ -9,7 +9,8 @@ window.onload = (event) => {
 	document.getElementById('submit').addEventListener('click', (event) => {
 		// TODO: Take out preventDefault if we want the form to be submitted (this is debug) *********
 		event.preventDefault();
-		alert('Submit was clicked');
+		doTakeoff();
+		//alert('Submit was clicked');
 	})
 	// Add event handler to registration/login buttons to dismiss login screen
 	const loginButtons = document.getElementsByClassName("login-button");
@@ -18,7 +19,13 @@ window.onload = (event) => {
 	}
 	// delay showing login for 3 seconds
 	// Should probably add a check if the person has previously logged in here
-	setTimeout(showLoginOverlay, 1500);
+	//setTimeout(showLoginOverlay, 1500);
+}
+
+function doTakeoff() {
+	document.getElementsByTagName("body")[0].style.overflowX = "hidden";
+	const buddyLogoNode = document.getElementById('buddy-logo');
+	buddyLogoNode.classList.add("takeoff-animation");
 }
 
 function showLoginOverlay() {
