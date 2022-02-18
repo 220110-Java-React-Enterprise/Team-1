@@ -63,10 +63,7 @@ async function getData(city) {
 	const url = "https://api.api-ninjas.com/v1/city&name=" + city;
 	const origin = "https://api-ninjas.com";
 	// Set api key here + delete when done
-	let key = "MI4XECM9nuLCPKhZIq+MRQ==i8CXEw4Kc7fi9Nec";
-	if (key === "") {
-		key = "insert-api-key-here"
-	}
+	let key = "insert-api-key-here";
 	console.log("Your API Key is: " + key);
 
 	let response = await fetch(url, {
