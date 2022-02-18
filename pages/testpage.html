@@ -16,7 +16,7 @@
 			<div class="test-limit-width">
 				<h1>(City) Search test</h1>
 				<form action="localhost" method="post">
-					<input type="text" placeholder="Where are you headed?">
+					<input type="text" id="searchbox" placeholder="Where are you headed?">
 					<input type="submit" value="Let's go!" id="button-search"/>
 					<!-- onclick="window.location.href = 'https://website.com/my-account';" --> 
 				</form>
@@ -28,13 +28,19 @@
 					<h2>New user?</h2>
 					<form action="localhost" method="post">
 						<label for="first-name">First name: </label>
-						<input type="text" name="first-name" class="register" /><br />
+						<input type="text" id="first-name" name="first-name" class="register" /><br />
 		
 						<label for="last-name">Last name: </label>
-						<input type="text" name="last-name" class="register" /><br />
+						<input type="text" id="last-name" name="last-name" class="register" /><br />
+
+						<label for="username">Username: </label>
+						<input type="text"  id="username"name="username" class="register" /><br />
+
+						<label for="password">Password: </label>
+						<input type="password"  id="password" name="password" class="register" /><br />
 		
 						<label for="email">E-mail: </label>
-						<input type="text" name="email" class="register" /><br />
+						<input type="text" id="email" name="email" class="register" /><br />
 	
 						<input type="submit" value="Register" class="login-button" id="button-register" />
 					</form>
@@ -44,10 +50,10 @@
 					<h2>Existing user?</h2>
 					<form action="localhost" method="post">
 						<label for="username">Username: </label>
-						<input type="text" name="username" class="register" /><br />
+						<input type="text" id="login-username" name="login-username" class="register" /><br />
 		
 						<label for="password">Password: </label>
-						<input type="text" name="password" class="register" /><br />
+						<input type="text" id="login-password" name="login-password" class="register" /><br />
 		
 						<input type="submit" value="Log in" class="login-button" id="button-login" />
 					</form>

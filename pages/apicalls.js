@@ -8,22 +8,47 @@ window.onload = (event) => {
 	document.getElementById('button-search').addEventListener('click', (event) => {
 		// TODO: Take out preventDefault if we want the form to be submitted (this is debug) *********
 		event.preventDefault();
+		const searchTerm = document.getElementById("searchbox").value;
+		console.log("Searching for: " + searchTerm);
 		//doTakeoff();
 	});
 
 	document.getElementById('button-register').addEventListener('click', (event) => {
 		event.preventDefault();
+		const userInfo = {
+			firstName: document.getElementById("first-name").value,
+			lastName: document.getElementById("last-name").value,
+			email: document.getElementById("email").value,
+			username: document.getElementById("username").value,
+			password: document.getElementById("password").value
+		}
+		console.log(userInfo);
 	});
 
 	document.getElementById('button-login').addEventListener('click', (event) => {
 		event.preventDefault();
+		const userInfo = {
+			username: document.getElementById("login-username").value,
+			password: document.getElementById("login-password").value
+		}
+		console.log(userInfo);
 	});
 
 	document.getElementById('button-review').addEventListener('click', (event) => {
 		event.preventDefault();
+		const reviewText = event.target.value;
+		console.log("Comment: " + reviewText);
 	});
 
-	document.getElementById('button-report').addEventListener('click', (event) => {
-		event.preventDefault();
-	});
+	const reportButtons = document.getElementsByClassName("button-report");
+	// change to for... of?
+	for(let i=0; i<reportButtons.length; i++) {
+		reportButtons[i].addEventListener("click", (event) => {
+			event.preventDefault();
+			const messageNumber = event.target.id.slice(7);
+			const messageText = document.getElementById("review-" + messageNumber).innerText;
+			console.log("message #" + messageNumber + " to be reported");
+			console.log(messageText);
+		});
+	}
 }
