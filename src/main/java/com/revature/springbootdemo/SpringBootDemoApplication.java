@@ -1,6 +1,9 @@
 package com.revature.springbootdemo;
 
 import com.fasterxml.jackson.databind.JsonNode;
+
+import com.revature.springbootdemo.beans.utils.FileLogger;
+
 import com.revature.springbootdemo.beans.models.UserModel;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
 import com.revature.springbootdemo.beans.utils.ApplicationContextProvider;
@@ -8,17 +11,20 @@ import com.revature.springbootdemo.beans.utils.FileLogger;
 import org.apache.coyote.Response;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.*;
 import java.io.*;
 import java.net.MalformedURLException;
-import java.util.*;
 
-//for api
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import java.util.*;
+//for the api ...
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -26,20 +32,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 //@SpringBootApplication
 @SpringBootApplication(scanBasePackages={"com.revature.springbootdemo.beans"})
-//@RestController
+@RestController
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SpringBootDemoApplication {
 
-
-
-
 	static FileLogger fileLogger;
-	private static String PropertiesPath = "src/main/resources/Keys.properties";
-	static UserRepo userRepo;
-	//C:\Users\ahmed\IdeaProjects\Ahmad\Team-1\src\main\resources\Keys.properties
+	private static String PropertiesPath = "src/main/resources/Keys.properties"; //keys properties file
+	private static String Logpath = "logs/" + LocalDate.now();
 
 
-	//private UsersDAO userRepository;
 
 	/*** METHODS ****
 	 */
@@ -49,55 +50,24 @@ public class SpringBootDemoApplication {
 		SpringApplication app = new SpringApplication(SpringBootDemoApplication.class);
 		app.setDefaultProperties(Collections
 				.singletonMap("server.port", "8080"));
-		InitializeLogger(); //initialize fileLogger variable.
 		app.run(args);
 
-		/**
-		 * David's user persistence check
-		 *
-		 *
-		 * */
 
-////		SpringApplication.run(SpringBootDemoApplication.class, args);
-//		ApplicationContext context = ApplicationContextProvider.getApplicationContext();
-//		userRepo = context.getBean(UserRepo.class);
-//
-//		UserModel user = new UserModel("David", "Alvarado", "abc123", "fake123@gmail.com");
-//		userRepo.save(user);
-
-
-	}
-
-	public static void InitializeLogger()
-	{
+		File f = new File(Logpath);
+		if (!f.exists())
+		{
+			try {
+				System.out.println("log file path: " + f.getAbsolutePath());
+				f.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		fileLogger = FileLogger.getFileLogger();
+		fileLogger.log("started: " + LocalDateTime.now());
 	}
 
-	//login method, get username and password and verify they exists
-//	@GetMapping ("/register")
-//	@ResponseBody
-//	public String Login(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
-//						@RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
-//						@RequestParam(value = "myPassword", defaultValue = "1111") String Password,
-//						@RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
-//
-//		UserModel user = new UserModel(FirstName, LastName, Password, Email);
-//		userRepo.save(user);
-//		return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
-//
-//		//Response r = new Response();
-//		//r.setMessage("testing");
-//	}
 
-	//login method, get username and password and verify they exists
-	@GetMapping ("/login")
-	@ResponseBody
-	public String Login(@RequestParam(value = "myUsername", defaultValue = "user1") String userName,
-						@RequestParam(value = "myPassword", defaultValue = "password1") String Password) {
-		return String.format("Hello %s and %s", userName, Password);
-		//Response r = new Response();
-		//r.setMessage("testing");
-	}
 
 	public List<String> ReadKeys()
 	{
@@ -180,7 +150,6 @@ public class SpringBootDemoApplication {
 
 		String FilePath= new File("data.html").getAbsolutePath();
 		try {
-			//String filepath = "data.html";
 			File f = new File(FilePath);
 			FileWriter sw = new FileWriter(f);
 			BufferedWriter bw = new BufferedWriter(sw);
@@ -198,18 +167,16 @@ public class SpringBootDemoApplication {
 						"<iframe " +
 						" srcdoc=\"" + "<h1>Data about " + cityName +"</h1></br>" + result.replaceAll("\"", "") + "\" />" +
 						"<noframes>" +
-						"<body>Your browser doens't support frames</body>" +
-						"</noframes>" +
-						"</frameset>";
-		//result += mapHTML;
-		//*****************
-		//return result + mapHTML;
 
-		//***** For testing *********
+						   "<body>Your browser doens't support frames</body>" +
+	                    "</noframes>" +
+                "</frameset>";
+
+
+
 		FilePath= new File("result.html").getAbsolutePath();
 		File f = new File(FilePath);
 		try {
-			//String filepath = "data.html";
 			FileWriter sw = new FileWriter(f);
 			BufferedWriter bw = new BufferedWriter(sw);
 			bw.write(mapHTML);
@@ -218,17 +185,6 @@ public class SpringBootDemoApplication {
 			e.printStackTrace();
 		}
 
-		Response r= new Response();
-		//r.setMessage("done");
-		r.setMessage(mapHTML);
 		return mapHTML;
 	}
-
-
-	//hello: test reading/getting a value from form field and displaying it in a message
-	@GetMapping ("/hello")
-	public String sayHello(@RequestParam(value = "myName", defaultValue = "world") String name) {
-		return String.format("Hello %s!", name);
-	}
-
 }
