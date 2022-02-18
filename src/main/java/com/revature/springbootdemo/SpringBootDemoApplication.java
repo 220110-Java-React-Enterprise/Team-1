@@ -34,6 +34,8 @@ public class SpringBootDemoApplication {
 
 
 	static FileLogger fileLogger;
+	// test variable for devops pull request
+	static String testVariable;
 	private static String PropertiesPath = "src/main/resources/Keys.properties";
 	static UserRepo userRepo;
 	//C:\Users\ahmed\IdeaProjects\Ahmad\Team-1\src\main\resources\Keys.properties
