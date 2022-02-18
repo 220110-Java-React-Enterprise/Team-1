@@ -1,0 +1,30 @@
+
+Intro:
+Imagine you are looking to travel to a new city or location - perhaps you are relocating for work, or simply a tourist.
+You know nothing about this city - but wouldn't it be nice to simply go to one website, enter the location you'd 
+like to learn more about, and receive a nice set of facts about that place?  Our website will also allow users to
+register and post reviews detailing their experiences in these locations.  These comments can be moderated by
+administrators, who will be able to see comments flagged by other users and delete them if they are in violation
+of our code of conduct.  We intend to utilize various API's offered by API Ninjas (https://api-ninjas.com/), and time allowing, we hope to incorporate other apis to add more information to our website.
+
+
+User Stories:
+As a user, I can see: 
+	Registration page (email, firstname, lastname, username, password), 
+	Login page(user name, password), 
+	Search bar page, 
+	Results page consisting of: location (city, state, country), Weather, Crime rate, Unemployment, gdp and a reviews section. 
+	As a user I can read: reviews of the current location in question.
+	As a user I can post: a review
+	As a user I can report: An inapropriate review.
+
+As an administrator:
+	I can view: All pages that users see and a page dedicated to reported reviews.
+	I can delete: Reported comments deemed inappropriate.
+	I can comment: On reviews.
+
+
+Bonus stories:
+- This site will include information from Google Maps
+- This site will be mobile-reactive
+- Users can rate reviews (ex. helpful / not helpful)
