@@ -3,6 +3,7 @@ package com.revature.springbootdemo.beans.models;//package DAOs;
 import javax.persistence.*;
 
 @Entity (name = "user_model")
+
 public class UserModel {
 
     @Id
@@ -15,6 +16,7 @@ public class UserModel {
 
     @Column(name = "last_name")
     private String lastName;
+
 
     @Column(name = "password")
     private String password;

@@ -1,14 +1,28 @@
 package com.revature.springbootdemo;
 
 import com.fasterxml.jackson.databind.JsonNode;
+
 import com.revature.springbootdemo.beans.utils.FileLogger;
+
+import com.revature.springbootdemo.beans.models.UserModel;
+import com.revature.springbootdemo.beans.repositories.UserRepo;
+import com.revature.springbootdemo.beans.utils.ApplicationContextProvider;
+import com.revature.springbootdemo.beans.utils.FileLogger;
+import org.apache.coyote.Response;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.ApplicationContext;
+
 import org.springframework.web.bind.annotation.*;
 import java.io.*;
 import java.net.MalformedURLException;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 import java.util.*;
 //for the api ...
 import java.net.HttpURLConnection;
@@ -27,8 +41,9 @@ public class SpringBootDemoApplication {
 	private static String Logpath = "logs/" + LocalDate.now();
 
 
+
 	/*** METHODS ****
-	*/
+	 */
 	//main method: print a testing message, configure the port of the server to 8080
 	public static void main(String[] args) {
 		//System.out.println("printing");
@@ -36,6 +51,7 @@ public class SpringBootDemoApplication {
 		app.setDefaultProperties(Collections
 				.singletonMap("server.port", "8080"));
 		app.run(args);
+
 
 		File f = new File(Logpath);
 		if (!f.exists())
@@ -50,6 +66,7 @@ public class SpringBootDemoApplication {
 		fileLogger = FileLogger.getFileLogger();
 		fileLogger.log("started: " + LocalDateTime.now());
 	}
+
 
 
 	public List<String> ReadKeys()
@@ -91,7 +108,7 @@ public class SpringBootDemoApplication {
 		String NinjaCityKey = ""; //ninjacity city key
 		String MapKey = ""; //google map keygit
 		List<String> keys = ReadKeys();
-        if (keys != null)
+		if (keys != null)
 			System.out.println("success reading keys");
 		else
 		{
@@ -145,14 +162,16 @@ public class SpringBootDemoApplication {
 
 		String mapHTML =
 				"<frameset rows = \"30%,70%\">" +
-				"<frame" + " width=\"100%\"" + " height=\"250\"" + " frameborder=\"0\" style=\"border:0\"" +
-				" src=\"https://www.google.com/maps/embed/v1/place?key=" + MapKey + "&q=" + cityName + "\" allowfullscreen />" +
-				"<iframe " +
+						"<frame" + " width=\"100%\"" + " height=\"250\"" + " frameborder=\"0\" style=\"border:0\"" +
+						" src=\"https://www.google.com/maps/embed/v1/place?key=" + MapKey + "&q=" + cityName + "\" allowfullscreen />" +
+						"<iframe " +
 						" srcdoc=\"" + "<h1>Data about " + cityName +"</h1></br>" + result.replaceAll("\"", "") + "\" />" +
 						"<noframes>" +
+
 						   "<body>Your browser doens't support frames</body>" +
 	                    "</noframes>" +
                 "</frameset>";
+
 
 
 		FilePath= new File("result.html").getAbsolutePath();
@@ -168,5 +187,4 @@ public class SpringBootDemoApplication {
 
 		return mapHTML;
 	}
-
 }
