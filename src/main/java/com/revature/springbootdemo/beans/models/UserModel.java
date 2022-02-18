@@ -2,7 +2,8 @@ package com.revature.springbootdemo.beans.models;//package DAOs;
 
 import javax.persistence.*;
 
-@Entity
+@Entity (name = "user_model")
+
 public class UserModel {
 
     @Id
@@ -16,17 +17,18 @@ public class UserModel {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column
+
+    @Column(name = "password")
     private String password;
 
-    @Column
+    @Column (name = "email")
     private String email;
 
-    public UserModel() {     //  no arg Constructor
+    public UserModel() {
     }
 
-    public UserModel( String firstName, String lastName, String password, String email) {
-
+    public UserModel(String firstName, String lastName, String password, String email) {
+        this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
