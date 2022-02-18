@@ -134,3 +134,7 @@ org.hibernate.query.internal.NativeQueryImpl@1bd189c5
 2022-02-18 10:29:45 - started: 2022-02-18T10:29:45.723
 2022-02-18 10:29:46 - query is NOT NULL:
 org.hibernate.query.internal.NativeQueryImpl@3a8fb9da
+2022-02-18 14:26:01 - started: 2022-02-18T14:26:01.704
+2022-02-18 14:26:02 - started: 2022-02-18T14:26:02.780
+2022-02-18 14:27:37 - started: 2022-02-18T14:27:37.397
+2022-02-18 14:27:38 - started: 2022-02-18T14:27:38.115
