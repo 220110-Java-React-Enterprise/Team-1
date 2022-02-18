@@ -11,6 +11,7 @@ window.onload = (event) => {
 		const searchTerm = document.getElementById("searchbox").value;
 		console.log("Searching for: " + searchTerm);
 		//doTakeoff();
+		getData(searchTerm);
 	});
 
 	document.getElementById('button-register').addEventListener('click', (event) => {
@@ -51,4 +52,56 @@ window.onload = (event) => {
 			console.log(messageText);
 		});
 	}
+
+	document.getElementById("testbutton").addEventListener('click', (event) => {
+		// Test button ,only works locally.. maybe
+		getCard();
+	})
+}
+
+async function getData(city) {
+	const url = "https://api.api-ninjas.com/v1/city&name=" + city;
+	const origin = "https://api-ninjas.com";
+	// Set api key here + delete when done
+	let key = "MI4XECM9nuLCPKhZIq+MRQ==i8CXEw4Kc7fi9Nec";
+	if (key === "") {
+		key = "insert-api-key-here"
+	}
+	console.log("Your API Key is: " + key);
+
+	let response = await fetch(url, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "https://api.api-ninjas.com",
+			"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+			"X-Api-Key": key,
+			"Vary": "Origin"
+		},
+	})
+		.then((response) => {
+			console.log(response.text())
+		});
+}
+
+async function getCard() {
+	const url = "http://localhost:8080/card&card=1";
+	/* const origin = "https://api.api-ninjas.com";
+	// Set api key here + delete when done
+	let key = "MI4XECM9nuLCPKhZIq+MRQ==i8CXEw4Kc7fi9Nec";
+	if (key === "") {
+		key = "insert-api-key-here"
+	}
+	console.log("Your API Key is: " + key); */
+
+	let response = await fetch(url, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			"Access-Control-Allow-Origin": "*",
+			"Vary": "Origin"
+		}
+	});
+	let text = await response.text();
+	console.log(text);
 }

@@ -9,10 +9,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Licorice&family=Zeyada&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="style.css">
 </head>
-
-	<body>
+	<!-- manual override needed here otherwise it conflicts with the index page splash, and I'm not fixing that again -->
+	<body style="justify-content:flex-start">
 		<main class="test-layout-container">
-
+			<h1 style="margin: auto">API Call Test Page</h1>
 			<div class="test-limit-width">
 				<h1>(City) Search test</h1>
 				<form action="localhost" method="post">
@@ -68,12 +68,17 @@
 				<input type="submit" value="Submit Review" class="login-button" id="button-review" />
 			</div>
 
+
 			<div class="test-limit-width">
 				<h1>Review Reporting Test</h1>
 				<p id="review-1">This is a sample comment with really foul language.</p>
 				<button id="report-1" class="button-report">Report Comment</button>
 			</div>
-
+			<!--
+				<div class="test-limit-width">
+					<button id="testbutton">Test button - don't click me</button>
+				</div>
+			-->
 		</main>
 	</body>
 	<script type="text/javascript" src="apicalls.js"></script>
