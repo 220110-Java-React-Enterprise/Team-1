@@ -1,0 +1,71 @@
+/* 	black: 2C2C2C   
+white: background-color: rgb(245, 249, 247);
+*/
+
+#review-input-box {
+	width: 100%;
+	height: 5vh;
+}
+
+input {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 70%;
+	border-radius: 4px;
+}
+
+.row {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-boxes-visible {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	position: fixed;
+	z-index: 10;
+	padding: 40px;
+	border-radius: 24px;
+	background: #bfd6db;
+	box-shadow: 21px 21px 36px #6d7a7d, -21px -21px 36px #ffffff;
+	width: 50%;
+}
+
+input[type="submit"] {
+	background-color: #01a2e8;
+	margin-top: 0.5vh;
+	border-radius: 4px;
+	border: 0px;
+	height: 3ch;
+	display: block;
+}
+
+.hidden {
+	display: none;
+}
+
+h2 {
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-family: "Arial", sans-serif;
+}
+
+body {
+	margin-top: 0;
+	margin-left: auto;
+	margin-right: auto;
+	box-sizing: border-box;
+	font-family: "Arial", sans-serif;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	background-color: rgb(245, 249, 247);
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}

@@ -26,6 +26,8 @@ function doTakeoff() {
 	document.getElementsByTagName("body")[0].style.overflowX = "hidden";
 	const buddyLogoNode = document.getElementById('buddy-logo');
 	buddyLogoNode.classList.add("takeoff-animation");
+	// Make sure this is after the animation
+	setTimeout(removeSplash, 2400);
 }
 
 function showLoginOverlay() {
@@ -43,6 +45,23 @@ function hideLoginOverlay()
 	document.getElementById('login').classList.remove("login-boxes-visible");
 	document.getElementById('login').classList.add("hidden");
 }
+
+function removeSplash() {
+	// Undo the hiding from the animation
+	document.getElementsByTagName("body")[0].style.overflowX = "visible";
+	// set main to .data-layout-container
+	document.getElementsByTagName("main")[0].classList.remove("splash-layout");
+	document.getElementsByTagName("main")[0].classList.add("data-layout-container");
+	// hide #splash-search
+	document.getElementById("splash-search").style.display = "none";
+	// remove hidden from .result-page
+	const resultNodes = document.getElementsByClassName("result-page");
+	for(let i=0; i<resultNodes.length; i++) {
+		resultNodes[i].classList.remove("hidden");
+	}
+}
+
+
 
 
 /*

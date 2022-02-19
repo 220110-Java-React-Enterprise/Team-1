@@ -1,0 +1,42 @@
+/* this is the layout for main which has a grid */
+.data-layout-container {
+	display: grid;
+	grid-template-areas:
+		"search profile"
+		"title title"
+		"stats picture"
+		"reviews write";
+	grid-template-columns: 50% 50%;
+	/* grid-template-rows: auto 1fr 1fr auto; */
+	row-gap: 20px;
+}
+
+/* these are for the result page layout */
+
+#component-search {
+	grid-area: "search";
+}
+
+#component-profile {
+	grid-area: "profile";
+}
+
+#component-title {
+	grid-area: "title";
+}
+
+#component-stats {
+	grid-area: "stats";
+}
+
+#component-map {
+	grid-area: "picture";
+}
+
+#component-reviews {
+	grid-area: "reviews";
+}
+
+#component-write {
+	grid-area: "write";
+}
