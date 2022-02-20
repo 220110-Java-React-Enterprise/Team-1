@@ -37,7 +37,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SpringBootDemoApplication {
 
 	static FileLogger fileLogger;
-	private static String PropertiesPath = "src/main/resources/Keys.properties"; //keys properties file
+	private static String PropertiesPath = "src/main/resources/api-keys.properties"; //keys properties file
 	private static String Logpath = "logs/" + LocalDate.now();
 
 
@@ -75,19 +75,19 @@ public class SpringBootDemoApplication {
 			Properties props = new Properties();
 			FileReader fr = new FileReader(PropertiesPath);
 			ClassLoader cl = SpringBootDemoApplication.class.getClassLoader();
-			try (InputStream stream = cl.getResourceAsStream("Keys.properties")) {
+			try (InputStream stream = cl.getResourceAsStream("api-keys.properties")) {
 				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(PropertiesPath));
 				props.load(bis);
-				String NinjaKey = props.getProperty("NinjaKey");
-				String MapKey = props.getProperty("MapKey");
+				String NinjaKey = props.getProperty("ninja-api-key");
+				//String MapKey = props.getProperty("MapKey");
 				ArrayList<String> keys  =new ArrayList<String>();
 				keys.add(NinjaKey);
-				keys.add(MapKey);
+				//keys.add(MapKey);
 				return keys;
 			}
 			catch(Exception exc)
 			{
-				System.out.println("Error in reading Kye's properties file: " + exc.getMessage());
+				System.out.println("Error in reading Key's properties file: " + exc.getMessage());
 				fileLogger.log(exc);
 			}
 		} catch (FileNotFoundException e) {
@@ -118,7 +118,7 @@ public class SpringBootDemoApplication {
 		}
 
 		NinjaCityKey = keys.get(0);
-		MapKey = keys.get(1);
+		//MapKey = keys.get(1);
 
 		try {
 			url = new URL("https://api.api-ninjas.com/v1/city?name=" + cityName);
@@ -185,6 +185,6 @@ public class SpringBootDemoApplication {
 			e.printStackTrace();
 		}
 
-		return mapHTML;
+		return result;
 	}
 }
