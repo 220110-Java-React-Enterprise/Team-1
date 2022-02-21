@@ -39,6 +39,7 @@
 
 @keyframes takeoff {
 	0% {
+		translate(20px);
 		left: -77px;
 	}
 	5% {
@@ -78,5 +79,22 @@
 	100% {
 		left: 1000px;
 		top: -400px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#splash-search {
+		font-size: 0.5em;
+	}
+
+	#splash-search > img {
+		/*
+		top: -350px;
+		left: -80px;
+		*/
+		top: -200px;
+		left: 0px;
+		width: 200px;
+		height: 106px;
 	}
 }
