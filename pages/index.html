@@ -1,58 +1,92 @@
 <!DOCTYPE html>
+<html lang=en>
 
-<head>
-	<title>Project 1</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Licorice&family=Zeyada&display=swap" rel="stylesheet"> 
-	<link rel="stylesheet" href="style.css">
-</head>
+	<head>
+		<title>Project 2</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Licorice&family=Zeyada&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="general.css">
+		<link rel="stylesheet" href="resultpage.css">
+		<link rel="stylesheet" href="splash.css">
+		<meta name="robots" content="noindex" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Project 2.">
+	</head>
 
-<body>
-	<main>
-		<div class="logo">
-			<span class="title">TravelBuddy</span>
-			<form action="localhost" method="post">
-				<input type="text" placeholder="Where are you headed?">
-				<input type="submit" value="Let's go!" id="submit" />
-			</form>
-			<img src="image/buddy.gif" id="buddylogo">
+	<body>
+		<main class="splash-layout" id="main-container">
+			<div id="splash-search" class="splash-screen">
+				<span class="title">TravelBuddy</span>
+				<form action="localhost" method="post">
+					<input type="text" id="searchbox" placeholder="Where are you headed?">
+					<input type="submit" value="Let's go!" id="button-search" />
+					<!-- onclick="window.location.href = 'https://website.com/my-account';" --> 
+				</form>
+				<img src="image/buddy.gif" id="buddy-logo" alt="">
+				
+			</div>
+
+
+
+			<div id="#component-header" class="result-page hidden">
+				<input type="text" placeholder="Enter a city" class="header-row">
+				<img src="./image/buddy.gif" alt="" id="header-image" class="header-row" />
+				<span id="profile" class="header-row">[Logo or name]</span>
+			</div>
+
+			<div id="component-title"  class="result-page hidden">
+				<h1 id="city-header">City name</h1>
+			</div>
+
+			<div id="component-stats"  class="result-page hidden">
+				<h2>Statistics:</h2>
+				<ul type="disc">
+					<li>Population: 1</li>
+					<li>Currency: dollar</li>
+					<li>Crime rate: a lot</li>
+				</ul>
+			</div>
+
+			<div id="component-map"  class="result-page hidden">
+				<img src="image/demo-map.jpg" alt="map" />
+			</div>
+
+			<div id="component-reviews"  class="result-page hidden">
+				<div class="review">
+					<p id="review-1">This is a comment.</p>
+					<button id="report-1" class="button-report">Report Comment</button>
+				</div>
+				<div class="review">
+					<p id="review-2">This is another comment.</p>
+					<button id="report-2" class="button-report">Report Comment</button>
+				</div>
+				<div class="review">
+					<p id="review-3">This place is great.</p>
+					<button id="report-3" class="button-report">Report Comment</button>
+				</div>
+				<div class="review">
+					<p id="review-4">This place was terrible.</p>
+					<button id="report-4" class="button-report">Report Comment</button>
+				</div>
+				<div class="review">
+					<p id="review-5">This is a sample comment with really foul language.</p>
+					<button id="report-5" class="button-report">Report Comment</button>
+				</div>
+			</div>
+
+			<div id="component-write"  class="result-page hidden">
+				<h1>Leave a comment</h1>
+				<label for="review-text">Review:</label><br />
+				<input type="textarea" name="review-text" class="review" id="review-input-box" /><br />
+				<input type="hidden" name="review-rating" id="review-rating" class="review" value="1" /><br />
+				<input type="submit" value="Submit Review" class="login-button" id="button-review" />
+			</div>
 			
-		</div>
 
-		<div id="login" class="hidden">
-			<div class="register-box">
-				<h2>New user?</h2>
-				<form action="localhost" method="post">
-					<label for="first-name">First name: </label>
-					<input type="text" name="first-name" class="register" /><br />
-	
-					<label for="last-name">Last name: </label>
-					<input type="text" name="last-name" class="register" /><br />
-	
-					<label for="email">E-mail: </label>
-					<input type="text" name="email" class="register" /><br />
-
-					<input type="submit" value="Register" class="login-button" />
-				</form>
-			</div>
-
-			<div class="register-box">
-				<h2>Existing user?</h2>
-				<form action="localhost" method="post">
-					<label for="username">Username: </label>
-					<input type="text" name="username" class="register" /><br />
-	
-					<label for="password">Password: </label>
-					<input type="text" name="password" class="register" /><br />
-	
-					<input type="submit" value="Log in" class="login-button" />
-				</form>
-			</div>
-		</div>
-	</main>
-	<script type="text/javascript" src="index.js"></script>
-</body>
-
+		</main>
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+</html>
 
 

@@ -1,0 +1,86 @@
+/* this is the layout for main which has a grid */
+.data-layout-container {
+	display: grid;
+	grid-template-areas:
+		"heading heading"
+		"title title"
+		"stats picture"
+		"reviews write";
+	grid-template-columns: 50% 50%;
+	/* grid-template-rows: auto 1fr 1fr auto; */
+	row-gap: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	box-sizing: border-box;
+	align-content: center;
+}
+
+/* these are for the result page layout */
+
+.result-page {
+	/* this affects all components */
+}
+
+/* Header component - the searchbox, logo, & profile at top */
+#component-header {
+	grid-area: heading;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+.component-header > input {
+	margin: auto;
+}
+
+#header-image {
+	width: 50px;
+	height: 100%;
+}
+
+#profile {
+	font-weight: bold;
+}
+
+.header-row {
+	display: inline;
+}
+
+/* Controls the title headline on results */
+#component-title {
+	grid-area: title;
+}
+#city-header {
+	border-bottom: 10px solid #01a2e8;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+/* City statistics */
+#component-stats {
+	grid-area: stats;
+}
+
+/* Map (or generic image) */
+#component-map {
+	grid-area: picture;
+}
+
+#component-map > img {
+	border-radius: 8px;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Listing of existing reviews */
+#component-reviews {
+	grid-area: reviews;
+}
+
+/* Comments box */
+#component-write {
+	grid-area: write;
+}
