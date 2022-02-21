@@ -63,14 +63,14 @@ async function getData(city) {
 	const url = "https://api.api-ninjas.com/v1/city&name=" + city;
 	const origin = "https://api-ninjas.com";
 	// Set api key here + delete when done
-	let key = "insert-api-key-here";
+	let key = "--add API key here--";
 	console.log("Your API Key is: " + key);
 
 	let response = await fetch(url, {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
-			"Access-Control-Allow-Origin": "https://api.api-ninjas.com",
+			"Access-Control-Allow-Origin": '*',
 			"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
 			"X-Api-Key": key,
 			"Vary": "Origin"

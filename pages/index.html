@@ -16,7 +16,7 @@
 
 	<body>
 		<main class="splash-layout" id="main-container">
-			<div id="splash-search" class="splash-screen row">
+			<div id="splash-search" class="splash-screen">
 				<span class="title">TravelBuddy</span>
 				<form action="localhost" method="post">
 					<input type="text" id="searchbox" placeholder="Where are you headed?">
@@ -29,12 +29,10 @@
 
 
 
-			<div id="component-search" class="result-page hidden">
-				<input type="text" placeholder="Enter a city">
-			</div>
-
-			<div id="component-profile" class="result-page hidden">
-				[Logo or name]
+			<div id="#component-header" class="result-page hidden">
+				<input type="text" placeholder="Enter a city" class="header-row">
+				<img src="./image/buddy.gif" alt="" id="header-image" class="header-row" />
+				<span id="profile" class="header-row">[Logo or name]</span>
 			</div>
 
 			<div id="component-title"  class="result-page hidden">
@@ -45,7 +43,7 @@
 				<h2>Statistics:</h2>
 				<ul type="disc">
 					<li>Population: 1</li>
-					<li>Currency: dllar</li>
+					<li>Currency: dollar</li>
 					<li>Crime rate: a lot</li>
 				</ul>
 			</div>

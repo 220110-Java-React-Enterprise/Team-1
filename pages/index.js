@@ -49,35 +49,21 @@ function hideLoginOverlay()
 function removeSplash() {
 	// Undo the hiding from the animation
 	document.getElementsByTagName("body")[0].style.overflowX = "visible";
+
 	// set main to .data-layout-container
 	document.getElementsByTagName("main")[0].classList.remove("splash-layout");
 	document.getElementsByTagName("main")[0].classList.add("data-layout-container");
+
 	// hide #splash-search
 	document.getElementById("splash-search").style.display = "none";
+
+	// remove 100% height from html tag
+	// this is required to fix vertical overflow in result layout
+	document.getElementsByTagName("html")[0].style.height = "auto";
+
 	// remove hidden from .result-page
 	const resultNodes = document.getElementsByClassName("result-page");
 	for(let i=0; i<resultNodes.length; i++) {
 		resultNodes[i].classList.remove("hidden");
 	}
-}
-
-
-
-
-/*
-The main page will be a grid defined like this:
-
-header	header	header	header
-		topleft	topright
-		midleft	midright
-		lowleft	lowright
-footer	footer	footer	footer
-
-* Subject to change!!
-
-*/
-
-// This will add city data to the top right (ex. statistics)
-function addCityData() {
-
 }
