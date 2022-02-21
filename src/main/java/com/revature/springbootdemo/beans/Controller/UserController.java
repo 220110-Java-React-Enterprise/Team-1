@@ -1,5 +1,8 @@
 package com.revature.springbootdemo.beans.Controller;
 
+import com.revature.springbootdemo.CityAPIService;
+import com.revature.springbootdemo.CountryAPIService;
+import com.revature.springbootdemo.WeatherAPIService;
 import com.revature.springbootdemo.beans.models.UserModel;
 import com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
@@ -52,6 +55,18 @@ public class UserController {
             return "User doesn't exist or wrong credentials";
 
     }
-
-
+    
+    //search method, retrieve all search results 
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseBody
+    public String Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+        String result = CityAPIService.getCityInfo(userEnteredCity);
+        result += WeatherAPIService.getCityWeather(userEnteredCity);
+        
+        // need to retrieve country name from CityAPI for this next part
+        //result += CountryAPIService.getCountryInfo()
+        
+        return result;        
+    }
 }
