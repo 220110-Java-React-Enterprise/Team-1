@@ -38,40 +38,6 @@
 }
 
 @keyframes takeoff {
-	0% {
-		translate(20px);
-		left: -77px;
-	}
-	5% {
-		left: -73px;
-	}
-	15% {
-		left: -68px;
-	}
-	30% {
-		left: -55px;
-		top: -352px;
-	}
-	40% {
-		left: -30px;
-		top: -355px;
-	}
-	50% {
-		left: 0px;
-		top: -359px;
-	}
-	60% {
-		left: 60px;
-		top: -364px;
-	}
-	70% {
-		left: 120px;
-		top: -370px;
-	}
-	80% {
-		left: 200px;
-		top: -378px;
-	}
 	90% {
 		left: 300px;
 		top: -390px;
@@ -84,15 +50,11 @@
 
 @media only screen and (max-width: 600px) {
 	#splash-search {
-		font-size: 0.5em;
+		font-size: 0.7em;
 	}
 
 	#splash-search > img {
-		/*
-		top: -350px;
-		left: -80px;
-		*/
-		top: -200px;
+		top: -240px;
 		left: 0px;
 		width: 200px;
 		height: 106px;
