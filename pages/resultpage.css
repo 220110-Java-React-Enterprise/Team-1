@@ -2,7 +2,7 @@
 .data-layout-container {
 	display: grid;
 	grid-template-areas:
-		"heading heading"
+		"headline headline"
 		"title title"
 		"stats picture"
 		"reviews write";
@@ -27,7 +27,7 @@
 
 /* Header component - the searchbox, logo, & profile at top */
 #component-header {
-	grid-area: heading;
+	grid-area: headline;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
