@@ -1,4 +1,5 @@
-Project 2 - Team 1 - TravelBuddy:
+#TEAM 1
+Project 2 - TravelBuddy:
 Ahmad, Cheryl, David, Ibrahima, Jeremiah, Tiffany
 
 Description
