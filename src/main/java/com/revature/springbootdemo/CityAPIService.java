@@ -12,7 +12,7 @@ public class CityAPIService {
             Request request = new Request.Builder()
                     .url("https://api.api-ninjas.com/v1/city?name=" + city)
                     .get()
-                    .addHeader("x-api-key", "")
+                    .addHeader("x-api-key", SpringBootDemoApplication.ReadKeys().get(0))
                     .build();
 
             Response okHttpResponse = client.newCall(request).execute();

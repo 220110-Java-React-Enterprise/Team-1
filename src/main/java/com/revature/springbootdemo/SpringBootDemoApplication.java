@@ -69,7 +69,7 @@ public class SpringBootDemoApplication {
 
 
 
-	public List<String> ReadKeys()
+	public static List<String> ReadKeys()
 	{
 		try {
 			Properties props = new Properties();
@@ -79,10 +79,10 @@ public class SpringBootDemoApplication {
 				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(PropertiesPath));
 				props.load(bis);
 				String NinjaKey = props.getProperty("NinjaKey");
-				String MapKey = props.getProperty("MapKey");
+				//String MapKey = props.getProperty("MapKey");
 				ArrayList<String> keys  =new ArrayList<String>();
 				keys.add(NinjaKey);
-				keys.add(MapKey);
+				//keys.add(MapKey);
 				return keys;
 			}
 			catch(Exception exc)
@@ -118,7 +118,7 @@ public class SpringBootDemoApplication {
 		}
 
 		NinjaCityKey = keys.get(0);
-		MapKey = keys.get(1);
+		//MapKey = keys.get(1);
 
 		try {
 			url = new URL("https://api.api-ninjas.com/v1/city?name=" + cityName);
