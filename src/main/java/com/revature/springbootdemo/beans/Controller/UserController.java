@@ -69,6 +69,7 @@ public class UserController {
         try {
             String cityResult = CityAPIService.getCityInfo(userEnteredCity);
             String weatherResult = WeatherAPIService.getCityWeather(userEnteredCity);
+            System.out.println(userEnteredCity);
 
             ObjectMapper mapper = new ObjectMapper();
             List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(cityResult, SearchResultModel[].class));
