@@ -3,6 +3,7 @@ package com.revature.springbootdemo.beans.Controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.springbootdemo.CityAPIService;
 import com.revature.springbootdemo.CountryAPIService;
+import com.revature.springbootdemo.SpringBootDemoApplication;
 import com.revature.springbootdemo.WeatherAPIService;
 import com.revature.springbootdemo.beans.models.SearchResultModel;
 import com.revature.springbootdemo.beans.models.UserModel;
@@ -78,8 +79,7 @@ public class UserController {
             String total = cityResult + weatherResult + countryResult;
             return total;
         } catch (Exception e) {
-            // log this to a file!
-            e.printStackTrace();
+            SpringBootDemoApplication.fileLogger.log(e);
         }
         
         return null;

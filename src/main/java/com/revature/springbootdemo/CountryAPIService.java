@@ -12,13 +12,13 @@ public class CountryAPIService {
             Request request = new Request.Builder()
                     .url("https://api.api-ninjas.com/v1/country?name=" + country)
                     .get()
-                    .addHeader("x-api-key", "nv0NPvRl6we5sMjE/HghNQ==VdVyJa2cMfSCRT76")
+                    .addHeader("x-api-key", SpringBootDemoApplication.ReadKeys().get(0))
                     .build();
 
             Response okHttpResponse = client.newCall(request).execute();
             return okHttpResponse.body().string();
         } catch (Exception e) {
-            e.printStackTrace();
+            SpringBootDemoApplication.fileLogger.log(e);
             
             return null;
         }
