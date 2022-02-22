@@ -1,14 +1,19 @@
 package com.revature.springbootdemo.beans.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.springbootdemo.CityAPIService;
 import com.revature.springbootdemo.CountryAPIService;
 import com.revature.springbootdemo.WeatherAPIService;
+import com.revature.springbootdemo.beans.models.SearchResultModel;
 import com.revature.springbootdemo.beans.models.UserModel;
 import com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 @RestController
@@ -61,12 +66,21 @@ public class UserController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
     public String Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
-        String result = CityAPIService.getCityInfo(userEnteredCity);
-        result += WeatherAPIService.getCityWeather(userEnteredCity);
+        try {
+            String cityResult = CityAPIService.getCityInfo(userEnteredCity);
+            String weatherResult = WeatherAPIService.getCityWeather(userEnteredCity);
+
+            ObjectMapper mapper = new ObjectMapper();
+            List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(cityResult, SearchResultModel[].class));
+            String countryResult = CountryAPIService.getCountryInfo(searchResultModels.get(0).getCountry());
+            
+            String total = cityResult + weatherResult + countryResult;
+            return total;
+        } catch (Exception e) {
+            // log this to a file!
+            e.printStackTrace();
+        }
         
-        // need to retrieve country name from CityAPI for this next part
-        //result += CountryAPIService.getCountryInfo()
-        
-        return result;        
+        return null;
     }
 }
