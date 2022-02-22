@@ -36,7 +36,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SpringBootDemoApplication {
 
-	static FileLogger fileLogger;
+	public static FileLogger fileLogger;
 	private static String PropertiesPath = "src/main/resources/Keys.properties"; //keys properties file
 	private static String Logpath = "logs/" + LocalDate.now();
 

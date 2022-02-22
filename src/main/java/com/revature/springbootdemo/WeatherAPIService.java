@@ -18,7 +18,7 @@ public class WeatherAPIService {
             Response okHttpResponse = client.newCall(request).execute();
             return okHttpResponse.body().string();
         } catch (Exception e) {
-            e.printStackTrace();
+            SpringBootDemoApplication.fileLogger.log(e);
             
             return null;
         }
