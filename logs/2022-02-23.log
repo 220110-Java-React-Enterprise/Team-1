@@ -1,0 +1,30 @@
+2022-02-23 10:06:14 - reviewRepo started: 2022-02-23T10:06:14.722
+2022-02-23 10:06:14 - UserRepo started: 2022-02-23T10:06:14.732
+2022-02-23 10:06:14 - started: 2022-02-23T10:06:14.734
+2022-02-23 10:06:15 - started: 2022-02-23T10:06:15.693
+2022-02-23 10:07:06 - you must be logged in before searching a city
+2022-02-23 10:07:08 - You must be logged in to view reviews
+2022-02-23 10:07:09 - you must be logged in to review content
+2022-02-23 10:07:15 - started: 2022-02-23T10:07:15.716
+2022-02-23 10:07:17 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@8f84cd5
+2022-02-23 10:07:17 - a new session has been created for user with ID: 7 and email Ahmad@gmail.com. creation time is: 1645632437868 session inactive Interval is: 50000
+2022-02-23 10:07:22 - active session. Logged in user has ID: 7 and email: Ahmad@gmail.com. creation time is: 1645632437868
+2022-02-23 10:08:02 - active session. Logged in user has ID: 7 and email: Ahmad@gmail.com. creation time is: 1645632437868
+2022-02-23 10:08:48 - active session. Logged in user has ID: 7 and email: Ahmad@gmail.com. creation time is: 1645632437868
+2022-02-23 10:08:58 - started: 2022-02-23T10:08:58.083
+2022-02-23 10:08:58 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@527fce32
+2022-02-23 10:08:59 - a new session has been created for user with ID: 2 and email sam@gmail.com. creation time is: 1645632437868 session inactive Interval is: 50000
+2022-02-23 11:50:14 - reviewRepo started: 2022-02-23T11:50:14.058
+2022-02-23 11:50:14 - UserRepo started: 2022-02-23T11:50:14.067
+2022-02-23 11:50:14 - started: 2022-02-23T11:50:14.069
+2022-02-23 11:50:14 - started: 2022-02-23T11:50:14.732
+2022-02-23 11:51:17 - you must be logged in before searching a city
+2022-02-23 11:51:19 - You must be logged in to view reviews
+2022-02-23 11:52:47 - started: 2022-02-23T11:52:47.786
+2022-02-23 11:52:48 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@6166a9f9
+2022-02-23 11:52:49 - a new session has been created for user with ID: 2 and email sam@gmail.com. creation time is: 1645638769190 session inactive Interval is: 50000
+2022-02-23 11:52:53 - active session. Logged in user has ID: 2 and email: sam@gmail.com. creation time is: 1645638769190
+2022-02-23 11:53:00 - active session. Logged in user has ID: 2 and email: sam@gmail.com. creation time is: 1645638769190

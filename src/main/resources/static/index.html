@@ -1,10 +1,11 @@
 <html>
 <head>
-    <h1>my index page</h1>
+    <h1>Travel Buddy</h1>
 </head>
 <body>
 
-  <form method="post" action="/register/login" id="loginForm">
+<h3>login</h3>
+  <form method="post" action="/controller/login" id="mainForm">
       <div>
           <label for="EmailField">enter Email</label>
           <input name="myEmail" id="EmailField">
@@ -12,13 +13,13 @@
 
           <label for="PasswordField">enter Password</label>
           <input name="myPassword" id="PasswordField">
+          <button>Login</button>
           </br>
-
-          <button> Login</button></br></br>
-          <a href="register.html">register for an account</a></br>
-          <a href="home.html">view city information</a>
 
       </div>
   </form>
+  <a href="register.html">register a new user</a></br>
+  <a href="main.html">search for a city</a></br>
+  <a href="delete.html">delete a user</a></br>
 </body>
 </html>

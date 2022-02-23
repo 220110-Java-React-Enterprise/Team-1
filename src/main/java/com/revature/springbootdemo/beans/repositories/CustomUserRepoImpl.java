@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Properties;
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 @Repository
@@ -27,15 +29,7 @@ public class CustomUserRepoImpl implements CustomUserRepo{
 
     public CustomUserRepoImpl(){
         File f = new File(Logpath);
-        if (!f.exists())
-        {
-            try {
-                System.out.println("log file path: " + f.getAbsolutePath());
-                f.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+
         fileLogger = FileLogger.getFileLogger();
         fileLogger.log("started: " + LocalDateTime.now());
     }
@@ -50,7 +44,7 @@ public class CustomUserRepoImpl implements CustomUserRepo{
      * @param password: password of user
      * @return: UserModel object.
      */
-    public UserModel findByName(String email, String password){
+    public UserModel findByName(String email, String password, HttpServletRequest request){
 
         try
         {
@@ -75,7 +69,7 @@ public class CustomUserRepoImpl implements CustomUserRepo{
                     }
                     String SQL = "SELECT * FROM user_model WHERE email='" + email + "' and password='" + password + "';";
 
-                    javax.persistence.Query query = entityManager.createNativeQuery(SQL);
+                    javax.persistence.Query query = entityManager.createNativeQuery(SQL, UserModel.class);
 
                     if (entityManager == null)
                     {
@@ -92,16 +86,13 @@ public class CustomUserRepoImpl implements CustomUserRepo{
                         fileLogger.log("query is NOT NULL:\n" + query);
                     }
 
-                    List<UserModel> Users = query.getResultList();
+                    @SuppressWarnings("unchecked")
+                    List<UserModel> Users = (List<UserModel>)query.getResultList();
                     if (Users.size() >= 1) //user exists
                     {
-                        //System.out.println("query returned a result. user exists");
-                        System.out.println("list size is: " + Users.size());
-                        //for (int i = 0 ; i < Users.size() ; i++)
-                        //    System.out.println("ith element is: " + ((UserModel)Users.get(0)).getEmail());
-                        //UserModel u = Users.get(0);
-                        //System.out.println(u.getID() + "," + u.getFirstName() +"," + u.getLastName() +"," + u.getPassword() +"," + u.getEmail());
-                        return new UserModel( "", "", "", ""); //return dummy object (not null the user exits)
+                        //########################## here ############
+                        return Users.get(0);
+                        //return new UserModel( "", "", "", ""); //return dummy object (not null the user exits)
                     }
                     else
                     {
@@ -114,12 +105,14 @@ public class CustomUserRepoImpl implements CustomUserRepo{
             catch(Exception exc)
             {
                 fileLogger.log(exc);
+                exc.printStackTrace();
             }
 
         }
         catch(Exception exc)
         {
             fileLogger.log(exc);
+            exc.printStackTrace();
         }
         return null;
     }
