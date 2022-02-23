@@ -17,6 +17,12 @@
 </head>
 
 <body>
+	<header class="result-page hidden">
+		TravelBuddy
+		<input type="text" id="searchbox" placeholder="Where are you headed?">
+		<input type="submit" value="Let's go!" id="button-search" class="search-button" />
+		<img id="header-image" src="image/buddy.gif" id="buddy-logo" alt="">
+	</header>
 <main class="splash-layout" id="main-container">
 	<div id="splash-search" class="splash-screen">
 		<span class="title">TravelBuddy</span>
@@ -34,7 +40,6 @@
 	</div>
 
 	<div id="#component-profile" class="result-page hidden">
-		<img src="./image/buddy.gif" alt="" id="header-image" class="header-row" />
 		<span id="profile" class="header-row">[Logo or name]</span>
 	</div>
 
@@ -68,7 +73,7 @@
 
 
 	<div id="component-write"  class="result-page hidden">
-		<h1>Leave a comment</h1>
+		<h1>Leave a review</h1>
 		<label for="review-text">Review:</label><br />
 		<input type="textarea" name="review-text" class="review" id="review-input-box" /><br />
 		<input type="hidden" name="review-rating" id="review-rating" class="review" value="1" /><br />
@@ -79,7 +84,7 @@
 	<div id="component-reviews"  class="result-page hidden">
 		<div class="review">
 			<span class="review-date smaller">Feb. 2022</span>
-			<p id="review-1" class="review-text">This is a comment.</p>
+			<p id="review-1" class="review-text">This is a review.</p>
 			<div class="review-footer">
 				<span id="report-1" class="report-link smaller">report</span>
 				<span class="review-author smaller">-Me</span>
@@ -88,7 +93,7 @@
 
 		<div class="review">
 			<span class="review-date smaller">Feb. 2022</span>
-			<p id="review-2" class="review-text">This is another comment.</p>
+			<p id="review-2" class="review-text">This is another review.</p>
 			<div class="review-footer">
 				<span id="report-2" class="report-link smaller">report</span>
 				<span class="review-author smaller">-Me Too</span>
@@ -97,7 +102,7 @@
 
 		<div class="review">
 			<span class="review-date smaller">Feb. 2022</span>
-			<p id="review-3" class="review-text">This is a comment.</p>
+			<p id="review-3" class="review-text">This is a review.</p>
 			<div class="review-footer">
 				<span id="report-3" class="report-link smaller">report</span>
 				<span class="review-author smaller">-Me Three</span>
@@ -106,7 +111,7 @@
 
 		<div class="review">
 			<span class="review-date smaller">Feb. 2022</span>
-			<p id="review-4" class="review-text">This is a comment.</p>
+			<p id="review-4" class="review-text">This is a review.</p>
 			<div class="review-footer">
 				<span id="report-4" class="report-link smaller">report</span>
 				<span class="review-author smaller">-Me Four</span>
@@ -115,7 +120,7 @@
 
 		<div class="review">
 			<span class="review-date smaller">Feb. 2022</span>
-			<p id="review-5" class="review-text">This is a comment.</p>
+			<p id="review-5" class="review-text">This is a review.</p>
 			<div class="review-footer">
 				<span id="report-5" class="report-link smaller">report</span>
 				<span class="review-author smaller">-Me Five</span>

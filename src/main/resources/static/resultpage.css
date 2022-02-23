@@ -20,6 +20,14 @@
 	align-content: center;
 }
 
+header {
+	font-family: "Licorice", cursive;
+	font-size: 3em;
+	z-index: 5;
+	display: inline;
+	margin: auto;
+}
+
 /* these are for the result page layout */
 
 .result-page {
@@ -36,8 +44,10 @@
 }
 
 #header-image {
-	width: 50px;
-	height: 100%;
+	width: 20%;
+	height: 20%;
+	position: absolute;
+	z-index: -1;
 }
 
 #component-profile {

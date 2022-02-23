@@ -124,7 +124,8 @@ async function doRegister(user) {
 				"Content-Type": "application/json",
 			},
 		})
-			.then((response) => response.json())
+			//.then((response) => response.json())
+			.then((response) => console.log(response.text))
 			.then((result) => (stuff = result));
 	} catch (error) {
 		console.log("Error: \n" + error);
