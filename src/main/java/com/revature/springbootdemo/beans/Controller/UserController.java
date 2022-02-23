@@ -88,23 +88,25 @@ public class UserController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<String> RegisterNewUser(@RequestBody UserModel newUser) {
 
-
         try {
             UserModel user = userRepo.save(newUser);
 
         }catch (Exception e){
             fileLogger.log(e);
-            return ResponseEntity.badRequest().body("Not able to add to database.");
+            return ResponseEntity.badRequest().body("{\"result\":\"Unsuccessful persistence\"}");
         }
 
-        return ResponseEntity.accepted().body("Success!");
+        return ResponseEntity.accepted().body("{\"result\":\"Success!\"}");
 
 
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
+    @PostMapping(
+            value = "/login",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public String Login(@RequestParam(value = "myEmail", defaultValue = "email") String Email,
                         @RequestParam(value = "myPassword", defaultValue = "password1") String Password,
                         HttpServletRequest request) {
