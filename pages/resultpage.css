@@ -76,6 +76,7 @@ h3 {
 
 .temp-control {
 	text-decoration: underline;
+	cursor: crosshair;
 }
 
 /* Map (or generic image) */

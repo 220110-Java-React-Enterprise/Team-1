@@ -21,32 +21,41 @@ window.onload = (event) => {
 		tempControls[i].addEventListener("click", (event) => {
 			console.log(event);
 			console.log(`${event.target.textContent} was clicked`);
-			if (event.target.textContent === "Farenheit") {
+			const tempTypeNodes = document.getElementsByClassName("weather-type");
+
+			if (
+				event.target.textContent === "Farenheit" &&
+				tempTypeNodes[0].textContent === "C"
+			) {
 				// get all temps - node ID's should all start with weather-temp-*
 				const tempValueNodes =
 					document.querySelectorAll(`[id^="weather-temp"]`);
 				for (let k = 0; k < tempValueNodes.length; k++) {
-					let newTemp = (tempValueNodes[k].textContent * (9 / 5) + 32).toFixed(
+					let newTemp = ((tempValueNodes[k].textContent / 5) * 9 + 32).toFixed(
 						1
 					);
 					tempValueNodes[k].textContent = newTemp;
 				}
 
 				// Change all temp types to F
-				const tempTypeNodes = document.getElementsByClassName("weather-type");
 				for (let j = 0; j < tempTypeNodes.length; j++) {
 					tempTypeNodes[j].textContent = "F";
 				}
 			}
 			// Celcius was clicked
-			else if (event.target.textContent === "Celsius") {
+			else if (
+				event.target.textContent === "Celsius" &&
+				tempTypeNodes[0].textContent === "F"
+			) {
 				// get all temps - node ID's should all start with weather-temp-*
 				const tempValueNodes =
 					document.querySelectorAll(`[id^="weather-temp"]`);
 				for (let k = 0; k < tempValueNodes.length; k++) {
-					let newTemp =
-						(tempValueNodes[k].textContent - 32) * (5 / 9).toFixed(1);
-					tempValueNodes[k].textContent = newTemp.toFixed(1);
+					let newTemp = (
+						((tempValueNodes[k].textContent - 32) * 5) /
+						9
+					).toFixed(1);
+					tempValueNodes[k].textContent = newTemp;
 				}
 
 				// Change all temp types to F
