@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> dc0660516b80290227435d68a6af71059db941dd
 // Setting up event listener for the index page
 // registration/login prompt on page load
 window.onload = (event) => {
@@ -67,4 +70,8 @@ function removeSplash() {
 	for (let i = 0; i < resultNodes.length; i++) {
 		resultNodes[i].classList.remove("hidden");
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dc0660516b80290227435d68a6af71059db941dd

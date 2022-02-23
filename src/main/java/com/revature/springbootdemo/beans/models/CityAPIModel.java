@@ -20,4 +20,8 @@ public class CityAPIModel {
     public void setCountry(String country) {
         this.country = country;
     }
+
 }
+
+
+

@@ -1,0 +1,78 @@
+<!-- This is a static page for testing API Endpoints -->
+
+<!DOCTYPE html>
+
+<head>
+	<title>Project 2</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Licorice&family=Zeyada&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="test.css">
+</head>
+	<!-- manual override needed here otherwise it conflicts with the index page splash, and I'm not fixing that again -->
+	<body style="justify-content:flex-start">
+		<main class="test-layout-container">
+			<h1 style="margin: auto">API Call Test Page</h1>
+			<div class="test-limit-width">
+				<h1>(City) Search test</h1>
+				<input type="text" id="searchbox" placeholder="Where are you headed?">
+				<input type="submit" value="Let's go!" id="button-search"/>
+					<!-- onclick="window.location.href = 'https://website.com/my-account';" --> 
+			</div>
+
+			<div id="login" class="test-limit-width">
+				<h1>Login test</h1>
+				<div class="register-box">
+					<h2>New user?</h2>
+					<form action="localhost" method="post">
+						<label for="first-name">First name: </label>
+						<input type="text" id="first-name" name="first-name" class="register" /><br />
+		
+						<label for="last-name">Last name: </label>
+						<input type="text" id="last-name" name="last-name" class="register" /><br />
+
+						<label for="username">Username: </label>
+						<input type="text"  id="username"name="username" class="register" /><br />
+
+						<label for="password">Password: </label>
+						<input type="password"  id="password" name="password" class="register" /><br />
+		
+						<label for="email">E-mail: </label>
+						<input type="text" id="email" name="email" class="register" /><br />
+	
+						<input type="submit" value="Register" class="login-button" id="button-register" />
+					</form>
+				</div>
+	
+				<div class="register-box">
+					<h2>Existing user?</h2>
+					<form action="localhost" method="post">
+						<label for="username">Username: </label>
+						<input type="text" id="login-username" name="login-username" class="register" /><br />
+		
+						<label for="password">Password: </label>
+						<input type="text" id="login-password" name="login-password" class="register" /><br />
+		
+						<input type="submit" value="Log in" class="login-button" id="button-login" />
+					</form>
+				</div>
+			</div>
+
+			<div class="test-limit-width">
+				<h1>Review Test</h1>
+				<label for="review-text">Review:</label><br />
+				<input type="textarea" name="review-text" class="review" id="review-input-box" /><br />
+				<input type="hidden" name="review-rating" id="review-rating" class="review" value="1" /><br />
+				<input type="submit" value="Submit Review" class="login-button" id="button-review" />
+			</div>
+
+
+			<div class="test-limit-width">
+				<h1>Review Reporting Test</h1>
+				<p id="review-1">This is a sample comment with really foul language.</p>
+				<button id="report-1" class="button-report">Report Comment</button>
+			</div>
+		</main>
+	</body>
+	<script type="text/javascript" src="apicalls.js"></script>
+</html>

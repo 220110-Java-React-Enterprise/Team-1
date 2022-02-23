@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchResultModel {
 
-
     String country;
     String temp;
     String feels_like;
@@ -129,5 +128,7 @@ public class SearchResultModel {
                 ", unemployment='" + unemployment + '\'' +
                 ", homicide_rate='" + homicide_rate + '\'' +
                 '}';
+
     }
+
 }

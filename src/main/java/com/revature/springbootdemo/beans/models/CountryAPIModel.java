@@ -60,4 +60,5 @@ public class CountryAPIModel {
                 ", \"homicide_rate\":" + homicide_rate +
                 '}';
     }
+
 }

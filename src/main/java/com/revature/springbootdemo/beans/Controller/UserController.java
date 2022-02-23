@@ -1,25 +1,28 @@
 package com.revature.springbootdemo.beans.Controller;
 
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.springbootdemo.SpringBootDemoApplication;
-import com.revature.springbootdemo.beans.apis.CityAPIService;
-import com.revature.springbootdemo.beans.apis.CountryAPIService;
-import com.revature.springbootdemo.beans.apis.WeatherAPIService;
+import com.revature.springbootdemo.CityAPIService;
+import com.revature.springbootdemo.CountryAPIService;
 import com.revature.springbootdemo.beans.models.CityAPIModel;
 import com.revature.springbootdemo.beans.models.CountryAPIModel;
 import com.revature.springbootdemo.beans.models.UserModel;
 import com.revature.springbootdemo.beans.models.WeatherAPIModel;
+import com.revature.springbootdemo.WeatherAPIService;
 import com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/register")
@@ -66,7 +69,7 @@ public class UserController {
 
     }
 
-    //search method, retrieve all search results
+    //search method, retrieve all search results 
     @RequestMapping(value="/search", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody

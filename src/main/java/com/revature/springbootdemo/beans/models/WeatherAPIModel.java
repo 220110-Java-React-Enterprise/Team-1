@@ -3,10 +3,12 @@ package com.revature.springbootdemo.beans.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+// Weather API POJO
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherAPIModel {
 
     // Declare variables
+
     Integer cloud_pct;
     Integer temp;
     Integer feels_like;
@@ -15,6 +17,7 @@ public class WeatherAPIModel {
     Integer max_temp;
     Float wind_speed;
     Integer wind_degrees;
+
 
     public WeatherAPIModel() {      // no arg Constructor
     }
@@ -33,6 +36,8 @@ public class WeatherAPIModel {
 
     }
 
+    // Getters and Setters
+
     public Integer getCloud_pct() {
         return cloud_pct;
     }
@@ -41,67 +46,37 @@ public class WeatherAPIModel {
         this.cloud_pct = cloud_pct;
     }
 
+    public Integer getTemp() { return temp; }
 
-    // Getters and Setters
+    public void setTemp(Integer temp) { this.temp = temp; }
 
-    public Integer getTemp() {
-        return temp;
-    }
+    public Integer getFeels_like() { return feels_like; }
 
-    public void setTemp(Integer temp) {
-        this.temp = temp;
-    }
+    public void setFeels_like(Integer feels_like) { this.feels_like = feels_like; }
 
-    public Integer getFeels_like() {
-        return feels_like;
-    }
+    public Integer getHumidity() { return humidity; }
 
-    public void setFeels_like(Integer feels_like) {
-        this.feels_like = feels_like;
-    }
+    public void setHumidity(Integer humidity) { this.humidity = humidity; }
 
-    public Integer getHumidity() {
-        return humidity;
-    }
+    public Integer getMin_temp() { return min_temp; }
 
-    public void setHumidity(Integer humidity) {
-        this.humidity = humidity;
-    }
+    public void setMin_temp(Integer min_temp) { this.min_temp = min_temp; }
 
-    public Integer getMin_temp() {
-        return min_temp;
-    }
+    public Integer getMax_temp() { return max_temp; }
 
-    public void setMin_temp(Integer min_temp) {
-        this.min_temp = min_temp;
-    }
+    public void setMax_temp(Integer max_temp) { this.max_temp = max_temp; }
 
-    public Integer getMax_temp() {
-        return max_temp;
-    }
+    public Float getWind_speed() { return wind_speed; }
 
-    public void setMax_temp(Integer max_temp) {
-        this.max_temp = max_temp;
-    }
+    public void setWind_speed(Float wind_speed) { this.wind_speed = wind_speed; }
 
-    public Float getWind_speed() {
-        return wind_speed;
-    }
+    public Integer getWind_degrees() { return wind_degrees; }
 
-    public void setWind_speed(Float wind_speed) {
-        this.wind_speed = wind_speed;
-    }
-
-    public Integer getWind_degrees() {
-        return wind_degrees;
-    }
-
-    public void setWind_degrees(Integer wind_degrees) {
-        this.wind_degrees = wind_degrees;
-    }
+    public void setWind_degrees(Integer wind_degrees) { this.wind_degrees = wind_degrees; }
 
     @Override
     public String toString() {   // Return the JSON
+
         return "{" +
                 "\"cloud_pct\":" + cloud_pct +
                 ", \"temp\":" + temp +

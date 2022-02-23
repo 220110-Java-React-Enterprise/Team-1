@@ -100,6 +100,7 @@ public class SpringBootDemoApplication {
 	@GetMapping ("/api")
 	public String useAPI(@RequestParam(value = "myCity", defaultValue = "San Francisco") String cityName) {
 		String result = "displaying information about \"" + cityName +"\" city";
+
 		//****** api **********
 
 		URL url = null;
