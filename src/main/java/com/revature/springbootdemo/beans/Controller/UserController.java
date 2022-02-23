@@ -70,6 +70,7 @@ public class UserController {
                                   @RequestParam(value = "myPassword", defaultValue = "1111") String Password,
                                   @RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
 
+        System.out.println(FirstName);
         UserModel user = new UserModel(FirstName, LastName, Password, Email);
         userRepo.save(user);
         return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);

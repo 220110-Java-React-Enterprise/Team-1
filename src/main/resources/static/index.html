@@ -3,7 +3,7 @@
 
 <head>
 
-	<title>Project 2</title>
+	<title>TravelBuddy</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Licorice&family=Zeyada&display=swap" rel="stylesheet">
@@ -26,10 +26,10 @@
 			<!-- onclick="window.location.href = 'https://website.com/my-account';" -->
 		</form>
 		<img src="image/buddy.gif" id="buddy-logo" alt="">
-</div>
+	</div>
 
 	<div id="#component-header" class="result-page hidden">
-		<input type="text" placeholder="Enter a city" class="header-row city-search-input">
+		<input type="text" id="searchbox" placeholder="Enter a city" class="header-row city-search-input">
 		<button class="search-button">Search</button>
 	</div>
 
@@ -49,21 +49,21 @@
 			<li>Currency: dollar</li>
 			<li>GDP: <span id="statistics-gdp">0</span></li>
 			<li>Unemployment: <span id="statistics-unemployment">0</span></li>
-			<li>Crime rate: <span id="statistics-crime-rate">a lot</span></li>
+			<li>Homicide rate: <span id="statistics-crime-rate">a lot</span></li>
 		</ul>
 
 		<h3>Weather data:</h3> <div id="tempcontrols"><span id="temp-f" class="temp-control">Farenheit</span> or <span id="temp-c" class="temp-control">Celsius</span></div>
 		<ul type="disc">
 			<li>Weather data: <span id="weather-temp">temp</span> <span class="weather-type">C</span> (feels like <span id="weather-temp-feels">0</span><span class="weather-type">C</span>)</span></li>
 			<li>Temperature range: <span id="weather-temp-min">0</span><span class="weather-type">C</span> to <span id="weather-temp-max">0</span><span class="weather-type">C</span></li>
-			<li>Humidity: <span id="weather-humidity">0</span></li>
+			<li>Humidity: <span id="weather-humidity">0</span>%</li>
 			<li>Cloud coverage: <span id="weather-cloud">0</span>%</li>
 			<li>Wind speed: <span id="weather-wind-speed">0</span> (wind degrees: <span id="weather-wind-degrees">0</span>) </li>
 		</ul>
 	</div>
 
 	<div id="component-map"  class="result-page hidden">
-		<img src="image/demo-map.jpg" alt="map" />
+		<iframe width="400" height="300" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/view?zoom=10&center=40.7128%2C-74.0060&key=AIzaSyD74AJ6FnwjE0_qnAkhIEwRuIGYLPh1R1I" id="google-map"></iframe> 
 	</div>
 
 
