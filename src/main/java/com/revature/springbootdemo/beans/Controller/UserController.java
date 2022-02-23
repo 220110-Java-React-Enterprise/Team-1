@@ -5,16 +5,23 @@ import com.revature.springbootdemo.CityAPIService;
 import com.revature.springbootdemo.CountryAPIService;
 import com.revature.springbootdemo.SpringBootDemoApplication;
 import com.revature.springbootdemo.WeatherAPIService;
-import com.revature.springbootdemo.beans.models.SearchResultModel;
-import com.revature.springbootdemo.beans.models.UserModel;
+import com.revature.springbootdemo.beans.models.*;
 import com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.io.InputStream;
+import java.io.SequenceInputStream;
+import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @RestController
@@ -66,21 +73,29 @@ public class UserController {
     @RequestMapping(value="/search", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public String Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+    public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+        List<Object> resultList = new ArrayList<>();
         try {
-            String cityResult = CityAPIService.getCityInfo(userEnteredCity);
-            String weatherResult = WeatherAPIService.getCityWeather(userEnteredCity);
-            System.out.println("City: " + userEnteredCity);
-            System.out.println("City Result: " + cityResult);
-            System.out.println("Weather Result: " + weatherResult);
 
             ObjectMapper mapper = new ObjectMapper();
-            List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(cityResult, SearchResultModel[].class));
-            String countryResult = CountryAPIService.getCountryInfo(searchResultModels.get(0).getCountry());
-            
-            //String total = cityResult + weatherResult + countryResult;
-            String total = cityResult;
-            return total;
+
+            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
+
+            stream = WeatherAPIService.getCityWeather(userEnteredCity);
+            WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
+            String result = weatherAPIModel.toString();
+            resultList.add(weatherAPIModel);
+
+            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
+            List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
+            result += countryAPIModels.get(0).toString();
+
+            resultList.add(countryAPIModels.get(0));
+            System.out.println(resultList.toString());
+
+
+            return resultList;
         } catch (Exception e) {
             //e.printStackTrace();
             SpringBootDemoApplication.fileLogger.log(e);

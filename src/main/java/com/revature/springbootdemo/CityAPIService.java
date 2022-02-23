@@ -4,8 +4,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import java.io.InputStream;
+
 public class CityAPIService {
-    public static String getCityInfo(String city) {
+    public static InputStream getCityInfo(String city) {
         try {
             OkHttpClient client = new OkHttpClient();
             System.out.println(SpringBootDemoApplication.ReadKeys().get(0));
@@ -17,7 +19,8 @@ public class CityAPIService {
                     .build();
 
             Response okHttpResponse = client.newCall(request).execute();
-            return okHttpResponse.body().string();
+            //return okHttpResponse.body().string();
+            return okHttpResponse.body().byteStream();
         } catch (Exception e) {
             e.printStackTrace();
             SpringBootDemoApplication.fileLogger.log(e);
