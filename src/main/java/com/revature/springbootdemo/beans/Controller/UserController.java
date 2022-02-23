@@ -1,12 +1,25 @@
 package com.revature.springbootdemo.beans.Controller;
 
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.springbootdemo.SpringBootDemoApplication;
+import com.revature.springbootdemo.beans.apis.CityAPIService;
+import com.revature.springbootdemo.beans.apis.CountryAPIService;
+import com.revature.springbootdemo.beans.apis.WeatherAPIService;
+import com.revature.springbootdemo.beans.models.CityAPIModel;
+import com.revature.springbootdemo.beans.models.CountryAPIModel;
 import com.revature.springbootdemo.beans.models.UserModel;
+import com.revature.springbootdemo.beans.models.WeatherAPIModel;
 import com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/register")
@@ -53,5 +66,38 @@ public class UserController {
 
     }
 
+    //search method, retrieve all search results
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseBody
+    public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+        List<Object> resultList = new ArrayList<>();
+        try {
 
+            ObjectMapper mapper = new ObjectMapper();
+
+            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
+
+            stream = WeatherAPIService.getCityWeather(userEnteredCity);
+            WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
+            String result = weatherAPIModel.toString();
+            resultList.add(weatherAPIModel);
+
+            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
+            List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
+            result += countryAPIModels.get(0).toString();
+
+            resultList.add(countryAPIModels.get(0));
+            System.out.println(resultList.toString());
+
+
+            return resultList;
+        } catch (Exception e) {
+            //e.printStackTrace();
+            SpringBootDemoApplication.fileLogger.log(e);
+        }
+
+        return null;
+    }
 }

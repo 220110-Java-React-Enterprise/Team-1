@@ -1,15 +1,16 @@
-package com.revature.springbootdemo.beans.models;//package DAOs;
+package com.revature.springbootdemo.beans.models;
+
 import javax.persistence.*;
 import java.sql.Time;
 
 @Entity(name = "review_model")
 public class ReviewsModel {
 
-    //Fields
+    //  Fields
     @Id
     @Column(name = "review_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ReviewID = 9;
+    private Integer ReviewID;
 
     //@ForeighKey(ReferencingTableName = "Reviews", ReferencedTableName = "Users", PrimaryKey = "id")
     @Column(name = "user_id")
@@ -35,7 +36,23 @@ public class ReviewsModel {
     private int LocationID;
 
 
-    //Getters and Setters
+    public ReviewsModel() {      // no arg Constructor
+    }
+
+    public ReviewsModel(int ReviewID, int ID, String content, int rating, int Location_Id, Time time, int ReplyToReview) {
+
+        setReviewD(ReviewID);
+        setID(ID);
+        setContent(content);
+        setRating(rating);
+        setLocationID(Location_Id);
+        setTime(time);
+        setReplyToReview(ReplyToReview);
+    }
+
+
+    //  Getters and Setters
+
     public Integer getReviewD() {
         return ReviewID;
     }
@@ -91,24 +108,6 @@ public class ReviewsModel {
     public void setLocationID(int locationID) {
         LocationID = locationID;
     }
-
-    public ReviewsModel()
-    {
-
-    }
-
-
-    public ReviewsModel(int ReviewID, int ID, String content, int rating, int Location_Id, Time time, int ReplyToReview)
-    {
-        setReviewD(ReviewID);
-        setID(ID);
-        setContent(content);
-        setRating(rating);
-        setLocationID(Location_Id);
-        setTime(time);
-        setReplyToReview(ReplyToReview);
-    }
-
 
 }
 

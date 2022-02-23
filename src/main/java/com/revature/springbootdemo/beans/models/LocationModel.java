@@ -1,4 +1,4 @@
-package com.revature.springbootdemo.beans.models;//package DAOs;
+package com.revature.springbootdemo.beans.models;
 
 
 import javax.persistence.*;
@@ -6,11 +6,11 @@ import javax.persistence.*;
 @Entity(name = "Location_model")
 public class LocationModel {
 
-    //Fields
+    //  Fields
     @Id
     @Column(name = "location_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer LocationID = 9;
+    private Integer LocationID;
 
     @Column(name = "city")
     private String city;
@@ -22,7 +22,19 @@ public class LocationModel {
     private String state;
 
 
-    //Getters and Setters
+
+    public LocationModel() {      //  no arg Constructor
+    }
+
+    public LocationModel(int Location_ID, String city, String country, String state) {
+        setLocationID(Location_ID);
+        setCity(city);
+        setCountry(country);
+        setState(state);
+    }
+
+    //  Getters and Setters
+
     public Integer getLocationID() {
         return LocationID;
     }
@@ -53,23 +65,6 @@ public class LocationModel {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-
-
-    public LocationModel()
-    {
-
-    }
-
-
-
-    public LocationModel(int Location_ID, String city, String country, String state)
-    {
-        setLocationID(Location_ID);
-        setCity(city);
-        setCountry(country);
-        setState(state);
     }
 
 }

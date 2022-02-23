@@ -30,26 +30,26 @@ import java.net.URL;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-//@SpringBootApplication
 @SpringBootApplication(scanBasePackages={"com.revature.springbootdemo.beans"})
 @RestController
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SpringBootDemoApplication {
 
-	static FileLogger fileLogger;
+	public static FileLogger fileLogger;
 	private static String PropertiesPath = "src/main/resources/Keys.properties"; //keys properties file
 	private static String Logpath = "logs/" + LocalDate.now();
 
 
 
-	/*** METHODS ****
+	/**
+	 * *       Maim METHODS
 	 */
-	//main method: print a testing message, configure the port of the server to 8080
+
 	public static void main(String[] args) {
-		//System.out.println("printing");
+
 		SpringApplication app = new SpringApplication(SpringBootDemoApplication.class);
 		app.setDefaultProperties(Collections
-				.singletonMap("server.port", "8080"));
+				.singletonMap("server.port", "8080"));   // configure the port of the server to 8080
 		app.run(args);
 
 
@@ -69,7 +69,7 @@ public class SpringBootDemoApplication {
 
 
 
-	public List<String> ReadKeys()
+	public static List<String> ReadKeys()
 	{
 		try {
 			Properties props = new Properties();
@@ -78,11 +78,11 @@ public class SpringBootDemoApplication {
 			try (InputStream stream = cl.getResourceAsStream("Keys.properties")) {
 				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(PropertiesPath));
 				props.load(bis);
-				String NinjaKey = props.getProperty("NinjaKey");
-			//	String MapKey = props.getProperty("MapKey");
+				String NinjaKey = props.getProperty("x-api-key");
+				//String MapKey = props.getProperty("MapKey");
 				ArrayList<String> keys  =new ArrayList<String>();
 				keys.add(NinjaKey);
-			//	keys.add(MapKey);
+				//keys.add(MapKey);
 				return keys;
 			}
 			catch(Exception exc)
@@ -168,9 +168,9 @@ public class SpringBootDemoApplication {
 						" srcdoc=\"" + "<h1>Data about " + cityName +"</h1></br>" + result.replaceAll("\"", "") + "\" />" +
 						"<noframes>" +
 
-						   "<body>Your browser doens't support frames</body>" +
-	                    "</noframes>" +
-                "</frameset>";
+						"<body>Your browser doens't support frames</body>" +
+						"</noframes>" +
+						"</frameset>";
 
 
 
@@ -185,6 +185,6 @@ public class SpringBootDemoApplication {
 			e.printStackTrace();
 		}
 
-		return result;
+		return mapHTML;
 	}
 }

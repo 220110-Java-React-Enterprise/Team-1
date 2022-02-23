@@ -23,7 +23,7 @@ public class FileLogger {
 
 
 
-    private FileLogger() {
+    private FileLogger() {      // no arg Constructor
         filePath = "logs/";
         consoleOutput = false;
         stackTraceSize = 10;

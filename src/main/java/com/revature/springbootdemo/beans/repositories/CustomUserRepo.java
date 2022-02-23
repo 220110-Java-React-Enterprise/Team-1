@@ -6,5 +6,7 @@ import com.revature.springbootdemo.beans.models.UserModel;
 //https://stackoverflow.com/questions/11880924/how-to-add-custom-method-to-spring-data-jpa
 
 public interface CustomUserRepo {
-     UserModel findByName(String email, String password);
+
+    UserModel findByName(String email, String password);
+
 }

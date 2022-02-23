@@ -24,7 +24,7 @@ public class UserModel {
     @Column (name = "email")
     private String email;
 
-    public UserModel() {
+    public UserModel() {       //  no arg Constructor
     }
 
     public UserModel(String firstName, String lastName, String password, String email) {
@@ -34,6 +34,8 @@ public class UserModel {
         this.password = password;
         this.email = email;
     }
+
+    //  Getters and Setters
 
     public Integer getID() {
         return ID;

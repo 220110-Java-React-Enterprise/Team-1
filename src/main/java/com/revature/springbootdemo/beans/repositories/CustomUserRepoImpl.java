@@ -18,17 +18,19 @@ import javax.persistence.EntityManager;
 
 
 @Repository
-public class CustomUserRepoImpl implements CustomUserRepo{
+public class CustomUserRepoImpl implements CustomUserRepo {
+
     @PersistenceContext
     EntityManager entityManager;
     EntityManagerFactory emf;
     private static String Logpath = "logs/" + LocalDate.now();
     static FileLogger fileLogger;
 
-    public CustomUserRepoImpl(){
+    public CustomUserRepoImpl() {
+
         File f = new File(Logpath);
-        if (!f.exists())
-        {
+
+        if (!f.exists()) {
             try {
                 System.out.println("log file path: " + f.getAbsolutePath());
                 f.createNewFile();
@@ -50,26 +52,21 @@ public class CustomUserRepoImpl implements CustomUserRepo{
      * @param password: password of user
      * @return: UserModel object.
      */
-    public UserModel findByName(String email, String password){
+    public UserModel findByName(String email, String password) {
 
-        try
-        {
+        try {
             Properties props = new Properties();
             props.load(new FileInputStream("src/main/resources/META-INF/persistence.xml"));
-            emf   = Persistence.createEntityManagerFactory("myPersistenceUnit", props);
-            try
-            {
+            emf = Persistence.createEntityManagerFactory("myPersistenceUnit", props);
+            try {
                 if (emf == null) {
                     fileLogger.log("emf is null");
-                }
-                else
-                {
+                } else {
                     entityManager = emf.createEntityManager();
                     //Note:
                     //  using parameter didn't work. but using string for sql statement and concatenation worked.
                     //  added the following statements to check for SQL injection manually
-                    if ((email.contains("OR") || email.contains(" ")) || (password.contains("OR") || password.contains(" ")))
-                    {
+                    if ((email.contains("OR") || email.contains(" ")) || (password.contains("OR") || password.contains(" "))) {
                         fileLogger.log("email and password included \"or\"/space character attempting to do SQL injection (CustomUserRepoImpl)");
                         return null;
                     }
@@ -77,8 +74,7 @@ public class CustomUserRepoImpl implements CustomUserRepo{
 
                     javax.persistence.Query query = entityManager.createNativeQuery(SQL);
 
-                    if (entityManager == null)
-                    {
+                    if (entityManager == null) {
                         fileLogger.log("entity manager is null");
                         if (10 == 10) return null;
                     }
@@ -86,9 +82,7 @@ public class CustomUserRepoImpl implements CustomUserRepo{
                     if (query == null) {
                         fileLogger.log("Query is null");
                         return null;
-                    }
-                    else
-                    {
+                    } else {
                         fileLogger.log("query is NOT NULL:\n" + query);
                     }
 
@@ -101,24 +95,18 @@ public class CustomUserRepoImpl implements CustomUserRepo{
                         //    System.out.println("ith element is: " + ((UserModel)Users.get(0)).getEmail());
                         //UserModel u = Users.get(0);
                         //System.out.println(u.getID() + "," + u.getFirstName() +"," + u.getLastName() +"," + u.getPassword() +"," + u.getEmail());
-                        return new UserModel( "", "", "", ""); //return dummy object (not null the user exits)
-                    }
-                    else
-                    {
+                        return new UserModel("", "", "", ""); //return dummy object (not null the user exits)
+                    } else {
                         fileLogger.log("query returned no results. user doesn't exist");
                         return null;
                     }
 
                 }
-            }
-            catch(Exception exc)
-            {
+            } catch (Exception exc) {
                 fileLogger.log(exc);
             }
 
-        }
-        catch(Exception exc)
-        {
+        } catch (Exception exc) {
             fileLogger.log(exc);
         }
         return null;
