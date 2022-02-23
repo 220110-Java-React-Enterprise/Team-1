@@ -76,6 +76,7 @@ public class UserController {
     public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
         List<Object> resultList = new ArrayList<>();
         try {
+
             ObjectMapper mapper = new ObjectMapper();
 
             InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
@@ -93,38 +94,10 @@ public class UserController {
             resultList.add(countryAPIModels.get(0));
             System.out.println(resultList.toString());
 
-//            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
-//            InputStream stream2 = WeatherAPIService.getCityWeather(userEnteredCity);
-//            SequenceInputStream inputStreamSequence = new SequenceInputStream(stream, stream2);
-//
-//            List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(inputStreamSequence, SearchResultModel[].class));
-//            System.out.println(searchResultModels.get(0).toString());
-            
-            
-            
-//            String total = CityAPIService.getCityInfo(userEnteredCity);
-//            System.out.println(total);
-//            
-//            // trying to get rid of the brackets to see if it helps with mapping to the SearchResultModel
-//            total.replaceAll("\\[","");
-//            total.replaceAll("\\]","");
-//            System.out.println(total);
-//            
-//            total += WeatherAPIService.getCityWeather(userEnteredCity);
-//            System.out.println(total);
-//            
-//            List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(total, SearchResultModel[].class));
-//            System.out.println("searchResultModels size: " + searchResultModels.size());
-//            System.out.println(searchResultModels.get(0).toString());
-//
-//            total += CountryAPIService.getCountryInfo(searchResultModels.get(0).getCountry());
-//            System.out.println(total);
-//            searchResultModels = Arrays.asList(mapper.readValue(total, SearchResultModel[].class));
-//            System.out.println("searchResultModels size: " + searchResultModels.size());
-//            System.out.println(searchResultModels.get(0).toString());
-//
+
             return resultList;
         } catch (Exception e) {
+            //e.printStackTrace();
             SpringBootDemoApplication.fileLogger.log(e);
         }
         

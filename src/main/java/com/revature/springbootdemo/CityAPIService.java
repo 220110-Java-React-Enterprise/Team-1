@@ -10,6 +10,7 @@ public class CityAPIService {
     public static InputStream getCityInfo(String city) {
         try {
             OkHttpClient client = new OkHttpClient();
+            System.out.println(SpringBootDemoApplication.ReadKeys().get(0));
 
             Request request = new Request.Builder()
                     .url("https://api.api-ninjas.com/v1/city?name=" + city)
@@ -21,6 +22,7 @@ public class CityAPIService {
             //return okHttpResponse.body().string();
             return okHttpResponse.body().byteStream();
         } catch (Exception e) {
+            e.printStackTrace();
             SpringBootDemoApplication.fileLogger.log(e);
             
             return null;
