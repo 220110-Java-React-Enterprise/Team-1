@@ -4,8 +4,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import java.io.InputStream;
+
 public class WeatherAPIService {
-    public static String getCityWeather(String city) {
+    public static InputStream getCityWeather(String city) {
         try {
             OkHttpClient client = new OkHttpClient();
 
@@ -16,7 +18,7 @@ public class WeatherAPIService {
                     .build();
 
             Response okHttpResponse = client.newCall(request).execute();
-            return okHttpResponse.body().string();
+            return okHttpResponse.body().byteStream();
         } catch (Exception e) {
             SpringBootDemoApplication.fileLogger.log(e);
             
