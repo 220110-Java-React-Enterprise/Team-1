@@ -1,23 +1,31 @@
-----------------------User---------------------------------
-As a user, I can see: Registration page (email, firstname, lastname, username, password), 
-		      Login page(user name, password), 
-		      Search bar page, 
-		      Results page consisting of: location (city, state, country), Weather, Crime rate, Unemployment Rate, gdp and a reviews section. 
+----------------------User----------------------
+As a user, I can:
+- Search a city, and retrieve:
+	- city weather
+	- country name
+	- country homicide rate
+	- country unemployment rate
+	- country gdp
+	- user reviews
+- Create an account (email, first name, last name, password)
+- Login to an account (username, password)
+- Post a review of a searched city if logged in
 
-As a user I can read: reviews of the current location in question.
-As a user I can post: a review
-As a user I can report: An innapropriate review.
+Bonus Stories:
+----------------------User----------------------
+As a user, I can:
+- Report an inappropriate review
 
-----------------------Administrator---------------------------------
-As an administrator, I can view: All pages that users see and a page dedicated to reported reviews.
-As an administrator, I can delete: Reported comments deemed innappropriate.
-As an administrator, I can comment: On reviews.
-
---------------------------------------------------------------------------------------
+----------------------Administrator----------------------
+As an administrator, I can:
+- Do everything a user can do
+- Comment on user reviews
+- See all reported reviews on a separate page
+- Delete reported reviews
 
 App paragraph:
 
 This app is designed in a way that will help a user make the right decision in moving to a new location. To use the app
 the users will have to register and login, this will then allow them to look up a location and write reviews. After searching 
-a location, the user will see the following information about it: city, state, country, weather, crime rate, unemployment rate, and gdp.
+a location, the user will see the following information about it: city, country, weather, homicide rate, unemployment rate, and gdp.
 We hope that this information will aid the user in their decision to move or not to move.

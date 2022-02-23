@@ -4,49 +4,60 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CountryAPIModel {
-    String gdp;
-    String unemployment;
-    String homicide_rate;
+    String name;
+    Double gdp;
+    Float unemployment;
+    Float homicide_rate;
 
     public CountryAPIModel() {
     }
 
-    public CountryAPIModel(String gdp, String unemployment, String homicide_rate) {
+    public CountryAPIModel(String name, Double gdp, Float unemployment, Float homicide_rate) {
+        this.name = name;
         this.gdp = gdp;
         this.unemployment = unemployment;
         this.homicide_rate = homicide_rate;
     }
 
-    public String getGdp() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getGdp() {
         return gdp;
     }
 
-    public void setGdp(String gdp) {
+    public void setGdp(Double gdp) {
         this.gdp = gdp;
     }
 
-    public String getUnemployment() {
+    public Float getUnemployment() {
         return unemployment;
     }
 
-    public void setUnemployment(String unemployment) {
+    public void setUnemployment(Float unemployment) {
         this.unemployment = unemployment;
     }
 
-    public String getHomicide_rate() {
+    public Float getHomicide_rate() {
         return homicide_rate;
     }
 
-    public void setHomicide_rate(String homicide_rate) {
+    public void setHomicide_rate(Float homicide_rate) {
         this.homicide_rate = homicide_rate;
     }
 
     @Override
     public String toString() {
-        return "CountryAPIModel{" +
-                "gdp='" + gdp + '\'' +
-                ", unemployment='" + unemployment + '\'' +
-                ", homicide_rate='" + homicide_rate + '\'' +
+        return "{" +
+                "\"name\":\"" + name + '\"' +
+                ", \"gdp\":" + gdp +
+                ", \"unemployment\":" + unemployment +
+                ", \"homicide_rate\":" + homicide_rate +
                 '}';
     }
 }

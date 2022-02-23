@@ -9,7 +9,7 @@ public class ReviewsModel {
     @Id
     @Column(name = "review_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ReviewID;
+    private Integer ReviewID = 9;
 
     //@ForeighKey(ReferencingTableName = "Reviews", ReferencedTableName = "Users", PrimaryKey = "id")
     @Column(name = "user_id")

@@ -36,8 +36,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SpringBootDemoApplication {
 
-	static FileLogger fileLogger;
-	private static String PropertiesPath = "src/main/resources/api-keys.properties"; //keys properties file
+	public static FileLogger fileLogger;
+	private static String PropertiesPath = "src/main/resources/Keys.properties"; //keys properties file
 	private static String Logpath = "logs/" + LocalDate.now();
 
 
@@ -69,16 +69,16 @@ public class SpringBootDemoApplication {
 
 
 
-	public List<String> ReadKeys()
+	public static List<String> ReadKeys()
 	{
 		try {
 			Properties props = new Properties();
 			FileReader fr = new FileReader(PropertiesPath);
 			ClassLoader cl = SpringBootDemoApplication.class.getClassLoader();
-			try (InputStream stream = cl.getResourceAsStream("api-keys.properties")) {
+			try (InputStream stream = cl.getResourceAsStream("Keys.properties")) {
 				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(PropertiesPath));
 				props.load(bis);
-				String NinjaKey = props.getProperty("ninja-api-key");
+				String NinjaKey = props.getProperty("x-api-key");
 				//String MapKey = props.getProperty("MapKey");
 				ArrayList<String> keys  =new ArrayList<String>();
 				keys.add(NinjaKey);
@@ -87,7 +87,7 @@ public class SpringBootDemoApplication {
 			}
 			catch(Exception exc)
 			{
-				System.out.println("Error in reading Key's properties file: " + exc.getMessage());
+				System.out.println("Error in reading Kye's properties file: " + exc.getMessage());
 				fileLogger.log(exc);
 			}
 		} catch (FileNotFoundException e) {
@@ -185,6 +185,6 @@ public class SpringBootDemoApplication {
 			e.printStackTrace();
 		}
 
-		return result;
+		return mapHTML;
 	}
 }

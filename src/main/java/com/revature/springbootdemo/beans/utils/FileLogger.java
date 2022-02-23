@@ -1,7 +1,5 @@
 package com.revature.springbootdemo.beans.utils;
 
-import org.springframework.stereotype.Component;
-
 import java.io.FileWriter;
 import java.io.Writer;
 import java.time.LocalDateTime;
@@ -12,7 +10,6 @@ import java.time.format.DateTimeFormatter;
  * another data source.
  * Interface includes: 2 methods to get the singleton, and 2 methods to input info to be logged
  */
-@Component
 public class FileLogger {
 
     //What do we need to set this up as a singleton?
