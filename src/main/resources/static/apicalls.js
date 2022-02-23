@@ -28,7 +28,6 @@ window.onload = (event) => {
 			};
 			console.log(userInfo);
 		});
-
 	document.getElementById("button-login").addEventListener("click", (event) => {
 		event.preventDefault();
 		const userInfo = {
@@ -88,7 +87,7 @@ async function getData(city) {
 	console.log(stuff[0].country);
 }
 
-/* 
+/*
 	fetch(SWAPI_URL)
 		.then(response => response.json())
 		.then(result => {
