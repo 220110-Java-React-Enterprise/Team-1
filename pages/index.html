@@ -20,7 +20,7 @@
 				<span class="title">TravelBuddy</span>
 				<form action="localhost" method="post">
 					<input type="text" id="searchbox" placeholder="Where are you headed?">
-					<input type="submit" value="Let's go!" id="button-search" />
+					<input type="submit" value="Let's go!" id="button-search" class="search-button" />
 					<!-- onclick="window.location.href = 'https://website.com/my-account';" --> 
 				</form>
 				<img src="image/buddy.gif" id="buddy-logo" alt="">
@@ -30,7 +30,11 @@
 
 
 			<div id="#component-header" class="result-page hidden">
-				<input type="text" placeholder="Enter a city" class="header-row">
+				<input type="text" placeholder="Enter a city" class="header-row city-search-input">
+				<button class="search-button">Search</button>
+			</div>
+
+			<div id="#component-profile" class="result-page hidden">
 				<img src="./image/buddy.gif" alt="" id="header-image" class="header-row" />
 				<span id="profile" class="header-row">[Logo or name]</span>
 			</div>
@@ -42,9 +46,20 @@
 			<div id="component-stats"  class="result-page hidden">
 				<h2>Statistics:</h2>
 				<ul type="disc">
-					<li>Population: 1</li>
+					<!-- <li>Population: <span id="statistics-population">1</span></li> -->
 					<li>Currency: dollar</li>
-					<li>Crime rate: a lot</li>
+					<li>GDP: <span id="statistics-gdp">0</span></li>
+					<li>Unemployment: <span id="statistics-unemployment">0</span></li>
+					<li>Crime rate: <span id="statistics-crime-rate">a lot</span></li>
+					</ul>
+
+				<h3>Weather data:</h3> <div id="tempcontrols"><span id="temp-f" class="temp-control">Farenheit</span> or <span id="temp-c" class="temp-control">Celsius</span></div>
+				<ul type="disc">
+					<li>Weather data: <span id="weather-temp">temp</span> <span class="weather-type">C</span> (feels like <span id="weather-temp-feels">0</span><span class="weather-type">C</span>)</span></li>
+					<li>Temperature range: <span id="weather-temp-min">0</span><span class="weather-type">C</span> to <span id="weather-temp-max">0</span><span class="weather-type">C</span></li>
+					<li>Humidity: <span id="weather-humidity">0</span></li>
+					<li>Cloud coverage: <span id="weather-cloud">0</span>%</li>
+					<li>Wind speed: <span id="weather-wind-speed">0</span> (wind degrees: <span id="weather-wind-degrees">0</span>) </li>
 				</ul>
 			</div>
 			
@@ -113,6 +128,7 @@
 
 		</main>
 		<script type="text/javascript" src="index.js"></script>
+		<!-- <script type="text/javascript" src="apicalls.js"></script> -->
 	</body>
 </html>
 
