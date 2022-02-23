@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.io.SequenceInputStream;
 import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -72,20 +73,25 @@ public class UserController {
     @RequestMapping(value="/search", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public String Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+    public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+        List<Object> resultList = new ArrayList<>();
         try {
             ObjectMapper mapper = new ObjectMapper();
 
             InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
             List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
-            
+
             stream = WeatherAPIService.getCityWeather(userEnteredCity);
             WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
             String result = weatherAPIModel.toString();
-            
+            resultList.add(weatherAPIModel);
+
             stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
             List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
             result += countryAPIModels.get(0).toString();
+
+            resultList.add(countryAPIModels.get(0));
+            System.out.println(resultList.toString());
 
 //            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
 //            InputStream stream2 = WeatherAPIService.getCityWeather(userEnteredCity);
@@ -117,7 +123,7 @@ public class UserController {
 //            System.out.println("searchResultModels size: " + searchResultModels.size());
 //            System.out.println(searchResultModels.get(0).toString());
 //
-            return result;
+            return resultList;
         } catch (Exception e) {
             SpringBootDemoApplication.fileLogger.log(e);
         }

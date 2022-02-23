@@ -4,19 +4,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherAPIModel {
-    String cloud_pct;
-    String temp;
-    String feels_like;
-    String humidity;
-    String min_temp;
-    String max_temp;
-    String wind_speed;
-    String wind_degrees;
+    Integer cloud_pct;
+    Integer temp;
+    Integer feels_like;
+    Integer humidity;
+    Integer min_temp;
+    Integer max_temp;
+    Float wind_speed;
+    Integer wind_degrees;
 
     public WeatherAPIModel() {
     }
 
-    public WeatherAPIModel(String cloud_pct, String temp, String feels_like, String humidity, String min_temp, String max_temp, String wind_speed, String wind_degrees) {
+    public WeatherAPIModel(Integer cloud_pct, Integer temp, Integer feels_like, Integer humidity, Integer min_temp, Integer max_temp, Float wind_speed, Integer wind_degrees) {
         this.cloud_pct = cloud_pct;
         this.temp = temp;
         this.feels_like = feels_like;
@@ -27,81 +27,81 @@ public class WeatherAPIModel {
         this.wind_degrees = wind_degrees;
     }
 
-    public String getCloud_pct() {
+    public Integer getCloud_pct() {
         return cloud_pct;
     }
 
-    public void setCloud_pct(String cloud_pct) {
+    public void setCloud_pct(Integer cloud_pct) {
         this.cloud_pct = cloud_pct;
     }
 
-    public String getTemp() {
+    public Integer getTemp() {
         return temp;
     }
 
-    public void setTemp(String temp) {
+    public void setTemp(Integer temp) {
         this.temp = temp;
     }
 
-    public String getFeels_like() {
+    public Integer getFeels_like() {
         return feels_like;
     }
 
-    public void setFeels_like(String feels_like) {
+    public void setFeels_like(Integer feels_like) {
         this.feels_like = feels_like;
     }
 
-    public String getHumidity() {
+    public Integer getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(String humidity) {
+    public void setHumidity(Integer humidity) {
         this.humidity = humidity;
     }
 
-    public String getMin_temp() {
+    public Integer getMin_temp() {
         return min_temp;
     }
 
-    public void setMin_temp(String min_temp) {
+    public void setMin_temp(Integer min_temp) {
         this.min_temp = min_temp;
     }
 
-    public String getMax_temp() {
+    public Integer getMax_temp() {
         return max_temp;
     }
 
-    public void setMax_temp(String max_temp) {
+    public void setMax_temp(Integer max_temp) {
         this.max_temp = max_temp;
     }
 
-    public String getWind_speed() {
+    public Float getWind_speed() {
         return wind_speed;
     }
 
-    public void setWind_speed(String wind_speed) {
+    public void setWind_speed(Float wind_speed) {
         this.wind_speed = wind_speed;
     }
 
-    public String getWind_degrees() {
+    public Integer getWind_degrees() {
         return wind_degrees;
     }
 
-    public void setWind_degrees(String wind_degrees) {
+    public void setWind_degrees(Integer wind_degrees) {
         this.wind_degrees = wind_degrees;
     }
 
     @Override
     public String toString() {
         return "{" +
-                "cloud_pct='" + cloud_pct + '\'' +
-                ", temp='" + temp + '\'' +
-                ", feels_like='" + feels_like + '\'' +
-                ", humidity='" + humidity + '\'' +
-                ", min_temp='" + min_temp + '\'' +
-                ", max_temp='" + max_temp + '\'' +
-                ", wind_speed='" + wind_speed + '\'' +
-                ", wind_degrees='" + wind_degrees + '\'' +
+                "\"cloud_pct\":" + cloud_pct +
+                ", \"temp\":" + temp +
+                ", \"feels_like\":" + feels_like +
+                ", \"humidity\":" + humidity +
+                ", \"min_temp\":" + min_temp +
+                ", \"max_temp\":" + max_temp +
+                ", \"wind_speed\":" + wind_speed +
+                ", \"wind_degrees\":" + wind_degrees +
                 '}';
     }
 }

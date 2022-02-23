@@ -78,7 +78,7 @@ public class SpringBootDemoApplication {
 			try (InputStream stream = cl.getResourceAsStream("Keys.properties")) {
 				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(PropertiesPath));
 				props.load(bis);
-				String NinjaKey = props.getProperty("NinjaKey");
+				String NinjaKey = props.getProperty("x-api-key");
 				//String MapKey = props.getProperty("MapKey");
 				ArrayList<String> keys  =new ArrayList<String>();
 				keys.add(NinjaKey);
