@@ -1,7 +1,6 @@
 // Setting up event listener for the index page
 // registration/login prompt on page load
 window.onload = (event) => {
-	console.log("Page is loaded.. register?");
 	// submit button handler
 	const searchButtons = document.getElementsByClassName("search-button");
 	for (let i = 0; i < searchButtons.length; i++) {
@@ -19,8 +18,6 @@ window.onload = (event) => {
 	const tempControls = document.getElementsByClassName("temp-control");
 	for (let i = 0; i < tempControls.length; i++) {
 		tempControls[i].addEventListener("click", (event) => {
-			console.log(event);
-			console.log(`${event.target.textContent} was clicked`);
 			const tempTypeNodes = document.getElementsByClassName("weather-type");
 
 			if (
