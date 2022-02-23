@@ -1,20 +1,33 @@
 package com.revature.springbootdemo.beans.Controller;
 
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.revature.springbootdemo.SpringBootDemoApplication;
 import com.revature.springbootdemo.beans.models.LocationModel;
 import com.revature.springbootdemo.beans.models.UserModel;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.springbootdemo.CityAPIService;
+import com.revature.springbootdemo.CountryAPIService;
+import com.revature.springbootdemo.SpringBootDemoApplication;
+import com.revature.springbootdemo.WeatherAPIService;
+import com.revature.springbootdemo.beans.models.*;
+
 import com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl;
 import com.revature.springbootdemo.beans.repositories.LocationRepo;
 import com.revature.springbootdemo.beans.repositories.ReviewRepo;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
+
 import com.revature.springbootdemo.beans.utils.FileLogger;
 import jdk.nashorn.internal.parser.JSONParser;
 import jdk.nashorn.internal.parser.Parser;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +45,17 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.io.InputStream;
+import java.io.SequenceInputStream;
+import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+>>>>>>> main
 
 
 @RestController
@@ -288,6 +312,31 @@ public class UserController {
         return String.format("user has been deleted. user email was %s and password was %s", Password, Email);
 
     }
+    
+    //search method, retrieve all search results 
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseBody
+    public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+        List<Object> resultList = new ArrayList<>();
+        try {
+
+            ObjectMapper mapper = new ObjectMapper();
+
+            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
+
+            stream = WeatherAPIService.getCityWeather(userEnteredCity);
+            WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
+            String result = weatherAPIModel.toString();
+            resultList.add(weatherAPIModel);
+
+            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
+            List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
+            result += countryAPIModels.get(0).toString();
+
+            resultList.add(countryAPIModels.get(0));
+            System.out.println(resultList.toString());
 
 
 
@@ -324,5 +373,15 @@ public class UserController {
         return null;
     }
 
+
+
+            return resultList;
+        } catch (Exception e) {
+            //e.printStackTrace();
+            SpringBootDemoApplication.fileLogger.log(e);
+        }
+        
+        return null;
+    }
 
 }

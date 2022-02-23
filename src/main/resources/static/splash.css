@@ -1,0 +1,62 @@
+/* This is all for the splash page layout */
+/* this is the layout used on the initial loading of screen (centered vert/horiz) */
+#splash-layout {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#splash-search {
+	margin: auto;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+#splash-search > span {
+	font-family: "Licorice", cursive;
+	font-size: 10em;
+	/* font-family: 'Zeyada', cursive; */
+	z-index: 5;
+	display: inline;
+}
+
+#splash-search > img {
+	position: relative;
+	top: -350px;
+	left: -80px;
+	z-index: -1;
+	width: 400px;
+	height: 212px;
+}
+
+.takeoff-animation {
+	animation-name: takeoff;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	animation-delay: 250ms;
+	animation-timing-function: linear;
+}
+
+@keyframes takeoff {
+	90% {
+		left: 300px;
+		top: -390px;
+	}
+	100% {
+		left: 1000px;
+		top: -400px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#splash-search {
+		font-size: 0.7em;
+	}
+
+	#splash-search > img {
+		top: -240px;
+		left: 0px;
+		width: 200px;
+		height: 106px;
+	}
+}
