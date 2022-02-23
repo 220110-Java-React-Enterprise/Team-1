@@ -15,6 +15,8 @@ import com.revature.springbootdemo.beans.repositories.UserRepo;
 import com.revature.springbootdemo.beans.utils.FileLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,6 +26,7 @@ import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -61,24 +64,42 @@ public class UserController {
         fileLogger.log("UserRepo started: " + LocalDateTime.now());
     }
 
+//    //register new user
+//    @ResponseBody
+//    @RequestMapping(value = "/register", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    public String RegisterNewUser(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
+//                                  @RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
+//                                  @RequestParam(value = "myPassword", defaultValue = "1111") String Password,
+//                                  @RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
+//
+//        UserModel user = new UserModel(FirstName, LastName, Password, Email);
+//        userRepo.save(user);
+//        return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
+//
+//    }
+
     //register new user
     @ResponseBody
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping(
+            value = "/register",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public String RegisterNewUser(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
-                                  @RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
-                                  @RequestParam(value = "myPassword", defaultValue = "1111") String Password,
-                                  @RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
+    public ResponseEntity<String> RegisterNewUser(@RequestBody UserModel newUser) {
 
-        UserModel user = new UserModel(FirstName, LastName, Password, Email);
-        userRepo.save(user);
-        return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
+        try {
+            UserModel user = userRepo.save(newUser);
+
+        }catch (Exception e){
+            fileLogger.log(e);
+            return ResponseEntity.badRequest().body("Not able to add to database.");
+        }
+
+        return ResponseEntity.accepted().body("Success!");
 
     }
 
-
-    //login method, get username and password and verify the user exists
-    //so far all users are admins so display all users after the admin logs in
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
@@ -114,6 +135,44 @@ public class UserController {
         }
         return "";
     }
+
+    //login method, get username and password and verify the user exists
+    //so far all users are admins so display all users after the admin logs in
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @ResponseBody
+//    public String Login(@RequestParam(value = "myEmail", defaultValue = "email") String Email,
+//                        @RequestParam(value = "myPassword", defaultValue = "password1") String Password,
+//                        HttpServletRequest request) {
+//
+//        //verify user exists
+//        CustomUserRepoImpl CustomRepoImp = new CustomUserRepoImpl();
+//        UserModel u = CustomRepoImp.findByName(Email, Password, request);
+//        try {
+//            if (u != null) {
+//                //returns all users registered and return them
+//                List<UserModel> users = userRepo.findAll();
+//                String jsonText = "";
+//                for (UserModel r : users) {
+//                    ObjectMapper mapper = new ObjectMapper();
+//                    String jsonString = mapper.writeValueAsString(r);
+//                    jsonText += jsonString;
+//                }
+//                //create a new session and session variable
+//                HttpSession session = request.getSession();
+//                session.setAttribute("Email", Email);
+//                session.setAttribute("ID", u.getID());
+//                session.setMaxInactiveInterval(50000);
+//                fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + Email + ". creation time is: " +
+//                        session.getCreationTime() + " session inactive Interval is: 50000");
+//                return "Logged in successful. \nHello " + Email + " with password: " + Password + "\nList of all users: \n" + jsonText;
+//            } else
+//                return "User doesn't exist or wrong credentials";
+//        } catch (Exception exc) {
+//            fileLogger.log(exc);
+//        }
+//        return "";
+//    }
 
 
     /***
