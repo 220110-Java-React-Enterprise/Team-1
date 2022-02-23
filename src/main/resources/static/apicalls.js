@@ -31,7 +31,7 @@ window.onload = (event) => {
 	document.getElementById("button-login").addEventListener("click", (event) => {
 		event.preventDefault();
 		const user = {
-			email: document.getElementById("login-username").value,
+			email: document.getElementById("login-email").value,
 			password: document.getElementById("login-password").value,
 		};
 		doLogin(user);

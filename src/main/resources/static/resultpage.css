@@ -33,6 +33,8 @@ header {
 	height: 20%;
 	position: absolute;
 	z-index: -1;
+	left: 30vh;
+	top: 0px;
 }
 
 /* these are for the result page layout */

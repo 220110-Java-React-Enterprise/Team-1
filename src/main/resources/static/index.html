@@ -19,7 +19,7 @@
 <body>
 	<header class="result-page hidden">
 		TravelBuddy
-		<input type="text" id="searchbox" placeholder="Where are you headed?">
+		<input type="text" id="searchbox" placeholder="Where to?">
 		<input type="submit" value="Let's go!" id="button-search" class="search-button" />
 		<img id="header-image" src="image/buddy.gif" id="buddy-logo" alt="">
 	</header>
@@ -33,15 +33,16 @@
 		</form>
 		<img src="image/buddy.gif" id="buddy-logo" alt="">
 	</div>
-
+<!--
 	<div id="#component-header" class="result-page hidden">
 		<input type="text" id="searchbox" placeholder="Enter a city" class="header-row city-search-input">
 		<button class="search-button">Search</button>
 	</div>
-
+	
 	<div id="#component-profile" class="result-page hidden">
 		<span id="profile" class="header-row">[Logo or name]</span>
 	</div>
+-->
 
 	<div id="component-title"  class="result-page hidden">
 		<h1 id="city-header">City name</h1>
@@ -73,11 +74,43 @@
 
 
 	<div id="component-write"  class="result-page hidden">
-		<h1>Leave a review</h1>
-		<label for="review-text">Review:</label><br />
-		<input type="textarea" name="review-text" class="review" id="review-input-box" /><br />
-		<input type="hidden" name="review-rating" id="review-rating" class="review" value="1" /><br />
-		<input type="submit" value="Submit Review" class="login-button" id="button-review" />
+		<div id="login-container">
+			<div class="register-box">
+				<h2>New user?</h2>
+				<form action="localhost" method="post">
+					<label for="first-name">First name: </label>
+					<input type="text" name="first-name" class="register" /><br />
+		
+					<label for="last-name">Last name: </label>
+					<input type="text" name="last-name" class="register" /><br />
+		
+					<label for="email">E-mail: </label>
+					<input type="text" name="email" class="register" /><br />
+		
+					<input type="submit" value="Register" class="login-button" />
+				</form>
+			</div>
+		
+			<div class="register-box">
+				<h2>Existing user?</h2>
+				<form action="localhost" method="post">
+					<label for="username">Username: </label>
+					<input type="text" name="username" class="register" /><br />
+		
+					<label for="password">Password: </label>
+					<input type="text" name="password" class="register" /><br />
+		
+					<input type="submit" value="Log in" class="login-button" />
+				</form>
+			</div>
+		</div>
+		<div id="review-write-container">
+			<h1>Leave a review</h1>
+			<label for="review-text">Review:</label><br />
+			<input type="textarea" name="review-text" class="review" id="review-input-box" /><br />
+			<input type="hidden" name="review-rating" id="review-rating" class="review" value="1" /><br />
+			<input type="submit" value="Submit Review" class="login-button" id="button-review" />
+		</div>
 	</div>
 
 
