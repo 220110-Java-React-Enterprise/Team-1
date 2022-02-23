@@ -2,7 +2,7 @@
 .data-layout-container {
 	display: grid;
 	grid-template-areas:
-		"headline headline"
+		"search profile"
 		"title title"
 		"stats picture"
 		"reviews write";
@@ -27,10 +27,7 @@
 
 /* Header component - the searchbox, logo, & profile at top */
 #component-header {
-	grid-area: headline;
-	display: flex;
-	justify-content: space-between;
-	flex-direction: row;
+	grid-area: search;
 }
 
 .component-header > input {
@@ -40,6 +37,10 @@
 #header-image {
 	width: 50px;
 	height: 100%;
+}
+
+#component-profile {
+	grid-area: profile;
 }
 
 #profile {
@@ -63,6 +64,19 @@
 /* City statistics */
 #component-stats {
 	grid-area: stats;
+}
+
+h3 {
+	margin-bottom: 0;
+}
+
+#tempcontrols {
+	font-size: 0.7em;
+}
+
+.temp-control {
+	text-decoration: underline;
+	cursor: crosshair;
 }
 
 /* Map (or generic image) */

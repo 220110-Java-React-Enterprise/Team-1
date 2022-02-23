@@ -2,9 +2,9 @@
 window.onload = (event) => {
 	console.log("Page is loaded...");
 	// submit button handler
-	document
-		.getElementById("button-search")
-		.addEventListener("click", (event) => {
+	const searchButtons = document.getElementsByClassName("search-button");
+	for (let i = 0; i < searchButtons.length; i++) {
+		searchButtons[i].addEventListener("click", (event) => {
 			// TODO: Take out preventDefault if we want the form to be submitted (this is debug) *********
 			event.preventDefault();
 			const searchTerm = document.getElementById("searchbox").value;
@@ -12,7 +12,9 @@ window.onload = (event) => {
 			//doTakeoff();
 			getData(searchTerm);
 		});
+	}
 
+	/*
 	document
 		.getElementById("button-register")
 		.addEventListener("click", (event) => {
@@ -26,7 +28,6 @@ window.onload = (event) => {
 			};
 			console.log(userInfo);
 		});
-
 	document.getElementById("button-login").addEventListener("click", (event) => {
 		event.preventDefault();
 		const userInfo = {
@@ -34,7 +35,7 @@ window.onload = (event) => {
 			password: document.getElementById("login-password").value,
 		};
 		console.log(userInfo);
-	});
+	}); */
 
 	document
 		.getElementById("button-review")
@@ -61,7 +62,7 @@ window.onload = (event) => {
 
 async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
-	const url = "http://localhost:8080/register/search?userEnteredCity=" + city;
+	const url = "http://localhost:8080/controller/search?userEnteredCity=" + city;
 
 	let stuff;
 	try {
@@ -77,27 +78,33 @@ async function getData(city) {
 		console.log("Error: \n" + error);
 		//console.log("Response: \n" + response);
 	}
-
+	console.log("raw: ");
+	console.log(stuff);
+	//console.log(result);
+	console.log("First element: ");
 	console.log(stuff[0]);
-	/* 
-		fetch(SWAPI_URL)
-			.then(response => response.json())
-			.then(result => {
-				console.log(result)
-			});
-		*/
-	/*
-		let response = await fetch(url, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		//let text = response.json();
-		console.log(response);
-		console.log(text.value);
-		//console.log(response.json());
-		//console.log("Full response:");
-		//console.log(response);
-		*/
+	console.log("Single element test");
+	console.log(stuff[0].country);
 }
+
+/*
+	fetch(SWAPI_URL)
+		.then(response => response.json())
+		.then(result => {
+			console.log(result)
+		});
+	*/
+/*
+	let response = await fetch(url, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+	//let text = response.json();
+	console.log(response);
+	console.log(text.value);
+	//console.log(response.json());
+	//console.log("Full response:");
+	//console.log(response);
+	*/

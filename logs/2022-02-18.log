@@ -134,3 +134,684 @@ org.hibernate.query.internal.NativeQueryImpl@1bd189c5
 2022-02-18 10:29:45 - started: 2022-02-18T10:29:45.723
 2022-02-18 10:29:46 - query is NOT NULL:
 org.hibernate.query.internal.NativeQueryImpl@3a8fb9da
+2022-02-18 11:40:08 - started: 2022-02-18T11:40:08.022
+2022-02-18 11:40:08 - started: 2022-02-18T11:40:08.752
+2022-02-18 11:41:09 - started: 2022-02-18T11:41:09.250
+2022-02-18 11:41:10 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@2dda4a5b
+2022-02-18 11:41:16 - started: 2022-02-18T11:41:16.168
+2022-02-18 11:41:16 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@6cca728a
+2022-02-18 11:41:22 - started: 2022-02-18T11:41:22.436
+2022-02-18 11:41:22 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@76072144
+2022-02-18 11:41:22 - query returned no results. user doesn't exist
+2022-02-18 14:25:16 - UserRepo started: 2022-02-18T14:25:16.897
+2022-02-18 14:25:16 - started: 2022-02-18T14:25:16.916
+2022-02-18 14:28:47 - UserRepo started: 2022-02-18T14:28:47.302
+2022-02-18 14:28:47 - started: 2022-02-18T14:28:47.326
+2022-02-18 14:28:52 - started: 2022-02-18T14:28:52.401
+2022-02-18 14:29:10 - started: 2022-02-18T14:29:10.842
+2022-02-18 14:29:12 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@6c249726
+2022-02-18 14:38:04 - UserRepo started: 2022-02-18T14:38:04.847
+2022-02-18 14:38:04 - started: 2022-02-18T14:38:04.860
+2022-02-18 14:38:05 - started: 2022-02-18T14:38:05.808
+2022-02-18 14:38:10 - started: 2022-02-18T14:38:10.454
+2022-02-18 14:38:11 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@6243f477
+2022-02-18 14:46:42 - UserRepo started: 2022-02-18T14:46:42.083
+2022-02-18 14:46:42 - started: 2022-02-18T14:46:42.100
+2022-02-18 14:46:43 - started: 2022-02-18T14:46:43.746
+2022-02-18 14:46:46 - started: 2022-02-18T14:46:46.349
+2022-02-18 14:46:47 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@7b1cecec
+2022-02-18 14:46:48 - null
+	com.revature.springbootdemo.beans.Controller.UserController.Login(UserController.java:84)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+
+2022-02-18 14:47:09 - started: 2022-02-18T14:47:09.115
+2022-02-18 14:47:09 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@260ef759
+2022-02-18 14:47:10 - null
+	com.revature.springbootdemo.beans.Controller.UserController.Login(UserController.java:84)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+
+2022-02-18 14:55:37 - UserRepo started: 2022-02-18T14:55:37.892
+2022-02-18 14:55:37 - started: 2022-02-18T14:55:37.904
+2022-02-18 14:55:38 - started: 2022-02-18T14:55:38.600
+2022-02-18 14:56:19 - started: 2022-02-18T14:56:19.201
+2022-02-18 14:56:20 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@ad0672e
+2022-02-18 14:57:10 - UserRepo started: 2022-02-18T14:57:10.767
+2022-02-18 14:57:10 - started: 2022-02-18T14:57:10.770
+2022-02-18 14:57:11 - started: 2022-02-18T14:57:11.841
+2022-02-18 14:57:28 - started: 2022-02-18T14:57:28.436
+2022-02-18 14:57:29 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@305eefcf
+2022-02-18 15:05:54 - UserRepo started: 2022-02-18T15:05:54.407
+2022-02-18 15:05:54 - started: 2022-02-18T15:05:54.412
+2022-02-18 15:05:55 - started: 2022-02-18T15:05:55.149
+2022-02-18 15:12:23 - UserRepo started: 2022-02-18T15:12:23.530
+2022-02-18 15:12:23 - started: 2022-02-18T15:12:23.540
+2022-02-18 15:12:24 - started: 2022-02-18T15:12:24.356
+2022-02-18 15:26:27 - UserRepo started: 2022-02-18T15:26:27.609
+2022-02-18 15:26:27 - started: 2022-02-18T15:26:27.623
+2022-02-18 15:26:28 - started: 2022-02-18T15:26:28.437
+2022-02-18 15:28:32 - UserRepo started: 2022-02-18T15:28:32.683
+2022-02-18 15:28:32 - started: 2022-02-18T15:28:32.692
+2022-02-18 15:28:33 - started: 2022-02-18T15:28:33.294
+2022-02-18 15:29:09 - started: 2022-02-18T15:29:09.374
+2022-02-18 15:29:10 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@40ecdf59
+2022-02-18 15:29:38 - started: 2022-02-18T15:29:38.557
+2022-02-18 15:29:38 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@60891a41
+2022-02-18 15:33:20 - UserRepo started: 2022-02-18T15:33:20.284
+2022-02-18 15:33:20 - started: 2022-02-18T15:33:20.288
+2022-02-18 15:33:20 - started: 2022-02-18T15:33:20.991
+2022-02-18 15:33:37 - started: 2022-02-18T15:33:37.371
+2022-02-18 15:33:38 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@4118a9a1
+2022-02-18 15:34:12 - started: 2022-02-18T15:34:12.970
+2022-02-18 15:34:13 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@6e73f380
+2022-02-18 15:34:20 - started: 2022-02-18T15:34:20.147
+2022-02-18 15:34:20 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@3d0a66cf
+2022-02-18 15:51:56 - UserRepo started: 2022-02-18T15:51:56.175
+2022-02-18 15:51:56 - started: 2022-02-18T15:51:56.180
+2022-02-18 15:51:57 - started: 2022-02-18T15:51:57.011
+2022-02-18 15:52:42 - started: 2022-02-18T15:52:42.788
+2022-02-18 15:52:43 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@4f411b4d
+2022-02-18 16:55:12 - UserRepo started: 2022-02-18T16:55:12.620
+2022-02-18 16:55:12 - started: 2022-02-18T16:55:12.637
+2022-02-18 16:55:14 - started: 2022-02-18T16:55:14.309
+2022-02-18 16:59:18 - UserRepo started: 2022-02-18T16:59:18.539
+2022-02-18 16:59:18 - started: 2022-02-18T16:59:18.543
+2022-02-18 16:59:19 - started: 2022-02-18T16:59:19.327
+2022-02-18 16:59:39 - started: 2022-02-18T16:59:39.634
+2022-02-18 16:59:40 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@10df9c0e
+2022-02-18 16:59:40 - [Ljava.lang.Object; cannot be cast to com.revature.springbootdemo.beans.models.UserModel
+	com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl.findByName(CustomUserRepoImpl.java:96)
+	com.revature.springbootdemo.beans.Controller.UserController.Login(UserController.java:81)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+
+2022-02-18 17:00:24 - started: 2022-02-18T17:00:24.927
+2022-02-18 17:00:25 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@2290082d
+2022-02-18 17:00:25 - [Ljava.lang.Object; cannot be cast to com.revature.springbootdemo.beans.models.UserModel
+	com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl.findByName(CustomUserRepoImpl.java:96)
+	com.revature.springbootdemo.beans.Controller.UserController.Login(UserController.java:81)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+
+2022-02-18 17:00:39 - started: 2022-02-18T17:00:39.922
+2022-02-18 17:00:40 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@59fafd15
+2022-02-18 17:00:40 - [Ljava.lang.Object; cannot be cast to com.revature.springbootdemo.beans.models.UserModel
+	com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl.findByName(CustomUserRepoImpl.java:96)
+	com.revature.springbootdemo.beans.Controller.UserController.Login(UserController.java:81)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+
+2022-02-18 17:07:21 - UserRepo started: 2022-02-18T17:07:21.035
+2022-02-18 17:07:21 - started: 2022-02-18T17:07:21.043
+2022-02-18 17:07:21 - started: 2022-02-18T17:07:21.810
+2022-02-18 17:10:31 - UserRepo started: 2022-02-18T17:10:31.294
+2022-02-18 17:10:31 - started: 2022-02-18T17:10:31.364
+2022-02-18 17:10:33 - started: 2022-02-18T17:10:33.995
+2022-02-18 17:10:59 - started: 2022-02-18T17:10:59.772
+2022-02-18 17:11:00 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@370277a1
+2022-02-18 17:11:01 - [Ljava.lang.Object; cannot be cast to com.revature.springbootdemo.beans.models.UserModel
+	com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl.findByName(CustomUserRepoImpl.java:96)
+	com.revature.springbootdemo.beans.Controller.UserController.Login(UserController.java:81)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+
+2022-02-18 17:20:32 - UserRepo started: 2022-02-18T17:20:32.625
+2022-02-18 17:20:32 - started: 2022-02-18T17:20:32.647
+2022-02-18 17:20:33 - started: 2022-02-18T17:20:33.594
+2022-02-18 17:20:48 - started: 2022-02-18T17:20:48.814
+2022-02-18 17:20:49 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@6d374529
+2022-02-18 17:20:50 - null
+	com.revature.springbootdemo.beans.Controller.UserController.Login(UserController.java:103)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+
+2022-02-18 17:24:57 - UserRepo started: 2022-02-18T17:24:57.157
+2022-02-18 17:24:57 - started: 2022-02-18T17:24:57.172
+2022-02-18 17:24:57 - started: 2022-02-18T17:24:57.956
+2022-02-18 17:25:15 - started: 2022-02-18T17:25:15.309
+2022-02-18 17:25:16 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@10645673
+2022-02-18 17:25:17 - session has been created. creation time is: 1645226717145 session inactive Interval is: 500000
+2022-02-18 17:31:13 - UserRepo started: 2022-02-18T17:31:13.403
+2022-02-18 17:31:13 - started: 2022-02-18T17:31:13.418
+2022-02-18 17:31:14 - started: 2022-02-18T17:31:14.354
+2022-02-18 17:31:22 - started: 2022-02-18T17:31:22.660
+2022-02-18 17:31:23 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@4f6b61ef
+2022-02-18 17:31:24 - session has been created. creation time is: 1645227084536 session inactive Interval is: 500000
+2022-02-18 17:31:45 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645227084536
+2022-02-18 17:32:05 - started: 2022-02-18T17:32:05.874
+2022-02-18 17:32:06 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@7e08732e
+2022-02-18 17:32:06 - session has been created. creation time is: 1645227084536 session inactive Interval is: 500000
+2022-02-18 17:32:16 - active session. Logged in user has email: sam@gmail.com. creation time is: 1645227084536
+2022-02-18 17:38:14 - UserRepo started: 2022-02-18T17:38:14.311
+2022-02-18 17:38:14 - started: 2022-02-18T17:38:14.311
+2022-02-18 17:38:15 - started: 2022-02-18T17:38:15.330
+2022-02-18 17:39:04 - started: 2022-02-18T17:39:04.371
+2022-02-18 17:39:05 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@23e48e4b
+2022-02-18 17:39:06 - session has been created. creation time is: 1645227546012 session inactive Interval is: 500000
+2022-02-18 17:39:11 - started: 2022-02-18T17:39:11.030
+2022-02-18 17:39:11 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@4ea248a2
+2022-02-18 17:39:11 - session has been created. creation time is: 1645227546012 session inactive Interval is: 500000
+2022-02-18 17:39:35 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645227546012
+2022-02-18 17:40:59 - UserRepo started: 2022-02-18T17:40:59.371
+2022-02-18 17:40:59 - started: 2022-02-18T17:40:59.379
+2022-02-18 17:41:00 - started: 2022-02-18T17:41:00.163
+2022-02-18 17:41:23 - started: 2022-02-18T17:41:23.997
+2022-02-18 17:41:24 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@524b2c54
+2022-02-18 17:41:25 - a new session has been created for user with email ron@gmail.com. creation time is: 1645227685328 session inactive Interval is: 500000
+2022-02-18 17:41:36 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645227685328
+2022-02-18 17:41:45 - started: 2022-02-18T17:41:45.610
+2022-02-18 17:41:46 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@6f1681af
+2022-02-18 17:41:46 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645227685328 session inactive Interval is: 500000
+2022-02-18 19:15:05 - reviewRepo started: 2022-02-18T19:15:05.122
+2022-02-18 19:15:05 - UserRepo started: 2022-02-18T19:15:05.169
+2022-02-18 19:15:05 - started: 2022-02-18T19:15:05.173
+2022-02-18 19:15:06 - started: 2022-02-18T19:15:06.111
+2022-02-18 19:22:39 - reviewRepo started: 2022-02-18T19:22:39.958
+2022-02-18 19:22:40 - UserRepo started: 2022-02-18T19:22:40.005
+2022-02-18 19:22:40 - started: 2022-02-18T19:22:40.014
+2022-02-18 19:22:40 - started: 2022-02-18T19:22:40.584
+2022-02-18 19:23:05 - Server returned HTTP response code: 502 for URL: https://api.api-ninjas.com/v1/city?name=San Jose
+	sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1897)
+	sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1495)
+	sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:268)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:160)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+
+2022-02-18 19:23:18 - Server returned HTTP response code: 502 for URL: https://api.api-ninjas.com/v1/city?name="San Jose"
+	sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1897)
+	sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1495)
+	sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:268)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:160)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+
+2022-02-18 19:24:52 - reviewRepo started: 2022-02-18T19:24:52.284
+2022-02-18 19:24:52 - UserRepo started: 2022-02-18T19:24:52.329
+2022-02-18 19:24:52 - started: 2022-02-18T19:24:52.329
+2022-02-18 19:24:52 - started: 2022-02-18T19:24:52.954
+2022-02-18 20:13:04 - reviewRepo started: 2022-02-18T20:13:04.098
+2022-02-18 20:13:04 - UserRepo started: 2022-02-18T20:13:04.165
+2022-02-18 20:13:04 - started: 2022-02-18T20:13:04.169
+2022-02-18 20:13:05 - started: 2022-02-18T20:13:05.420
+2022-02-18 20:13:16 - started: 2022-02-18T20:13:16.727
+2022-02-18 20:13:17 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@1ba5281a
+2022-02-18 20:13:18 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645236798799 session inactive Interval is: 500000
+2022-02-18 20:13:31 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645236798799
+2022-02-18 20:17:01 - reviewRepo started: 2022-02-18T20:17:01.359
+2022-02-18 20:17:01 - UserRepo started: 2022-02-18T20:17:01.392
+2022-02-18 20:17:01 - started: 2022-02-18T20:17:01.394
+2022-02-18 20:17:02 - started: 2022-02-18T20:17:02.126
+2022-02-18 20:17:10 - started: 2022-02-18T20:17:10.681
+2022-02-18 20:17:11 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@5066f243
+2022-02-18 20:17:12 - a new session has been created for user with email ron@gmail.com. creation time is: 1645237032075 session inactive Interval is: 500000
+2022-02-18 20:17:21 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645237032075
+2022-02-18 20:17:25 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@1e75aeb5
+2022-02-18 20:17:25 - query returned no results. user doesn't exist
+2022-02-18 20:18:53 - reviewRepo started: 2022-02-18T20:18:53.568
+2022-02-18 20:18:53 - UserRepo started: 2022-02-18T20:18:53.646
+2022-02-18 20:18:53 - started: 2022-02-18T20:18:53.646
+2022-02-18 20:18:54 - started: 2022-02-18T20:18:54.321
+2022-02-18 20:19:05 - reviewRepo started: 2022-02-18T20:19:05.033
+2022-02-18 20:19:05 - UserRepo started: 2022-02-18T20:19:05.064
+2022-02-18 20:19:05 - started: 2022-02-18T20:19:05.064
+2022-02-18 20:19:05 - started: 2022-02-18T20:19:05.692
+2022-02-18 20:25:17 - reviewRepo started: 2022-02-18T20:25:17.332
+2022-02-18 20:25:17 - UserRepo started: 2022-02-18T20:25:17.379
+2022-02-18 20:25:17 - started: 2022-02-18T20:25:17.379
+2022-02-18 20:25:18 - started: 2022-02-18T20:25:18.404
+2022-02-18 20:32:19 - reviewRepo started: 2022-02-18T20:32:19.289
+2022-02-18 20:32:19 - UserRepo started: 2022-02-18T20:32:19.328
+2022-02-18 20:32:19 - started: 2022-02-18T20:32:19.331
+2022-02-18 20:32:20 - started: 2022-02-18T20:32:20.143
+2022-02-18 20:32:29 - started: 2022-02-18T20:32:29.492
+2022-02-18 20:32:30 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@7a8eb395
+2022-02-18 20:32:30 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645237950789 session inactive Interval is: 500000
+2022-02-18 20:32:40 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645237950789
+2022-02-18 20:32:43 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@75eb34ea
+2022-02-18 20:32:43 - Executing an update/delete query
+	org.hibernate.internal.AbstractSharedSessionContract.checkTransactionNeededForUpdateOperation(AbstractSharedSessionContract.java:445)
+	org.hibernate.query.internal.AbstractProducedQuery.executeUpdate(AbstractProducedQuery.java:1692)
+	com.revature.springbootdemo.beans.Controller.ReviewController.DisplayReviews(ReviewController.java:89)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+
+2022-02-18 20:33:37 - reviewRepo started: 2022-02-18T20:33:37.580
+2022-02-18 20:33:37 - UserRepo started: 2022-02-18T20:33:37.629
+2022-02-18 20:33:37 - started: 2022-02-18T20:33:37.629
+2022-02-18 20:33:38 - started: 2022-02-18T20:33:38.246
+2022-02-18 20:33:45 - started: 2022-02-18T20:33:45.393
+2022-02-18 20:33:46 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@31605c55
+2022-02-18 20:33:46 - query returned no results. user doesn't exist
+2022-02-18 20:33:53 - started: 2022-02-18T20:33:53.548
+2022-02-18 20:33:53 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@7550fbd6
+2022-02-18 20:33:54 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645238034576 session inactive Interval is: 500000
+2022-02-18 20:34:10 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645238034576
+2022-02-18 20:34:12 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@29a61d8b
+2022-02-18 20:34:12 - Executing an update/delete query
+	org.hibernate.internal.AbstractSharedSessionContract.checkTransactionNeededForUpdateOperation(AbstractSharedSessionContract.java:445)
+	org.hibernate.query.internal.AbstractProducedQuery.executeUpdate(AbstractProducedQuery.java:1692)
+	com.revature.springbootdemo.beans.Controller.ReviewController.DisplayReviews(ReviewController.java:89)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+
+2022-02-18 20:48:39 - reviewRepo started: 2022-02-18T20:48:39.971
+2022-02-18 20:48:40 - UserRepo started: 2022-02-18T20:48:40.018
+2022-02-18 20:48:40 - started: 2022-02-18T20:48:40.018
+2022-02-18 20:48:40 - started: 2022-02-18T20:48:40.614
+2022-02-18 20:49:03 - started: 2022-02-18T20:49:03.595
+2022-02-18 20:49:04 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@22ad211f
+2022-02-18 20:49:04 - a new session has been created for user with email ron@gmail.com. creation time is: 1645238944970 session inactive Interval is: 500000
+2022-02-18 20:49:12 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645238944970
+2022-02-18 20:50:27 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645238944970
+2022-02-18 21:04:39 - reviewRepo started: 2022-02-18T21:04:39.233
+2022-02-18 21:04:39 - UserRepo started: 2022-02-18T21:04:39.290
+2022-02-18 21:04:39 - started: 2022-02-18T21:04:39.293
+2022-02-18 21:04:39 - started: 2022-02-18T21:04:39.959
+2022-02-18 21:07:38 - reviewRepo started: 2022-02-18T21:07:38.778
+2022-02-18 21:07:38 - UserRepo started: 2022-02-18T21:07:38.865
+2022-02-18 21:07:38 - started: 2022-02-18T21:07:38.870
+2022-02-18 21:07:40 - started: 2022-02-18T21:07:40.667
+2022-02-18 21:07:48 - started: 2022-02-18T21:07:48.603
+2022-02-18 21:07:49 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@206333dd
+2022-02-18 21:07:51 - a new session has been created for user with email ron@gmail.com. creation time is: 1645240071109 session inactive Interval is: 500000
+2022-02-18 21:08:00 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645240071109
+2022-02-18 21:11:23 - reviewRepo started: 2022-02-18T21:11:23.762
+2022-02-18 21:11:23 - UserRepo started: 2022-02-18T21:11:23.860
+2022-02-18 21:11:23 - started: 2022-02-18T21:11:23.866
+2022-02-18 21:11:24 - started: 2022-02-18T21:11:24.792
+2022-02-18 21:11:28 - started: 2022-02-18T21:11:28.497
+2022-02-18 21:11:29 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@6024b8c0
+2022-02-18 21:11:30 - a new session has been created for user with email ron@gmail.com. creation time is: 1645240290499 session inactive Interval is: 500000
+2022-02-18 21:13:51 - reviewRepo started: 2022-02-18T21:13:51.294
+2022-02-18 21:13:51 - UserRepo started: 2022-02-18T21:13:51.366
+2022-02-18 21:13:51 - started: 2022-02-18T21:13:51.369
+2022-02-18 21:13:52 - started: 2022-02-18T21:13:52.262
+2022-02-18 21:13:56 - started: 2022-02-18T21:13:56.744
+2022-02-18 21:13:57 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@5add38ac
+2022-02-18 21:13:58 - a new session has been created for user with email ron@gmail.com. creation time is: 1645240438564 session inactive Interval is: 500000
+2022-02-18 21:14:04 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:188)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:14:04 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645240438564
+2022-02-18 21:16:29 - reviewRepo started: 2022-02-18T21:16:29.841
+2022-02-18 21:16:29 - UserRepo started: 2022-02-18T21:16:29.884
+2022-02-18 21:16:29 - started: 2022-02-18T21:16:29.900
+2022-02-18 21:16:30 - started: 2022-02-18T21:16:30.628
+2022-02-18 21:16:36 - started: 2022-02-18T21:16:36.153
+2022-02-18 21:16:36 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@22e2461f
+2022-02-18 21:16:37 - a new session has been created for user with email ron@gmail.com. creation time is: 1645240597512 session inactive Interval is: 500000
+2022-02-18 21:16:43 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:188)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:16:43 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645240597512
+2022-02-18 21:18:47 - reviewRepo started: 2022-02-18T21:18:47.241
+2022-02-18 21:18:47 - UserRepo started: 2022-02-18T21:18:47.305
+2022-02-18 21:18:47 - started: 2022-02-18T21:18:47.309
+2022-02-18 21:18:48 - started: 2022-02-18T21:18:48.064
+2022-02-18 21:18:56 - started: 2022-02-18T21:18:56.245
+2022-02-18 21:18:56 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@328fcfa6
+2022-02-18 21:18:57 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645240737617 session inactive Interval is: 500000
+2022-02-18 21:19:04 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:188)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:19:04 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645240737617
+2022-02-18 21:21:07 - reviewRepo started: 2022-02-18T21:21:07.122
+2022-02-18 21:21:07 - UserRepo started: 2022-02-18T21:21:07.169
+2022-02-18 21:21:07 - started: 2022-02-18T21:21:07.169
+2022-02-18 21:21:07 - started: 2022-02-18T21:21:07.765
+2022-02-18 21:21:10 - started: 2022-02-18T21:21:10.302
+2022-02-18 21:21:10 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@13068490
+2022-02-18 21:21:11 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645240871636 session inactive Interval is: 500000
+2022-02-18 21:21:14 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:188)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:21:14 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645240871636
+2022-02-18 21:22:11 - reviewRepo started: 2022-02-18T21:22:11.166
+2022-02-18 21:22:11 - UserRepo started: 2022-02-18T21:22:11.209
+2022-02-18 21:22:11 - started: 2022-02-18T21:22:11.209
+2022-02-18 21:22:11 - started: 2022-02-18T21:22:11.851
+2022-02-18 21:22:13 - started: 2022-02-18T21:22:13.490
+2022-02-18 21:22:14 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@3f0e6d96
+2022-02-18 21:22:14 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645240934838 session inactive Interval is: 500000
+2022-02-18 21:22:17 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:188)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:22:17 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645240934838
+2022-02-18 21:23:03 - reviewRepo started: 2022-02-18T21:23:03.506
+2022-02-18 21:23:03 - UserRepo started: 2022-02-18T21:23:03.553
+2022-02-18 21:23:03 - started: 2022-02-18T21:23:03.553
+2022-02-18 21:23:04 - started: 2022-02-18T21:23:04.133
+2022-02-18 21:23:09 - started: 2022-02-18T21:23:09.396
+2022-02-18 21:23:10 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@2e9b23da
+2022-02-18 21:23:10 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645240990739 session inactive Interval is: 500000
+2022-02-18 21:23:12 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:188)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:23:12 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645240990739
+2022-02-18 21:24:16 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:188)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:24:16 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645240990739
+2022-02-18 21:26:01 - reviewRepo started: 2022-02-18T21:26:01.656
+2022-02-18 21:26:01 - UserRepo started: 2022-02-18T21:26:01.746
+2022-02-18 21:26:01 - started: 2022-02-18T21:26:01.750
+2022-02-18 21:26:02 - started: 2022-02-18T21:26:02.627
+2022-02-18 21:26:06 - started: 2022-02-18T21:26:06.733
+2022-02-18 21:26:07 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@248b9fd0
+2022-02-18 21:26:08 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645241168621 session inactive Interval is: 500000
+2022-02-18 21:26:11 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:191)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:26:11 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645241168621
+2022-02-18 21:27:21 - reviewRepo started: 2022-02-18T21:27:21.246
+2022-02-18 21:27:21 - UserRepo started: 2022-02-18T21:27:21.278
+2022-02-18 21:27:21 - started: 2022-02-18T21:27:21.293
+2022-02-18 21:27:22 - started: 2022-02-18T21:27:22.073
+2022-02-18 21:27:24 - started: 2022-02-18T21:27:24.714
+2022-02-18 21:27:25 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@64b39cb
+2022-02-18 21:27:26 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645241246062 session inactive Interval is: 500000
+2022-02-18 21:28:10 - reviewRepo started: 2022-02-18T21:28:10.314
+2022-02-18 21:28:10 - UserRepo started: 2022-02-18T21:28:10.376
+2022-02-18 21:28:10 - started: 2022-02-18T21:28:10.376
+2022-02-18 21:28:11 - started: 2022-02-18T21:28:11.220
+2022-02-18 21:28:23 - started: 2022-02-18T21:28:23.630
+2022-02-18 21:28:24 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@2bfa499
+2022-02-18 21:28:25 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645241305382 session inactive Interval is: 500000
+2022-02-18 21:31:22 - reviewRepo started: 2022-02-18T21:31:22.457
+2022-02-18 21:31:22 - UserRepo started: 2022-02-18T21:31:22.508
+2022-02-18 21:31:22 - started: 2022-02-18T21:31:22.511
+2022-02-18 21:31:23 - started: 2022-02-18T21:31:23.125
+2022-02-18 21:31:23 - started: 2022-02-18T21:31:23.958
+2022-02-18 21:31:24 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@44a226b6
+2022-02-18 21:31:25 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645241485377 session inactive Interval is: 500000
+2022-02-18 21:32:18 - reviewRepo started: 2022-02-18T21:32:18.933
+2022-02-18 21:32:18 - UserRepo started: 2022-02-18T21:32:18.998
+2022-02-18 21:32:19 - started: 2022-02-18T21:32:19.001
+2022-02-18 21:32:19 - started: 2022-02-18T21:32:19.679
+2022-02-18 21:32:22 - started: 2022-02-18T21:32:22.164
+2022-02-18 21:32:22 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@db373dd
+2022-02-18 21:32:23 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645241543448 session inactive Interval is: 500000
+2022-02-18 21:34:00 - reviewRepo started: 2022-02-18T21:34:00.584
+2022-02-18 21:34:00 - UserRepo started: 2022-02-18T21:34:00.646
+2022-02-18 21:34:00 - started: 2022-02-18T21:34:00.646
+2022-02-18 21:34:01 - started: 2022-02-18T21:34:01.527
+2022-02-18 21:34:15 - started: 2022-02-18T21:34:15.645
+2022-02-18 21:34:16 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@4f64d37d
+2022-02-18 21:34:16 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645241656912 session inactive Interval is: 500000
+2022-02-18 21:34:23 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:190)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:34:23 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645241656912
+2022-02-18 21:35:37 - reviewRepo started: 2022-02-18T21:35:37.875
+2022-02-18 21:35:37 - UserRepo started: 2022-02-18T21:35:37.934
+2022-02-18 21:35:37 - started: 2022-02-18T21:35:37.936
+2022-02-18 21:35:38 - started: 2022-02-18T21:35:38.591
+2022-02-18 21:35:38 - started: 2022-02-18T21:35:38.878
+2022-02-18 21:35:39 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@1a7a8275
+2022-02-18 21:35:40 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645241740372 session inactive Interval is: 500000
+2022-02-18 21:35:42 - No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:4765)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4667)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3629)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3597)
+	com.revature.springbootdemo.beans.Controller.UserController.useAPI(UserController.java:191)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+
+2022-02-18 21:35:42 - active session. Logged in user has email: Ahmad@gmail.com. creation time is: 1645241740372
+2022-02-18 21:47:40 - reviewRepo started: 2022-02-18T21:47:40.749
+2022-02-18 21:47:40 - UserRepo started: 2022-02-18T21:47:40.796
+2022-02-18 21:47:40 - started: 2022-02-18T21:47:40.798
+2022-02-18 21:47:41 - started: 2022-02-18T21:47:41.465
+2022-02-18 21:47:41 - started: 2022-02-18T21:47:41.631
+2022-02-18 21:47:42 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@44a226b6
+2022-02-18 21:47:43 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645242463064 session inactive Interval is: 500000
+2022-02-18 21:49:14 - reviewRepo started: 2022-02-18T21:49:14.614
+2022-02-18 21:49:14 - UserRepo started: 2022-02-18T21:49:14.666
+2022-02-18 21:49:14 - started: 2022-02-18T21:49:14.672
+2022-02-18 21:49:15 - started: 2022-02-18T21:49:15.477
+2022-02-18 21:49:15 - started: 2022-02-18T21:49:15.658
+2022-02-18 21:49:16 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@14dc0f17
+2022-02-18 21:49:17 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645242557097 session inactive Interval is: 500000
+2022-02-18 23:48:08 - reviewRepo started: 2022-02-18T23:48:08.648
+2022-02-18 23:48:08 - UserRepo started: 2022-02-18T23:48:08.698
+2022-02-18 23:48:08 - started: 2022-02-18T23:48:08.701
+2022-02-18 23:48:09 - started: 2022-02-18T23:48:09.647
+2022-02-18 23:48:17 - started: 2022-02-18T23:48:17.543
+2022-02-18 23:48:18 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@7d079052
+2022-02-18 23:48:19 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645249699415 session inactive Interval is: 500000
+2022-02-18 23:53:06 - started: 2022-02-18T23:53:06.736
+2022-02-18 23:53:07 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@531821db
+2022-02-18 23:53:07 - a new session has been created for user with email Ahmad@gmail.com. creation time is: 1645249699415 session inactive Interval is: 500000
+2022-02-18 23:55:28 - reviewRepo started: 2022-02-18T23:55:28.248
+2022-02-18 23:55:28 - UserRepo started: 2022-02-18T23:55:28.279
+2022-02-18 23:55:28 - started: 2022-02-18T23:55:28.279
+2022-02-18 23:55:28 - started: 2022-02-18T23:55:28.864
+2022-02-18 23:55:37 - started: 2022-02-18T23:55:37.007
+2022-02-18 23:55:37 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@4f361fb9
+2022-02-18 23:55:38 - a new session has been created for user with email ron@gmail.com. creation time is: 1645250138357 session inactive Interval is: 500000
+2022-02-18 23:55:47 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645250138357
+2022-02-18 23:56:30 - active session. Logged in user has email: ron@gmail.com. creation time is: 1645250138357
+2022-02-18 23:57:03 - reviewRepo started: 2022-02-18T23:57:03.801
+2022-02-18 23:57:03 - UserRepo started: 2022-02-18T23:57:03.848
+2022-02-18 23:57:03 - started: 2022-02-18T23:57:03.848
+2022-02-18 23:57:04 - started: 2022-02-18T23:57:04.402
+2022-02-18 23:57:05 - started: 2022-02-18T23:57:05.187
+2022-02-18 23:57:05 - query is NOT NULL:
+org.hibernate.query.internal.NativeQueryImpl@1a76da01
+2022-02-18 23:57:06 - a new session has been created for user with email ron@gmail.com. creation time is: 1645250226541 session inactive Interval is: 500000

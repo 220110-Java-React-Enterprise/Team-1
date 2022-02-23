@@ -10,7 +10,6 @@ public class CityAPIService {
     public static InputStream getCityInfo(String city) {
         try {
             OkHttpClient client = new OkHttpClient();
-            System.out.println(SpringBootDemoApplication.ReadKeys().get(0));
 
             Request request = new Request.Builder()
                     .url("https://api.api-ninjas.com/v1/city?name=" + city)

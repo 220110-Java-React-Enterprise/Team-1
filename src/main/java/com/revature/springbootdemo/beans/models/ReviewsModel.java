@@ -9,7 +9,7 @@ public class ReviewsModel {
     @Id
     @Column(name = "review_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ReviewID = 9;
+    private Integer ReviewID;
 
     //@ForeighKey(ReferencingTableName = "Reviews", ReferencedTableName = "Users", PrimaryKey = "id")
     @Column(name = "user_id")
@@ -26,7 +26,7 @@ public class ReviewsModel {
 
     //@ForeighKey(ReferencingTableName = "Reviews", ReferencedTableName = "Reviews", PrimaryKey = "Review_ID")
     //@Property(fieldName = "ReplyToReview")
-    @Column(name = "replyToReview")
+    @Column(name = "reply_to_Review")
     private int ReplyToReview;
 
     //@ForeighKey(ReferencingTableName = "Reviews", ReferencedTableName = "Location", PrimaryKey = "Location_ID")
@@ -98,15 +98,15 @@ public class ReviewsModel {
     }
 
 
-    public ReviewsModel(int ReviewID, int ID, String content, int rating, int Location_Id, Time time, int ReplyToReview)
+    public ReviewsModel( int ID, String content, int rating, int Location_Id, Time time, int ReplyToReview)
     {
-        setReviewD(ReviewID);
-        setID(ID);
-        setContent(content);
-        setRating(rating);
-        setLocationID(Location_Id);
-        setTime(time);
-        setReplyToReview(ReplyToReview);
+       this.ReviewID = ReviewID;
+       this.ID= ID;
+       this.content = content;
+       this.rating = rating;
+       this.LocationID = Location_Id;
+       this.time = time;
+       this.ReplyToReview = ReplyToReview;
     }
 
 
