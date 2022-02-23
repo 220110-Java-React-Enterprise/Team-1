@@ -77,8 +77,13 @@ async function getData(city) {
 		console.log("Error: \n" + error);
 		//console.log("Response: \n" + response);
 	}
-
+	console.log("raw: ");
+	console.log(stuff);
+	//console.log(result);
+	console.log("First element: ");
 	console.log(stuff[0]);
+	console.log("Single element test");
+	console.log(stuff[0].country);
 	/* 
 		fetch(SWAPI_URL)
 			.then(response => response.json())
