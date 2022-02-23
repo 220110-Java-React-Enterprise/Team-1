@@ -74,7 +74,9 @@ public class UserController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
     public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+
         List<Object> resultList = new ArrayList<>();
+
         try {
 
             ObjectMapper mapper = new ObjectMapper();
