@@ -63,21 +63,41 @@ async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
 	const url = "http://localhost:8080/register/search?userEnteredCity=" + city;
 
+	let stuff;
 	try {
+		let promise = await fetch(url, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((result) => (stuff = result));
+	} catch (error) {
+		console.log("Error: \n" + error);
+		//console.log("Response: \n" + response);
+	}
+
+	console.log(stuff[0]);
+	/* 
+		fetch(SWAPI_URL)
+			.then(response => response.json())
+			.then(result => {
+				console.log(result)
+			});
+		*/
+	/*
 		let response = await fetch(url, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
-		let text = response.text();
-		console.log(text);
+		//let text = response.json();
+		console.log(response);
 		console.log(text.value);
 		//console.log(response.json());
 		//console.log("Full response:");
 		//console.log(response);
-	} catch (error) {
-		console.log("Error: \n" + error);
-		//console.log("Response: \n" + response);
-	}
+		*/
 }

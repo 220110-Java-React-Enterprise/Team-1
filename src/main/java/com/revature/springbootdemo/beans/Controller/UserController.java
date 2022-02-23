@@ -70,15 +70,19 @@ public class UserController {
         try {
             String cityResult = CityAPIService.getCityInfo(userEnteredCity);
             String weatherResult = WeatherAPIService.getCityWeather(userEnteredCity);
-            System.out.println(userEnteredCity);
+            System.out.println("City: " + userEnteredCity);
+            System.out.println("City Result: " + cityResult);
+            System.out.println("Weather Result: " + weatherResult);
 
             ObjectMapper mapper = new ObjectMapper();
             List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(cityResult, SearchResultModel[].class));
             String countryResult = CountryAPIService.getCountryInfo(searchResultModels.get(0).getCountry());
             
-            String total = cityResult + weatherResult + countryResult;
+            //String total = cityResult + weatherResult + countryResult;
+            String total = cityResult;
             return total;
         } catch (Exception e) {
+            //e.printStackTrace();
             SpringBootDemoApplication.fileLogger.log(e);
         }
         
