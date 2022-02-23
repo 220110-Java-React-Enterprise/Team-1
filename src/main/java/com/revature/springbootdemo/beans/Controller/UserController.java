@@ -5,16 +5,22 @@ import com.revature.springbootdemo.CityAPIService;
 import com.revature.springbootdemo.CountryAPIService;
 import com.revature.springbootdemo.SpringBootDemoApplication;
 import com.revature.springbootdemo.WeatherAPIService;
-import com.revature.springbootdemo.beans.models.SearchResultModel;
-import com.revature.springbootdemo.beans.models.UserModel;
+import com.revature.springbootdemo.beans.models.*;
 import com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.io.InputStream;
+import java.io.SequenceInputStream;
+import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @RestController
@@ -68,16 +74,50 @@ public class UserController {
     @ResponseBody
     public String Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
         try {
-            String cityResult = CityAPIService.getCityInfo(userEnteredCity);
-            String weatherResult = WeatherAPIService.getCityWeather(userEnteredCity);
-            System.out.println(userEnteredCity);
-
             ObjectMapper mapper = new ObjectMapper();
-            List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(cityResult, SearchResultModel[].class));
-            String countryResult = CountryAPIService.getCountryInfo(searchResultModels.get(0).getCountry());
+
+            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
             
-            String total = cityResult + weatherResult + countryResult;
-            return total;
+            stream = WeatherAPIService.getCityWeather(userEnteredCity);
+            WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
+            String result = weatherAPIModel.toString();
+            
+            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
+            List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
+            result += countryAPIModels.get(0).toString();
+
+//            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+//            InputStream stream2 = WeatherAPIService.getCityWeather(userEnteredCity);
+//            SequenceInputStream inputStreamSequence = new SequenceInputStream(stream, stream2);
+//
+//            List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(inputStreamSequence, SearchResultModel[].class));
+//            System.out.println(searchResultModels.get(0).toString());
+            
+            
+            
+//            String total = CityAPIService.getCityInfo(userEnteredCity);
+//            System.out.println(total);
+//            
+//            // trying to get rid of the brackets to see if it helps with mapping to the SearchResultModel
+//            total.replaceAll("\\[","");
+//            total.replaceAll("\\]","");
+//            System.out.println(total);
+//            
+//            total += WeatherAPIService.getCityWeather(userEnteredCity);
+//            System.out.println(total);
+//            
+//            List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(total, SearchResultModel[].class));
+//            System.out.println("searchResultModels size: " + searchResultModels.size());
+//            System.out.println(searchResultModels.get(0).toString());
+//
+//            total += CountryAPIService.getCountryInfo(searchResultModels.get(0).getCountry());
+//            System.out.println(total);
+//            searchResultModels = Arrays.asList(mapper.readValue(total, SearchResultModel[].class));
+//            System.out.println("searchResultModels size: " + searchResultModels.size());
+//            System.out.println(searchResultModels.get(0).toString());
+//
+            return result;
         } catch (Exception e) {
             SpringBootDemoApplication.fileLogger.log(e);
         }

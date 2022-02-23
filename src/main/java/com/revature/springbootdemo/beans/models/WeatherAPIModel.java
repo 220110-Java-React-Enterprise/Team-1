@@ -3,40 +3,36 @@ package com.revature.springbootdemo.beans.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SearchResultModel {
-    String country;
+public class WeatherAPIModel {
+    String cloud_pct;
     String temp;
     String feels_like;
     String humidity;
     String min_temp;
     String max_temp;
     String wind_speed;
-    String gdp;
-    String unemployment;
-    String homicide_rate;
+    String wind_degrees;
 
-    public SearchResultModel() {
+    public WeatherAPIModel() {
     }
 
-    public SearchResultModel(String country, String temp, String feels_like, String humidity, String min_temp, String max_temp, String wind_speed, String gdp, String unemployment, String homicide_rate) {
-        this.country = country;
+    public WeatherAPIModel(String cloud_pct, String temp, String feels_like, String humidity, String min_temp, String max_temp, String wind_speed, String wind_degrees) {
+        this.cloud_pct = cloud_pct;
         this.temp = temp;
         this.feels_like = feels_like;
         this.humidity = humidity;
         this.min_temp = min_temp;
         this.max_temp = max_temp;
         this.wind_speed = wind_speed;
-        this.gdp = gdp;
-        this.unemployment = unemployment;
-        this.homicide_rate = homicide_rate;
+        this.wind_degrees = wind_degrees;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCloud_pct() {
+        return cloud_pct;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCloud_pct(String cloud_pct) {
+        this.cloud_pct = cloud_pct;
     }
 
     public String getTemp() {
@@ -87,43 +83,25 @@ public class SearchResultModel {
         this.wind_speed = wind_speed;
     }
 
-    public String getGdp() {
-        return gdp;
+    public String getWind_degrees() {
+        return wind_degrees;
     }
 
-    public void setGdp(String gdp) {
-        this.gdp = gdp;
-    }
-
-    public String getUnemployment() {
-        return unemployment;
-    }
-
-    public void setUnemployment(String unemployment) {
-        this.unemployment = unemployment;
-    }
-
-    public String getHomicide_rate() {
-        return homicide_rate;
-    }
-
-    public void setHomicide_rate(String homicide_rate) {
-        this.homicide_rate = homicide_rate;
+    public void setWind_degrees(String wind_degrees) {
+        this.wind_degrees = wind_degrees;
     }
 
     @Override
     public String toString() {
         return "{" +
-                "country='" + country + '\'' +
+                "cloud_pct='" + cloud_pct + '\'' +
                 ", temp='" + temp + '\'' +
                 ", feels_like='" + feels_like + '\'' +
                 ", humidity='" + humidity + '\'' +
                 ", min_temp='" + min_temp + '\'' +
                 ", max_temp='" + max_temp + '\'' +
                 ", wind_speed='" + wind_speed + '\'' +
-                ", gdp='" + gdp + '\'' +
-                ", unemployment='" + unemployment + '\'' +
-                ", homicide_rate='" + homicide_rate + '\'' +
+                ", wind_degrees='" + wind_degrees + '\'' +
                 '}';
     }
 }
