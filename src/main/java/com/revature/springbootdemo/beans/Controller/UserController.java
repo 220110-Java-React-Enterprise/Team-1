@@ -88,6 +88,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<String> RegisterNewUser(@RequestBody UserModel newUser) {
 
+
         try {
             UserModel user = userRepo.save(newUser);
 
@@ -97,6 +98,7 @@ public class UserController {
         }
 
         return ResponseEntity.accepted().body("Success!");
+
 
     }
 

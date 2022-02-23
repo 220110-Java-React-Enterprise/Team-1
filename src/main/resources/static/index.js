@@ -169,3 +169,27 @@ async function getData(city) {
 function populate(idName, value) {
 	document.getElementById(idName).textContent = value;
 }
+
+async function getData(email, password) {
+	//localhost:8080/register/search?userEnteredCity=Pasadena
+	const url =
+		"http://localhost:8080/controller/login?myEmail=" +
+		email +
+		"&myPassword=" +
+		password;
+
+	let stuff;
+	try {
+		let promise = await fetch(url, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((result) => (stuff = result));
+	} catch (error) {
+		console.log("Error: \n" + error);
+		//console.log("Response: \n" + response);
+	}
+}
