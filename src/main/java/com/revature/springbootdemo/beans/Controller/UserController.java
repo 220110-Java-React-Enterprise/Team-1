@@ -1,11 +1,20 @@
 package com.revature.springbootdemo.beans.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.springbootdemo.CityAPIService;
+import com.revature.springbootdemo.CountryAPIService;
+import com.revature.springbootdemo.SpringBootDemoApplication;
+import com.revature.springbootdemo.WeatherAPIService;
+import com.revature.springbootdemo.beans.models.SearchResultModel;
 import com.revature.springbootdemo.beans.models.UserModel;
 import com.revature.springbootdemo.beans.repositories.CustomUserRepoImpl;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 @RestController
@@ -52,6 +61,31 @@ public class UserController {
             return "User doesn't exist or wrong credentials";
 
     }
+    
+    //search method, retrieve all search results 
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseBody
+    public String Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+        try {
+            String cityResult = CityAPIService.getCityInfo(userEnteredCity);
+            String weatherResult = WeatherAPIService.getCityWeather(userEnteredCity);
+            System.out.println("City: " + userEnteredCity);
+            System.out.println("City Result: " + cityResult);
+            System.out.println("Weather Result: " + weatherResult);
 
-
+            ObjectMapper mapper = new ObjectMapper();
+            List<SearchResultModel> searchResultModels = Arrays.asList(mapper.readValue(cityResult, SearchResultModel[].class));
+            String countryResult = CountryAPIService.getCountryInfo(searchResultModels.get(0).getCountry());
+            
+            //String total = cityResult + weatherResult + countryResult;
+            String total = cityResult;
+            return total;
+        } catch (Exception e) {
+            //e.printStackTrace();
+            SpringBootDemoApplication.fileLogger.log(e);
+        }
+        
+        return null;
+    }
 }
