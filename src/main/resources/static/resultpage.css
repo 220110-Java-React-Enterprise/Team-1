@@ -28,6 +28,13 @@ header {
 	margin: auto;
 }
 
+#header-image {
+	width: 20%;
+	height: 20%;
+	position: absolute;
+	z-index: -1;
+}
+
 /* these are for the result page layout */
 
 .result-page {
@@ -41,13 +48,6 @@ header {
 
 .component-header > input {
 	margin: auto;
-}
-
-#header-image {
-	width: 20%;
-	height: 20%;
-	position: absolute;
-	z-index: -1;
 }
 
 #component-profile {

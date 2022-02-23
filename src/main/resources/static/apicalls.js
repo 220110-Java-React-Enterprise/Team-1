@@ -107,7 +107,7 @@ async function doLogin(user) {
 		console.log("Error: \n" + error);
 		//console.log("Response: \n" + response);
 	}
-	console.log("raw: ");
+	console.log("raw result: ");
 	console.log(stuff);
 }
 
@@ -124,14 +124,14 @@ async function doRegister(user) {
 				"Content-Type": "application/json",
 			},
 		})
-			//.then((response) => response.json())
-			.then((response) => console.log(response.text))
+			.then((response) => response.json())
+			//.then((response) => console.log(response))
 			.then((result) => (stuff = result));
 	} catch (error) {
 		console.log("Error: \n" + error);
 		//console.log("Response: \n" + response);
 	}
-	console.log("raw: ");
+	console.log("raw result: ");
 	console.log(stuff);
 }
 
