@@ -62,8 +62,6 @@ public class SpringBootDemoApplication {
 	}
 
 
-<<<<<<< HEAD
-=======
 
 	public static List<String> ReadKeys()
 	{
@@ -183,5 +181,5 @@ public class SpringBootDemoApplication {
 
 		return mapHTML;
 	}
->>>>>>> beb8ba4a1486a7dea447f47ff2fc27247ee9b8d7
+
 }

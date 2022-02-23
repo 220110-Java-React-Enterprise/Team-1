@@ -125,7 +125,7 @@ function removeSplash() {
 
 async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
-	const url = "http://localhost:8080/register/search?userEnteredCity=" + city;
+	const url = "http://localhost:8080/controller/search?userEnteredCity=" + city;
 
 	let stuff;
 	try {
@@ -163,7 +163,7 @@ async function getData(city) {
 	populate("weather-temp-feels", weather_data.feels_like);
 	populate("weather-humidity", weather_data.humidity);
 	populate("weather-wind-speed", weather_data.wind_speed);
-	populate("weather-wind-speed", weather_data.wind_degrees);
+	populate("weather-wind-degrees", weather_data.wind_degrees);
 }
 
 function populate(idName, value) {

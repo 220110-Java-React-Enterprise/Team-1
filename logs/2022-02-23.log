@@ -28,3 +28,48 @@ org.hibernate.query.internal.NativeQueryImpl@6166a9f9
 2022-02-23 11:52:49 - a new session has been created for user with ID: 2 and email sam@gmail.com. creation time is: 1645638769190 session inactive Interval is: 50000
 2022-02-23 11:52:53 - active session. Logged in user has ID: 2 and email: sam@gmail.com. creation time is: 1645638769190
 2022-02-23 11:53:00 - active session. Logged in user has ID: 2 and email: sam@gmail.com. creation time is: 1645638769190
+2022-02-23 14:18:39 - reviewRepo started: 2022-02-23T14:18:39.732
+2022-02-23 14:18:39 - UserRepo started: 2022-02-23T14:18:39.737
+2022-02-23 14:18:39 - started: 2022-02-23T14:18:39.738
+2022-02-23 14:18:40 - started: 2022-02-23T14:18:40.162
+2022-02-23 14:19:11 - reviewRepo started: 2022-02-23T14:19:11.527
+2022-02-23 14:19:11 - UserRepo started: 2022-02-23T14:19:11.530
+2022-02-23 14:19:11 - started: 2022-02-23T14:19:11.531
+2022-02-23 14:19:11 - started: 2022-02-23T14:19:11.899
+2022-02-23 14:20:57 - reviewRepo started: 2022-02-23T14:20:57.997
+2022-02-23 14:20:58 - UserRepo started: 2022-02-23T14:20:58
+2022-02-23 14:20:58 - started: 2022-02-23T14:20:58.001
+2022-02-23 14:20:58 - started: 2022-02-23T14:20:58.461
+2022-02-23 14:21:19 - reviewRepo started: 2022-02-23T14:21:19.985
+2022-02-23 14:21:19 - UserRepo started: 2022-02-23T14:21:19.989
+2022-02-23 14:21:19 - started: 2022-02-23T14:21:19.991
+2022-02-23 14:21:20 - started: 2022-02-23T14:21:20.389
+2022-02-23 14:22:20 - reviewRepo started: 2022-02-23T14:22:20.721
+2022-02-23 14:22:20 - UserRepo started: 2022-02-23T14:22:20.730
+2022-02-23 14:22:20 - started: 2022-02-23T14:22:20.733
+2022-02-23 14:22:21 - started: 2022-02-23T14:22:21.171
+2022-02-23 14:26:24 - reviewRepo started: 2022-02-23T14:26:24.387
+2022-02-23 14:26:24 - UserRepo started: 2022-02-23T14:26:24.390
+2022-02-23 14:26:24 - started: 2022-02-23T14:26:24.391
+2022-02-23 14:26:24 - started: 2022-02-23T14:26:24.747
+2022-02-23 14:29:27 - reviewRepo started: 2022-02-23T14:29:27.052
+2022-02-23 14:29:27 - UserRepo started: 2022-02-23T14:29:27.055
+2022-02-23 14:29:27 - started: 2022-02-23T14:29:27.056
+2022-02-23 14:29:27 - started: 2022-02-23T14:29:27.463
+2022-02-23 14:32:55 - reviewRepo started: 2022-02-23T14:32:55.381
+2022-02-23 14:32:55 - UserRepo started: 2022-02-23T14:32:55.383
+2022-02-23 14:32:55 - started: 2022-02-23T14:32:55.384
+2022-02-23 14:32:55 - started: 2022-02-23T14:32:55.735
+2022-02-23 14:33:02 - Cannot deserialize value of type `[Lcom.revature.springbootdemo.beans.models.CityAPIModel;` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: (okio.RealBufferedSource$inputStream$1); line: 1, column: 1]
+	com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1741)
+	com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1515)
+	com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1462)
+	com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.handleNonArray(ObjectArrayDeserializer.java:343)
+	com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:194)
+	com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:24)
+	com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:322)
+	com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4674)
+	com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3666)
+

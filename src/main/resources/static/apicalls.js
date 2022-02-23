@@ -62,7 +62,7 @@ window.onload = (event) => {
 
 async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
-	const url = "http://localhost:8080/register/search?userEnteredCity=" + city;
+	const url = "http://localhost:8080/controller/search?userEnteredCity=" + city;
 
 	let stuff;
 	try {
