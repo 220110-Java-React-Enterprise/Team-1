@@ -30,6 +30,9 @@ import java.net.URL;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 //@SpringBootApplication
 @SpringBootApplication(scanBasePackages={"com.revature.springbootdemo.beans"})
 @RestController
@@ -54,20 +57,13 @@ public class SpringBootDemoApplication {
 
 
 		File f = new File(Logpath);
-		if (!f.exists())
-		{
-			try {
-				System.out.println("log file path: " + f.getAbsolutePath());
-				f.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 		fileLogger = FileLogger.getFileLogger();
 		fileLogger.log("started: " + LocalDateTime.now());
 	}
 
 
+<<<<<<< HEAD
+=======
 
 	public static List<String> ReadKeys()
 	{
@@ -187,4 +183,5 @@ public class SpringBootDemoApplication {
 
 		return mapHTML;
 	}
+>>>>>>> beb8ba4a1486a7dea447f47ff2fc27247ee9b8d7
 }
