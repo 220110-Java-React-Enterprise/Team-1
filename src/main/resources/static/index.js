@@ -269,7 +269,7 @@ async function doLogin(user) {
 	console.log(stuff);
 }
 
-if (stuff.result) {
+if (stuff.result == true) {
 	doSignin();
 } else {
 	alert("Sorry, wrong user ID and password!");
