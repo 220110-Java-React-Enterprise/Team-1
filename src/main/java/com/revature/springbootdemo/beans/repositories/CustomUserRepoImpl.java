@@ -18,10 +18,12 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
+/**
+ * Implement the logpath, fileloger in order to access data, where it returns for the userModel
+ * object having email and password
+ */
 @Repository
 public class CustomUserRepoImpl implements CustomUserRepo {
-
     @PersistenceContext
     EntityManager entityManager;
     EntityManagerFactory emf;
@@ -29,27 +31,12 @@ public class CustomUserRepoImpl implements CustomUserRepo {
     static FileLogger fileLogger;
 
     public CustomUserRepoImpl() {
-
         File f = new File(Logpath);
 
-<<<<<<< HEAD
-        if (!f.exists()) {
-            try {
-                System.out.println("log file path: " + f.getAbsolutePath());
-                f.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-=======
->>>>>>> 904af3f59de6c097d994f61b9632070e444861ac
         fileLogger = FileLogger.getFileLogger();
         fileLogger.log("started: " + LocalDateTime.now());
     }
 
-    //from where I found about CreateQuery and CreateNativeQuery
-    //https://docs.oracle.com/javaee/6/tutorial/doc/bnbrg.html
-    //https://dzone.com/articles/add-custom-functionality-to-a-spring-data-reposito
 
     /*** findByName: method returns a userModel object having email and password. used for logging
      *
@@ -63,14 +50,19 @@ public class CustomUserRepoImpl implements CustomUserRepo {
             Properties props = new Properties();
             props.load(new FileInputStream("src/main/resources/META-INF/persistence.xml"));
             emf = Persistence.createEntityManagerFactory("myPersistenceUnit", props);
+
             try {
                 if (emf == null) {
                     fileLogger.log("emf is null");
+
                 } else {
                     entityManager = emf.createEntityManager();
-                    //Note:
-                    //  using parameter didn't work. but using string for sql statement and concatenation worked.
-                    //  added the following statements to check for SQL injection manually
+
+                    /**
+                     *  Note: using parameter didn't work. but using string for sql statement and concatenation worked.
+                     *       added the following statements to check for SQL injection manually
+                     */
+
                     if ((email.contains("OR") || email.contains(" ")) || (password.contains("OR") || password.contains(" "))) {
                         fileLogger.log("email and password included \"or\"/space character attempting to do SQL injection (CustomUserRepoImpl)");
                         return null;
@@ -81,37 +73,26 @@ public class CustomUserRepoImpl implements CustomUserRepo {
 
                     if (entityManager == null) {
                         fileLogger.log("entity manager is null");
-                        if (10 == 10) return null;
+                        if (10 == 10) {
+                            return null;
+                        }
                     }
 
                     if (query == null) {
                         fileLogger.log("Query is null");
                         return null;
+
                     } else {
                         fileLogger.log("query is NOT NULL:\n" + query);
                     }
 
                     @SuppressWarnings("unchecked")
-                    List<UserModel> Users = (List<UserModel>)query.getResultList();
-                    if (Users.size() >= 1) //user exists
-                    {
-<<<<<<< HEAD
-                        //System.out.println("query returned a result. user exists");
-                        System.out.println("list size is: " + Users.size());
-                        //for (int i = 0 ; i < Users.size() ; i++)
-                        //    System.out.println("ith element is: " + ((UserModel)Users.get(0)).getEmail());
-                        //UserModel u = Users.get(0);
-                        //System.out.println(u.getID() + "," + u.getFirstName() +"," + u.getLastName() +"," + u.getPassword() +"," + u.getEmail());
-                        return new UserModel("", "", "", ""); //return dummy object (not null the user exits)
-                    } else {
-=======
-                        //########################## here ############
+                    List<UserModel> Users = (List<UserModel>) query.getResultList();
+
+                    if (Users.size() >= 1) {        //  if user exists return
                         return Users.get(0);
-                        //return new UserModel( "", "", "", ""); //return dummy object (not null the user exits)
-                    }
-                    else
-                    {
->>>>>>> 904af3f59de6c097d994f61b9632070e444861ac
+
+                    } else {
                         fileLogger.log("query returned no results. user doesn't exist");
                         return null;
                     }
@@ -121,7 +102,6 @@ public class CustomUserRepoImpl implements CustomUserRepo {
                 fileLogger.log(exc);
                 exc.printStackTrace();
             }
-
         } catch (Exception exc) {
             fileLogger.log(exc);
             exc.printStackTrace();

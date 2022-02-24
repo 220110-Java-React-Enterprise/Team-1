@@ -5,6 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+/**
+ * User: utilize the Jpa repository in order to implement and to extend the rest CRUD presented below.
+ */
+
 @Repository
 public interface UserRepo extends JpaRepository<UserModel, Integer> {
 

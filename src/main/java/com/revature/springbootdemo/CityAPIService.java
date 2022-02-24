@@ -7,10 +7,12 @@ import okhttp3.Response;
 
 import java.io.InputStream;
 
+/**
+ * User Api to retrieve each city the information.
+ */
+
 public class CityAPIService {
-
     public static InputStream getCityInfo(String city) {
-
         try {
             OkHttpClient client = new OkHttpClient();
 
@@ -23,7 +25,6 @@ public class CityAPIService {
             Response okHttpResponse = client.newCall(request).execute();
             //return okHttpResponse.body().string();
             return okHttpResponse.body().byteStream();
-
         } catch (Exception e) {
             e.printStackTrace();
             SpringBootDemoApplication.fileLogger.log(e);

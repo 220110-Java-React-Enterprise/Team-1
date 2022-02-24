@@ -6,8 +6,14 @@ import okhttp3.Response;
 
 import java.io.InputStream;
 
+/**
+ * User Api where each city get the Weather information respectively.
+ */
+
 public class WeatherAPIService {
+
     public static InputStream getCityWeather(String city) {
+
         try {
             OkHttpClient client = new OkHttpClient();
 
@@ -19,9 +25,10 @@ public class WeatherAPIService {
 
             Response okHttpResponse = client.newCall(request).execute();
             return okHttpResponse.body().byteStream();
+
         } catch (Exception e) {
             SpringBootDemoApplication.fileLogger.log(e);
-            
+
             return null;
         }
     }

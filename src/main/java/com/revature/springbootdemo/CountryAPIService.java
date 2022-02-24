@@ -7,6 +7,10 @@ import okhttp3.Response;
 
 import java.io.InputStream;
 
+/**
+ * User Api to retrieve each Country for their information.
+ */
+
 public class CountryAPIService {
 
     public static InputStream getCountryInfo(String country) {
@@ -21,9 +25,7 @@ public class CountryAPIService {
                     .build();
 
             Response okHttpResponse = client.newCall(request).execute();
-
             return okHttpResponse.body().byteStream();
-
         } catch (Exception e) {
             SpringBootDemoApplication.fileLogger.log(e);
 

@@ -1,9 +1,13 @@
 package com.revature.springbootdemo.beans.repositories;
 
+
 import com.revature.springbootdemo.beans.models.ReviewsModel;
-<<<<<<< HEAD
 import org.springframework.data.jpa.repository.JpaRepository;
 
+
+/**
+ * Review: utilize the Jpa repository in order to implement and to extend the rest CRUD presented below.
+ */
 public interface ReviewRepo extends JpaRepository<ReviewsModel, Integer> {
 
       /*
@@ -20,12 +24,5 @@ public interface ReviewRepo extends JpaRepository<ReviewsModel, Integer> {
     deleteAll()
      */
 
-=======
-import com.revature.springbootdemo.beans.models.UserModel;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface ReviewRepo extends JpaRepository<ReviewsModel, Integer> {
->>>>>>> 904af3f59de6c097d994f61b9632070e444861ac
 }
+

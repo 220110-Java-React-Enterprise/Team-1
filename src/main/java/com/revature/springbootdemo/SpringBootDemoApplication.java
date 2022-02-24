@@ -1,45 +1,26 @@
 package com.revature.springbootdemo;
 
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
-
 import com.revature.springbootdemo.beans.utils.FileLogger;
-
-import com.revature.springbootdemo.beans.models.UserModel;
-import com.revature.springbootdemo.beans.repositories.UserRepo;
-import com.revature.springbootdemo.beans.utils.ApplicationContextProvider;
-import com.revature.springbootdemo.beans.utils.FileLogger;
-import org.apache.coyote.Response;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.ApplicationContext;
-
 import org.springframework.web.bind.annotation.*;
 import java.io.*;
 import java.net.MalformedURLException;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import java.util.*;
-//for the api ...
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-<<<<<<< HEAD
-=======
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-//@SpringBootApplication
->>>>>>> 904af3f59de6c097d994f61b9632070e444861ac
+
 @SpringBootApplication(scanBasePackages={"com.revature.springbootdemo.beans"})
 @RestController
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+
 public class SpringBootDemoApplication {
 
 	public static FileLogger fileLogger;
@@ -48,15 +29,14 @@ public class SpringBootDemoApplication {
 
 
 
-	/**
-	 * *       Maim METHODS
+	/*** METHODS ****
 	 */
-
+	//main method: print a testing message, configure the port of the server to 8080
 	public static void main(String[] args) {
-
+		//System.out.println("printing");
 		SpringApplication app = new SpringApplication(SpringBootDemoApplication.class);
 		app.setDefaultProperties(Collections
-				.singletonMap("server.port", "8080"));   // configure the port of the server to 8080
+				.singletonMap("server.port", "8080"));
 		app.run(args);
 
 
@@ -66,10 +46,10 @@ public class SpringBootDemoApplication {
 	}
 
 
+	public static List<String> ReadKeys() {
 
-	public static List<String> ReadKeys()
-	{
 		try {
+
 			Properties props = new Properties();
 			FileReader fr = new FileReader(PropertiesPath);
 			ClassLoader cl = SpringBootDemoApplication.class.getClassLoader();
@@ -98,7 +78,6 @@ public class SpringBootDemoApplication {
 	@GetMapping ("/api")
 	public String useAPI(@RequestParam(value = "myCity", defaultValue = "San Francisco") String cityName) {
 		String result = "displaying information about \"" + cityName +"\" city";
-
 		//****** api **********
 
 		URL url = null;
@@ -148,14 +127,12 @@ public class SpringBootDemoApplication {
 
 
 		String FilePath= new File("data.html").getAbsolutePath();
-
 		try {
 			File f = new File(FilePath);
 			FileWriter sw = new FileWriter(f);
 			BufferedWriter bw = new BufferedWriter(sw);
 			bw.write("<h1>Data about " + cityName +"</h1></br>" + result);
 			bw.close();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

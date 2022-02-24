@@ -9,15 +9,15 @@
     <class>com.revature.springbootdemo.beans.models.LocationModel</class>
     <properties>
         <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
-<<<<<<< HEAD
+
         <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://ibrahima-db.cnepobclxkmr.us-east-1.rds.amazonaws.com/project-P2" />
         <property name="javax.persistence.jdbc.user" value="admin" />
         <property name="javax.persistence.jdbc.password" value="dbase11Ib" />
-=======
+
         <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://my-training-db.cmujmbzokloj.us-east-1.rds.amazonaws.com/ProjectTwo" />
         <property name="javax.persistence.jdbc.user" value="admin" />
         <property name="javax.persistence.jdbc.password" value="RevatureTraining713!" />
->>>>>>> 904af3f59de6c097d994f61b9632070e444861ac
+
        <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" /> -->
        <!-- <property name="hibernate.show_sql" value="true" />
         <property name="hibernate.format_sql" value="true" />

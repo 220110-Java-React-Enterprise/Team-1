@@ -4,8 +4,9 @@ import com.revature.springbootdemo.beans.models.UserModel;
 
 import javax.servlet.http.HttpServletRequest;
 
-//from where I found that this interface shouldn't extend the UserRepo interface
-//https://stackoverflow.com/questions/11880924/how-to-add-custom-method-to-spring-data-jpa
+/**
+ * Custom User: where information (email, password) is retrieve for the user.
+ */
 
 public interface CustomUserRepo {
 
