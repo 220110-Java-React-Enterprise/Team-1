@@ -36,7 +36,7 @@ input {
 	background-color: #000000;
 	top: 0px;
 	left: 0px;
-	opacity: 90%;
+	opacity: 70%;
 }
 
 #overlay-login {
@@ -49,17 +49,28 @@ input {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	width: 80%;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.title-text {
+	font-family: "Licorice", cursive;
+	font-size: 5em;
+	font-weight: normal;
+	margin-left: auto;
 }
 
 .login-container {
-	width: 80%;
+	width: 100%;
 }
 
 .login-row {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	width: 100%;
+	column-gap: 30vh;
 }
 
 button,
@@ -81,6 +92,8 @@ input[type="submit"] {
 h2 {
 	margin-top: 0px;
 	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
 	font-family: "Arial", sans-serif;
 }
 
