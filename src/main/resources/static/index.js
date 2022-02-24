@@ -144,6 +144,7 @@ function doSignin() {
 	//sessionStorage.setItem("email");
 	hideLoginOverlay();
 	document.getElementById("overlay").classList.add("hidden");
+	document.getElementById("overlay-login").classList.remove("flexed");
 	document.getElementById("overlay-login").classList.add("hidden");
 	//document.getElementById("review-write-container").display = "block";
 }
@@ -241,10 +242,11 @@ async function getData(city) {
 	populate("weather-humidity", weather_data.humidity);
 	populate("weather-wind-speed", weather_data.wind_speed);
 	populate("weather-wind-degrees", weather_data.wind_degrees);
-	console.log(
+	/* console.log(
 		`latitude: ${city_data.latitude} longitude: ${city_data.longitude}`
 	);
-	console.log(city_data);
+	console.log(city_data); */
+	updateMap(latitude, longitude);
 }
 
 function populate(idName, value) {
@@ -308,4 +310,13 @@ async function doRegister(user) {
 	} else {
 		alert("Sorry, registration failed!");
 	}
+}
+
+// Updates the google map, hopefully
+function updateMap(latitude, longitude) {
+	const mapNode = document.getElementById("google-map");
+	// src="https://www.google.com/maps/embed/v1/view?zoom=10&center=40.7128%2C-74.0060&key=AIzaSyD74AJ6FnwjE0_qnAkhIEwRuIGYLPh1R1I
+	let mapSrc = mapNode.src;
+	console.log(mapSrc);
+	mapSrc.contentWindow.location.reload();
 }

@@ -46,12 +46,15 @@ input {
 	top: 5vh;
 	left: 10vh;
 	background-color: rgb(245, 249, 247);
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
 	width: 80%;
 	padding: 20px;
 	border-radius: 10px;
+}
+
+.flexed {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 .title-text {
