@@ -27,7 +27,7 @@ public class ReviewsModel {
 
     //@ForeighKey(ReferencingTableName = "Reviews", ReferencedTableName = "Reviews", PrimaryKey = "Review_ID")
     //@Property(fieldName = "ReplyToReview")
-    @Column(name = "replyToReview")
+    @Column(name = "reply_to_Review")
     private int ReplyToReview;
 
     //@ForeighKey(ReferencingTableName = "Reviews", ReferencedTableName = "Location", PrimaryKey = "Location_ID")
@@ -109,5 +109,26 @@ public class ReviewsModel {
         LocationID = locationID;
     }
 
+<<<<<<< HEAD
+=======
+    public ReviewsModel()
+    {
+
+    }
+
+
+    public ReviewsModel( int ID, String content, int rating, int Location_Id, Time time, int ReplyToReview)
+    {
+       this.ReviewID = ReviewID;
+       this.ID= ID;
+       this.content = content;
+       this.rating = rating;
+       this.LocationID = Location_Id;
+       this.time = time;
+       this.ReplyToReview = ReplyToReview;
+    }
+
+
+>>>>>>> 904af3f59de6c097d994f61b9632070e444861ac
 }
 

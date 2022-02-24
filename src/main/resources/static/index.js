@@ -2,12 +2,15 @@
 // registration/login prompt on page load
 window.onload = (event) => {
 	// submit button handler
-	const searchButtons = document.getElementsByClassName("search-button");
+	const searchButtons = document.querySelectorAll(`[id^="button-search"]`);
 	for (let i = 0; i < searchButtons.length; i++) {
 		searchButtons[i].addEventListener("click", (event) => {
 			// TODO: Take out preventDefault if we want the form to be submitted (this is debug) *********
 			event.preventDefault();
-			const searchTerm = document.getElementById("searchbox").value;
+
+			// Identify which search box 1 or 2 is it
+			let idName = "searchbox" + event.target.id.slice(-1);
+			const searchTerm = document.getElementById(idName).value;
 			console.log("Searching for: " + searchTerm);
 			doTakeoff();
 			getData(searchTerm);
@@ -64,6 +67,34 @@ window.onload = (event) => {
 		});
 	}
 
+	//const registerButtonNode = document.getElementById("login-button-new").addEventListener("click", (event) => {
+	//	doRegister();
+	//});
+
+	document
+		.getElementById("button-register")
+		.addEventListener("click", (event) => {
+			event.preventDefault();
+			const user = {
+				firstName: document.getElementById("first-name").value,
+				lastName: document.getElementById("last-name").value,
+				email: document.getElementById("email").value,
+				//username: document.getElementById("username").value,
+				password: document.getElementById("password").value,
+			};
+			console.log(user);
+			doRegister(user);
+		});
+	document.getElementById("button-login").addEventListener("click", (event) => {
+		event.preventDefault();
+		const user = {
+			email: document.getElementById("login-email").value,
+			password: document.getElementById("login-password").value,
+		};
+		doLogin(user);
+		console.log(user);
+	});
+
 	// Add event handler to registration/login buttons to dismiss login screen
 	// re-enable this later
 	/*
@@ -84,19 +115,39 @@ function doTakeoff() {
 	setTimeout(removeSplash, 2400);
 }
 
+// If we add some sort of sign out option, this will do stuff
+function doSignin() {
+	// For testing - sessionStorage, but for actual use - localStorage
+	//sessionStorage.setItem("email");
+	hideLoginOverlay();
+	document.getElementById("review-write-container").display = "block";
+}
+
+function doSignOut() {
+	// same as dosignin
+	showLoginOverlay();
+}
+
 function showLoginOverlay() {
 	console.log("Login overlay displayed");
-	const loginNode = document.getElementById("login");
+	const loginNode = document.getElementById("login-container");
 	loginNode.classList.remove("hidden");
 	loginNode.classList.add("login-boxes-visible");
 }
 
 function hideLoginOverlay() {
 	//TODO: don't forget to remove this later - this is for testing *****************************
-	event.preventDefault();
+
 	console.log("Login overlay hidden");
-	document.getElementById("login").classList.remove("login-boxes-visible");
-	document.getElementById("login").classList.add("hidden");
+	document
+		.getElementById("login-container")
+		.classList.remove("login-boxes-visible");
+	document.getElementById("login-container").classList.add("hidden");
+
+	// reveal comment section
+	document.getElementById("review-write-container").classList.remove("hidden");
+	//document.getElementById("review-write-container")
+	review - write - container;
 }
 
 function removeSplash() {
@@ -125,7 +176,7 @@ function removeSplash() {
 
 async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
-	const url = "http://localhost:8080/register/search?userEnteredCity=" + city;
+	const url = "http://localhost:8080/controller/search?userEnteredCity=" + city;
 
 	let stuff;
 	try {
@@ -163,9 +214,69 @@ async function getData(city) {
 	populate("weather-temp-feels", weather_data.feels_like);
 	populate("weather-humidity", weather_data.humidity);
 	populate("weather-wind-speed", weather_data.wind_speed);
-	populate("weather-wind-speed", weather_data.wind_degrees);
+	populate("weather-wind-degrees", weather_data.wind_degrees);
 }
 
 function populate(idName, value) {
 	document.getElementById(idName).textContent = value;
+}
+
+async function doLogin(user) {
+	//localhost:8080/register/search?userEnteredCity=Pasadena
+	const url = "http://localhost:8080/controller/login";
+
+	let stuff;
+	try {
+		let promise = await fetch(url, {
+			method: "POST",
+			body: JSON.stringify(user),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((result) => (stuff = result));
+	} catch (error) {
+		console.log("Error: \n" + error);
+		//console.log("Response: \n" + response);
+	}
+	console.log("raw result: ");
+	console.log(stuff);
+
+	if (stuff.result) {
+		doSignin();
+	} else {
+		alert("Sorry, wrong user ID and password!");
+	}
+}
+
+async function doRegister(user) {
+	//localhost:8080/register/search?userEnteredCity=Pasadena
+	const url = `http://localhost:8080/controller/register`;
+
+	let stuff;
+	try {
+		let promise = await fetch(url, {
+			method: "POST",
+			body: JSON.stringify(user),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			//.then((response) => console.log(response))
+			.then((result) => (stuff = result));
+	} catch (error) {
+		console.log("Error: \n" + error);
+		//console.log("Response: \n" + response);
+	}
+	console.log("raw result: ");
+	console.log(stuff);
+
+	// is this valid?
+	if (stuff) {
+		doSignin();
+	} else {
+		alert("Sorry, registration failed!");
+	}
 }

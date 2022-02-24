@@ -15,8 +15,29 @@
 	width: 90%;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	padding-right: 20px;
 	box-sizing: border-box;
 	align-content: center;
+}
+
+header {
+	font-family: "Licorice", cursive;
+	font-size: 3em;
+	z-index: 5;
+	display: block;
+	margin: auto;
+	padding: auto;
+	width: 100%;
+	text-align: center;
+}
+
+#header-image {
+	width: 20%;
+	height: 20%;
+	position: relative;
+	z-index: -1;
+	left: -20vh;
+	top: -10vh;
 }
 
 /* these are for the result page layout */
@@ -32,11 +53,6 @@
 
 .component-header > input {
 	margin: auto;
-}
-
-#header-image {
-	width: 50px;
-	height: 100%;
 }
 
 #component-profile {

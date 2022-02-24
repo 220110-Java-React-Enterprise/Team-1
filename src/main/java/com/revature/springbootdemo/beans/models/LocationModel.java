@@ -3,7 +3,7 @@ package com.revature.springbootdemo.beans.models;
 
 import javax.persistence.*;
 
-@Entity(name = "Location_model")
+@Entity(name = "location_model")
 public class LocationModel {
 
     //  Fields
@@ -12,14 +12,27 @@ public class LocationModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer LocationID;
 
-    @Column(name = "city")
-    private String city;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "country")
     private String country;
 
     @Column(name = "state")
     private String state;
+
+    @Column(name = "latitude")
+    private double latitude;
+
+    @Column(name = "longitude")
+    private double longitude;
+
+    @Column(name = "population")
+    private int population;
+
+    @Column(name = "is_capital")
+    private boolean is_capital;
 
 
 
@@ -43,12 +56,12 @@ public class LocationModel {
         LocationID = locationID;
     }
 
-    public String getCity() {
-        return city;
+    public String getname() {
+        return name;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setname(String name) {
+        this.name = name;
     }
 
     public String getCountry() {
@@ -67,5 +80,73 @@ public class LocationModel {
         this.state = state;
     }
 
+<<<<<<< HEAD
+=======
+
+
+    public LocationModel()
+    {
+
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    public boolean getIs_capital() {
+        return is_capital;
+    }
+
+    public void setIs_capital(boolean is_capital) {
+        this.is_capital = is_capital;
+    }
+
+    public LocationModel(String name, String country, String state,
+                         double latitude, double longitude, int population, boolean is_capital)
+    {
+        this.LocationID = LocationID;
+        this.name = name;
+        this.country = country;
+        this.state = state;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.population = population;
+        this.is_capital = is_capital;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"LocationID\":" + LocationID +
+                ", \"name\":'" + name + '\'' +
+                ", \"country\":'" + country + '\'' +
+                ", \"state\":'" + state + '\'' +
+                ", \"latitude\":" + latitude +
+                ", \"longitude\":" + longitude +
+                ", \"population\":" + population +
+                ", \"is_capital\":" + is_capital +
+                '}';
+    }
+>>>>>>> 904af3f59de6c097d994f61b9632070e444861ac
 }
 

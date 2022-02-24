@@ -14,28 +14,29 @@ window.onload = (event) => {
 		});
 	}
 
-	/*
 	document
 		.getElementById("button-register")
 		.addEventListener("click", (event) => {
 			event.preventDefault();
-			const userInfo = {
+			const user = {
 				firstName: document.getElementById("first-name").value,
 				lastName: document.getElementById("last-name").value,
 				email: document.getElementById("email").value,
-				username: document.getElementById("username").value,
+				//username: document.getElementById("username").value,
 				password: document.getElementById("password").value,
 			};
-			console.log(userInfo);
+			console.log(user);
+			doRegister(user);
 		});
 	document.getElementById("button-login").addEventListener("click", (event) => {
 		event.preventDefault();
-		const userInfo = {
-			username: document.getElementById("login-username").value,
+		const user = {
+			email: document.getElementById("login-email").value,
 			password: document.getElementById("login-password").value,
 		};
-		console.log(userInfo);
-	}); */
+		doLogin(user);
+		console.log(user);
+	});
 
 	document
 		.getElementById("button-review")
@@ -62,7 +63,7 @@ window.onload = (event) => {
 
 async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
-	const url = "http://localhost:8080/register/search?userEnteredCity=" + city;
+	const url = "http://localhost:8080/controller/search?userEnteredCity=" + city;
 
 	let stuff;
 	try {
@@ -85,6 +86,53 @@ async function getData(city) {
 	console.log(stuff[0]);
 	console.log("Single element test");
 	console.log(stuff[0].country);
+}
+
+async function doLogin(user) {
+	//localhost:8080/register/search?userEnteredCity=Pasadena
+	const url = "http://localhost:8080/controller/login";
+
+	let stuff;
+	try {
+		let promise = await fetch(url, {
+			method: "POST",
+			body: JSON.stringify(user),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((result) => (stuff = result));
+	} catch (error) {
+		console.log("Error: \n" + error);
+		//console.log("Response: \n" + response);
+	}
+	console.log("raw result: ");
+	console.log(stuff);
+}
+
+async function doRegister(user) {
+	//localhost:8080/register/search?userEnteredCity=Pasadena
+	const url = `http://localhost:8080/controller/register`;
+
+	let stuff;
+	try {
+		let promise = await fetch(url, {
+			method: "POST",
+			body: JSON.stringify(user),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			//.then((response) => console.log(response))
+			.then((result) => (stuff = result));
+	} catch (error) {
+		console.log("Error: \n" + error);
+		//console.log("Response: \n" + response);
+	}
+	console.log("raw result: ");
+	console.log(stuff);
 }
 
 /*
