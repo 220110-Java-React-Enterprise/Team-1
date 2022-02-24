@@ -32,13 +32,33 @@ header {
 	max-height: 100px;
 }
 
-#header-image {
+#buddy-logo-smol {
 	width: 20%;
 	height: 100px;
 	position: relative;
 	z-index: -1;
 	left: -25vh;
 	top: -15vh;
+}
+
+.takeoff-animation-smol {
+	animation-name: takeoff-smol;
+	animation-duration: 3s;
+	animation-iteration-count: 1;
+	animation-delay: 250ms;
+	animation-timing-function: ease-in;
+}
+
+@keyframes takeoff-smol {
+	15% {
+		left: 0px;
+		top: 0px;
+	}
+
+	100% {
+		left: 1000px;
+		top: -30px;
+	}
 }
 
 /* these are for the result page layout */

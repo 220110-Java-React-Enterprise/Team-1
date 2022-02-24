@@ -12,7 +12,13 @@ window.onload = (event) => {
 			let idName = "searchbox" + event.target.id.slice(-1);
 			const searchTerm = document.getElementById(idName).value;
 			console.log("Searching for: " + searchTerm);
-			doTakeoff();
+			if (event.target.id.slice(-1) == 2) {
+				console.log("2!");
+				doTakeoffSmol();
+			} else {
+				console.log("1!");
+				doTakeoff();
+			}
 			getData(searchTerm);
 		});
 	}
@@ -135,7 +141,15 @@ function doTakeoff() {
 	const buddyLogoNode = document.getElementById("buddy-logo");
 	buddyLogoNode.classList.add("takeoff-animation");
 	// Make sure this is after the animation
-	setTimeout(removeSplash, 2400);
+	setTimeout(removeSplash, 2500);
+}
+
+function doTakeoffSmol() {
+	document.getElementsByTagName("body")[0].style.overflowX = "hidden";
+	const buddyLogoNode = document.getElementById("buddy-logo-smol");
+	buddyLogoNode.classList.add("takeoff-animation-smol");
+	// Make sure this is after the animation
+	setTimeout(resetBuddySmol, 2500);
 }
 
 // If we add some sort of sign out option, this will do stuff
@@ -200,6 +214,15 @@ function removeSplash() {
 	}
 }
 
+function resetBuddySmol() {
+	// Undo the hiding from the animation
+	document.getElementsByTagName("body")[0].style.overflowX = "visible";
+
+	// remove the flight animation class to prepare for the next press
+	const buddyLogoNode = document.getElementById("buddy-logo-smol");
+	buddyLogoNode.classList.remove("takeoff-animation-smol");
+}
+
 async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
 	const url = "http://localhost:8080/controller/search?userEnteredCity=" + city;
@@ -230,7 +253,8 @@ async function getData(city) {
 	let city_data = stuff[2];
 
 	populate("city-header", city + ", " + country_data.name);
-	//populate("statistics-population", country_data.population);
+	populate("statistics-population", city_data.population);
+	populate("statistics-currency", city_data.currency);
 	populate("statistics-gdp", country_data.gdp);
 	populate("statistics-unemployment", country_data.unemployment);
 	populate("statistics-crime-rate", country_data.homicide_rate);
