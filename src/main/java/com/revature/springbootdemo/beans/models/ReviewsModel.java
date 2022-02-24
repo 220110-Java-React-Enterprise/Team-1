@@ -109,6 +109,9 @@ public class ReviewsModel {
        this.ReplyToReview = ReplyToReview;
     }
 
-
+    @Override
+    public String toString() {
+        return "{\"content\":\"" + content + '\"' + '}';
+    }
 }
 

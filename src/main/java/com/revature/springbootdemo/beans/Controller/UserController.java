@@ -419,12 +419,18 @@ public class UserController {
             String res = "";
             if (!found){
                 resultList.add(newLocation);
-               res =  GetAllReviews(newLocation.getLocationID(), request);
+               List<ReviewsModel> reviewsModelList = GetAllReviews(newLocation.getLocationID(), request);
+               for (ReviewsModel model : reviewsModelList){
+                   resultList.add(model.toString());
+               }
             }else{
                 resultList.add(locationRepo.getById((Integer) session.getAttribute("location_id")));
-                res = GetAllReviews((Integer) session.getAttribute("location_id"), request);
+                List<ReviewsModel> reviewsModelList = GetAllReviews((Integer) session.getAttribute("location_id"), request);
+                for (ReviewsModel model : reviewsModelList){
+                    resultList.add(model.toString());
+                }
             }
-            System.out.println(res);
+            System.out.println(resultList.toString());
 
 
 
@@ -466,8 +472,7 @@ public class UserController {
 
     }
 
-    public String GetAllReviews(Integer id,HttpServletRequest request )
-    {
+    public List<ReviewsModel> GetAllReviews(Integer id,HttpServletRequest request ) {
         //HttpServletRequest request;
         String result = "<a href=\"#\" onclick=\"history.back()\"><img SRC=\"images\\back_button.jpg\"></a></br></br>";
         result += "Reviews ";
@@ -479,18 +484,16 @@ public class UserController {
         if (session != null) {
 
             String UserEmail = ((String) session.getAttribute("Email"));
-            int UserId = ((Integer)session.getAttribute("ID"));
-            int LocationId = ((Integer)session.getAttribute("location_id"));
+            int UserId = ((Integer) session.getAttribute("ID"));
+            int LocationId = ((Integer) session.getAttribute("location_id"));
             System.out.println(LocationId);
             System.out.println(id);
             result += " for city with id " + LocationId + " and which has the following information</br>";
             //get location information
             List<LocationModel> locs = locationRepo.findAll();
-            for( LocationModel l: locs)
-            {
-                if (l.getLocationID() == LocationId)
-                {
-                    result += " name: " + l.getname() + ", in " + l.getState() +" state in " +
+            for (LocationModel l : locs) {
+                if (l.getLocationID() == LocationId) {
+                    result += " name: " + l.getname() + ", in " + l.getState() + " state in " +
                             l.getCountry() + " country with " + l.getPopulation() + " population and " +
                             l.getLatitude() + "," + l.getLongitude() + " latitude and longitude and is capital (" + l.getIs_capital() + ")</br></br>";
                     break;
@@ -498,16 +501,15 @@ public class UserController {
             }
             //get user information
             result += "<TABLE border=\"1\" summary=\"User info\"> " +
-                    "<CAPTION><EM>user Info Table</EM></CAPTION>"+
+                    "<CAPTION><EM>user Info Table</EM></CAPTION>" +
                     "<TR><TH>User_id<TH>first Name<TH>Last Name<TH>Password<TH>Email</TR>";
 
-            List<UserModel> users =  userRepo.findAll();
-            for (UserModel u: users) {
-                if (u.getID() == UserId)
-                {
-                    result += "Made by user: " +  "</br>";
+            List<UserModel> users = userRepo.findAll();
+            for (UserModel u : users) {
+                if (u.getID() == UserId) {
+                    result += "Made by user: " + "</br>";
                     result += "<TR><TD>" + u.getID() + "<TD>" + u.getFirstName() +
-                            "<TD>" +  u.getLastName() + "<TD>" + u.getPassword()  + "<TD>" + u.getEmail() + "</TR>";
+                            "<TD>" + u.getLastName() + "<TD>" + u.getPassword() + "<TD>" + u.getEmail() + "</TR>";
 
                     break;
                 }
@@ -519,70 +521,69 @@ public class UserController {
                     "<TR><TH>Review_Id<TH>Made by user<TH>content<TH>rating<TH>time<TH>Location_ID<TH>Reply to Review</TR>";
 
 
-
-            for (ReviewsModel rm : reviews) {
-                if (LocationId == rm.getLocationID()) {
-
-                    result += "<TR><TD>" + rm.getReviewD();
-
-                    for (UserModel u: users) {
-                        if (u.getID() == rm.getID())
-                        {
-                            result += "<TD>ID: " + u.getID() + "</br> " +
-                                    "FirstName: " +  u.getFirstName() + "</br>" +
-                                    "LastName: " +  u.getLastName();
-                            break;
-                        }
-                    }
-                    result += "<TD>"  + rm.getContent();
-                    result += "<TD>";
-                    int rat = rm.getRating();
-                    result += "<form action=\"/Reviews/rating\" method=\"post\">" +
-                            "<select name=\"ratingMenu\" id=\"ratingMenu\">";
-                    if (rat == 0)
-                        rat = 3;
-                    if (rat == 1)
-                        result +=  "<option value=\"1\" selected>1</option>";
-                    else
-                        result +=  "<option value=\"1\">1</option>";
-                    if (rat == 2)
-                        result +="<option value=\"2\" selected>2</option>" ;
-                    else
-                        result +="<option value=\"2\">2</option>";
-                    if (rat == 3)
-                        result +="<option value=\"3\" selected>3</option>" ;
-                    else
-                        result +="<option value=\"3\">3</option>" ;
-                    if (rat == 4)
-                        result +="<option value=\"4\" selected>4</option>" ;
-                    else
-                        result +="<option value=\"4\">4</option>" ;
-                    if (rat == 5)
-                        result += "<option value=\"5\" selected>5</option>" ;
-                    else
-                        result +="<option value=\"5\">5</option>";
-                    result += "</select>" +
-                            "<input type=\"submit\" value=\"Update\">" +
-                            "</form>" +
-
-                            "<TD>" + rm.getTime()  +
-                            "<TD>" + rm.getLocationID() +
-                            "<TD>" +  rm.getReplyToReview() +
-                            "</TR>";
-
-                    hasReviews = true;
-                }
-            }
-            result += "</table></br>";
-        }
-        else
-        {
+//            for (ReviewsModel rm : reviews) {
+//                if (LocationId == rm.getLocationID()) {
+//
+//                    result += "<TR><TD>" + rm.getReviewD();
+//
+//                    for (UserModel u: users) {
+//                        if (u.getID() == rm.getID())
+//                        {
+//                            result += "<TD>ID: " + u.getID() + "</br> " +
+//                                    "FirstName: " +  u.getFirstName() + "</br>" +
+//                                    "LastName: " +  u.getLastName();
+//                            break;
+//                        }
+//                    }
+//                    result += "<TD>"  + rm.getContent();
+//                    result += "<TD>";
+//                    int rat = rm.getRating();
+//                    result += "<form action=\"/Reviews/rating\" method=\"post\">" +
+//                            "<select name=\"ratingMenu\" id=\"ratingMenu\">";
+//                    if (rat == 0)
+//                        rat = 3;
+//                    if (rat == 1)
+//                        result +=  "<option value=\"1\" selected>1</option>";
+//                    else
+//                        result +=  "<option value=\"1\">1</option>";
+//                    if (rat == 2)
+//                        result +="<option value=\"2\" selected>2</option>" ;
+//                    else
+//                        result +="<option value=\"2\">2</option>";
+//                    if (rat == 3)
+//                        result +="<option value=\"3\" selected>3</option>" ;
+//                    else
+//                        result +="<option value=\"3\">3</option>" ;
+//                    if (rat == 4)
+//                        result +="<option value=\"4\" selected>4</option>" ;
+//                    else
+//                        result +="<option value=\"4\">4</option>" ;
+//                    if (rat == 5)
+//                        result += "<option value=\"5\" selected>5</option>" ;
+//                    else
+//                        result +="<option value=\"5\">5</option>";
+//                    result += "</select>" +
+//                            "<input type=\"submit\" value=\"Update\">" +
+//                            "</form>" +
+//
+//                            "<TD>" + rm.getTime()  +
+//                            "<TD>" + rm.getLocationID() +
+//                            "<TD>" +  rm.getReplyToReview() +
+//                            "</TR>";
+//
+//                    hasReviews = true;
+//                }
+//            }
+//            result += "</table></br>";
+            return reviews;
+        } else {
             fileLogger.log("You must be logged in to view reviews");
-            return "you must be logged in to view reviews";
+            return null;
         }
-        if (!hasReviews)
-            result += "no Reviews for this city";
-        return result;
+//        if (!hasReviews){
+        //result += "no Reviews for this city";
+        //return null;
+//    }
     }
     /***
      * method ReadKeys() helper method: read keys of Ninja City API and Google Maps API from the "Keys.properties" file
