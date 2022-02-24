@@ -22,18 +22,21 @@
 	</div>
 	<header class="result-page hidden">
 		TravelBuddy
-		<input type="text" id="searchbox" placeholder="Where to?">
-		<input type="submit" value="Let's go!" id="button-search" class="search-button" />
+		<input type="text" id="searchbox2" placeholder="Where to?">
+		<button id="button-search2" class="search-button">Let's go!</button>
+		<!--
+			<input type="submit" value="Let's go!" id="button-search2" class="search-button" /> -->
 		<img id="header-image" src="image/buddy.gif" id="buddy-logo" alt="">
 	</header>
 	<main class="splash-layout" id="main-container">
+
 		<div id="splash-search" class="splash-screen">
 			<span class="title">TravelBuddy</span>
-			<form action="localhost" method="post">
-				<input type="text" id="searchbox" placeholder="Where are you headed?">
-				<input type="submit" value="Let's go!" id="button-search" class="search-button" />
+
+				<input type="text" id="searchbox1" placeholder="Where are you headed?">
+				<button id="button-search1" class="search-button">Let's go!</button>
+	
 				<!-- onclick="window.location.href = 'https://website.com/my-account';" -->
-			</form>
 			<img src="image/buddy.gif" id="buddy-logo" alt="">
 		</div>
 <!--
@@ -90,7 +93,7 @@
 					<label for="email">E-mail: </label>
 					<input type="text" name="email" class="register" /><br />
 		
-					<input type="submit" value="Register" class="login-button" />
+					<input type="submit" value="Register" class="login-button" id="button-login" />
 			</div>
 		
 			<div class="register-box">
@@ -101,7 +104,7 @@
 					<label for="password">Password: </label>
 					<input type="text" name="password" class="register" /><br />
 		
-					<input type="submit" value="Log in" class="login-button" />
+					<input type="submit" value="Log in" class="login-button" id="button-register" />
 			</div>
 		</div>
 		<div id="review-write-container" class="hidden">

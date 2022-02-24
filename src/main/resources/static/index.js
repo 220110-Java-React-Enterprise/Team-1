@@ -2,12 +2,20 @@
 // registration/login prompt on page load
 window.onload = (event) => {
 	// submit button handler
-	const searchButtons = document.getElementsByClassName("search-button");
+	const searchButtons = document.querySelectorAll(`[id^="button-search"]`);
 	for (let i = 0; i < searchButtons.length; i++) {
 		searchButtons[i].addEventListener("click", (event) => {
+			//console.log(event);
 			// TODO: Take out preventDefault if we want the form to be submitted (this is debug) *********
 			event.preventDefault();
-			const searchTerm = document.getElementById("searchbox").value;
+
+			// Identify which search box 1 or 2 is it
+			let idName = "searchbox" + event.target.id.slice(-1);
+			console.log("search pressed");
+			//console.log(event);
+			console.log(idName);
+
+			const searchTerm = document.getElementById(idName).value;
 			console.log("Searching for: " + searchTerm);
 			doTakeoff();
 			getData(searchTerm);
@@ -63,6 +71,34 @@ window.onload = (event) => {
 			}
 		});
 	}
+
+	//const registerButtonNode = document.getElementById("login-button-new").addEventListener("click", (event) => {
+	//	doRegister();
+	//});
+
+	document
+		.getElementById("button-register")
+		.addEventListener("click", (event) => {
+			event.preventDefault();
+			const user = {
+				firstName: document.getElementById("first-name").value,
+				lastName: document.getElementById("last-name").value,
+				email: document.getElementById("email").value,
+				//username: document.getElementById("username").value,
+				password: document.getElementById("password").value,
+			};
+			console.log(user);
+			doRegister(user);
+		});
+	document.getElementById("button-login").addEventListener("click", (event) => {
+		event.preventDefault();
+		const user = {
+			email: document.getElementById("login-email").value,
+			password: document.getElementById("login-password").value,
+		};
+		doLogin(user);
+		console.log(user);
+	});
 
 	// Add event handler to registration/login buttons to dismiss login screen
 	// re-enable this later
