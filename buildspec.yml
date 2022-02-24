@@ -10,6 +10,7 @@ phases:
       - pwd
       - ls -al
       - aws s3 cp s3://tiffpropertiesbucket/application.properties src/main/resources/application.properties
+      - aws s3 cp s3://tiffpropertiesbucket/Keys.properties src/main/resources/Keys.properties
 #      - aws s3 cp s3://kylebucketrevature/custom-lists-1.0.jar custom-lists-1.0.jar
 #      - mvn install:install-file -Dfile=custom-lists-1.0.jar -DgroupId=com.revature -DartifactId=custom-lists -Dversion=1.0 -Dpackaging=jar
       - ls -al
