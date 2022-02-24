@@ -14,7 +14,10 @@ import com.revature.springbootdemo.beans.repositories.ReviewRepo;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
 import com.revature.springbootdemo.beans.utils.FileLogger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -61,34 +65,56 @@ public class UserController {
         fileLogger.log("UserRepo started: " + LocalDateTime.now());
     }
 
+//    //register new user
+//    @ResponseBody
+//    @RequestMapping(value = "/register", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    public String RegisterNewUser(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
+//                                  @RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
+//                                  @RequestParam(value = "myPassword", defaultValue = "1111") String Password,
+//                                  @RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
+//
+//        UserModel user = new UserModel(FirstName, LastName, Password, Email);
+//        userRepo.save(user);
+//        return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
+//
+//    }
+
     //register new user
     @ResponseBody
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping(
+            value = "/register",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public String RegisterNewUser(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
-                                  @RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
-                                  @RequestParam(value = "myPassword", defaultValue = "1111") String Password,
-                                  @RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
+    public ResponseEntity<String> RegisterNewUser(@RequestBody UserModel newUser) {
+        System.out.println(newUser.toString());
+        try {
+            UserModel user = userRepo.save(newUser);
 
-        UserModel user = new UserModel(FirstName, LastName, Password, Email);
-        userRepo.save(user);
-        return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
+        }catch (Exception e){
+            fileLogger.log(e);
+            return ResponseEntity.badRequest().body("{\"result\":false}");
+        }
+
+        return ResponseEntity.accepted().body("{\"result\":true}");
+
 
     }
 
-
-    //login method, get username and password and verify the user exists
-    //so far all users are admins so display all users after the admin logs in
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public String Login(@RequestParam(value = "myEmail", defaultValue = "email") String Email,
-                        @RequestParam(value = "myPassword", defaultValue = "password1") String Password,
-                        HttpServletRequest request) {
+    @PostMapping(
+            value = "/login",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<String> Login(@RequestBody SessionModel userSession, HttpServletRequest request) {
+
 
         //verify user exists
         CustomUserRepoImpl CustomRepoImp = new CustomUserRepoImpl();
-        UserModel u = CustomRepoImp.findByName(Email, Password, request);
+        UserModel u = CustomRepoImp.findByName(userSession.getEmail(), userSession.getPassword());
+//        System.out.println(u.toString());
         try {
             if (u != null) {
                 //returns all users registered and return them
@@ -101,19 +127,61 @@ public class UserController {
                 }
                 //create a new session and session variable
                 HttpSession session = request.getSession();
-                session.setAttribute("Email", Email);
+                session.setAttribute("Email", u.getEmail());
                 session.setAttribute("ID", u.getID());
+                session.setAttribute("location_id", userSession.getLocation_id());
                 session.setMaxInactiveInterval(50000);
-                fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + Email + ". creation time is: " +
+                fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + userSession.getEmail() + ". creation time is: " +
                         session.getCreationTime() + " session inactive Interval is: 50000");
-                return "Logged in successful. \nHello " + Email + " with password: " + Password + "\nList of all users: \n" + jsonText;
+                System.out.println("user is logged in");
+//                return "Logged in successful. \nHello " + Email + " with password: " + Password + "\nList of all users: \n" + jsonText;
+                return ResponseEntity.accepted().body("{\"result\":true}");
             } else
-                return "User doesn't exist or wrong credentials";
+                System.out.println("user is NOT logged in");
+            return ResponseEntity.badRequest().body("{\"result\":false}");
         } catch (Exception exc) {
             fileLogger.log(exc);
         }
-        return "";
+        return ResponseEntity.badRequest().body("{\"result\":false}");
     }
+
+    //login method, get username and password and verify the user exists
+    //so far all users are admins so display all users after the admin logs in
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @ResponseBody
+//    public String Login(@RequestParam(value = "myEmail", defaultValue = "email") String Email,
+//                        @RequestParam(value = "myPassword", defaultValue = "password1") String Password,
+//                        HttpServletRequest request) {
+//
+//        //verify user exists
+//        CustomUserRepoImpl CustomRepoImp = new CustomUserRepoImpl();
+//        UserModel u = CustomRepoImp.findByName(Email, Password, request);
+//        try {
+//            if (u != null) {
+//                //returns all users registered and return them
+//                List<UserModel> users = userRepo.findAll();
+//                String jsonText = "";
+//                for (UserModel r : users) {
+//                    ObjectMapper mapper = new ObjectMapper();
+//                    String jsonString = mapper.writeValueAsString(r);
+//                    jsonText += jsonString;
+//                }
+//                //create a new session and session variable
+//                HttpSession session = request.getSession();
+//                session.setAttribute("Email", Email);
+//                session.setAttribute("ID", u.getID());
+//                session.setMaxInactiveInterval(50000);
+//                fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + Email + ". creation time is: " +
+//                        session.getCreationTime() + " session inactive Interval is: 50000");
+//                return "Logged in successful. \nHello " + Email + " with password: " + Password + "\nList of all users: \n" + jsonText;
+//            } else
+//                return "User doesn't exist or wrong credentials";
+//        } catch (Exception exc) {
+//            fileLogger.log(exc);
+//        }
+//        return "";
+//    }
 
 
     /***
@@ -235,7 +303,7 @@ public class UserController {
         List<LocationModel> list = locationRepo.findAll();
         boolean found = false;
         for (LocationModel li : list) {
-            if (li.getCity().equals(city)) {
+            if (li.getname().equals(city)) {
                 //add the Location_id to the current session. store the location_id in the session
                 session = request.getSession(false);
                 if (session != null) {
@@ -283,24 +351,117 @@ public class UserController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity) {
+    public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity, HttpServletRequest request){
+        System.out.println(userEnteredCity);
         List<Object> resultList = new ArrayList<>();
+        HttpSession session = null;
+        //HttpServletRequest request = null;
+        String LocationAddedResult = null;
+        String result = null;
+        LocationModel newLocation = null;
+
         try {
 
             ObjectMapper mapper = new ObjectMapper();
 
             InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
-            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
-
+            //List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
+            List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
+            System.out.println(locationModelList.get(0).toString());
+            //serachf or the city in the db
+            List<LocationModel> list = locationRepo.findAll();
+            boolean found = false;
+            for (LocationModel li : list) {
+                if (li.getname().equals(userEnteredCity)) {
+                    //add the Location_id to the current session. store the location_id in the session
+                    session = request.getSession(false);
+                    if (session != null) {
+                        session.setAttribute("location_id", li.getLocationID());
+                        System.out.println("location is added to session");
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) {
+                LocationModel l = new LocationModel(locationModelList.get(0).getname(),
+                        locationModelList.get(0).getCountry(),
+                        locationModelList.get(0).getState(),
+                        locationModelList.get(0).getLatitude(),
+                        locationModelList.get(0).getLongitude(),
+                        locationModelList.get(0).getPopulation(),
+                        locationModelList.get(0).getIs_capital());
+                newLocation = locationRepo.save(l);
+                LocationAddedResult = String.format("have added the location %s and %s and %s and %s and %s and %s and %s " +
+                        " successfully", newLocation.getLocationID(), locationModelList.get(0).getname(),
+                        locationModelList.get(0).getCountry(),
+                        locationModelList.get(0).getState(),
+                        locationModelList.get(0).getLatitude(),
+                        locationModelList.get(0).getLongitude(),
+                        locationModelList.get(0).getPopulation(),
+                        locationModelList.get(0).getIs_capital());
+                //add the Location_id to the current session. store the location_id in the session
+                session = request.getSession();
+                if (session != null) {
+                    session.setAttribute("location_id", newLocation.getLocationID());
+                    System.out.println("location has been added to session variable " + newLocation.getLocationID());
+                }
+            }
+            //result = WelcomeMessage + "\n<hr>" + CityInfo + "\n<hr>" + LocationAddedResult + "\n<hr>";
             stream = WeatherAPIService.getCityWeather(userEnteredCity);
             WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
             resultList.add(weatherAPIModel);
 
-            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
+            stream = CountryAPIService.getCountryInfo(locationModelList.get(0).getCountry());
             List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
-
             resultList.add(countryAPIModels.get(0));
+//            resultList.add(locationModelList.get(0));
+            String res = "";
+            if (!found){
+                resultList.add(newLocation);
+               List<ReviewsModel> reviewsModelList = GetAllReviews(newLocation.getLocationID(), request);
+               for (ReviewsModel model : reviewsModelList){
+                   resultList.add(model.toString());
+               }
+            }else{
+                resultList.add(locationRepo.getById((Integer) session.getAttribute("location_id")));
+                List<ReviewsModel> reviewsModelList = GetAllReviews((Integer) session.getAttribute("location_id"), request);
+                for (ReviewsModel model : reviewsModelList){
+                    resultList.add(model.toString());
+                }
+            }
+            System.out.println(resultList.toString());
 
+
+
+/*******************************************************************************************************************************/
+            //try{
+//            // API methods return streams, we use stream to map data to object using object mapper.
+////            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+////            ObjectMapper mapper = new ObjectMapper();
+////
+////            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
+//////            resultList.add(cityAPIModels.get(0));
+////
+////
+////            stream = WeatherAPIService.getCityWeather(userEnteredCity);
+////            WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
+////            resultList.add(weatherAPIModel);
+////
+////            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
+////            List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
+////            resultList.add(countryAPIModels.get(0));
+//
+//
+//            //List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
+//            //System.out.println(resultList.toString());
+//            //serachf or the city in the db
+//
+//            //ReviewController reviewController = new ReviewController(this.reviewRepo,userRepo, locationRepo);
+//            //resultList.add(reviewController.DisplayReviews(""));
+//            //resultList.add(GetAllReviews(request));
+           /*******************************************************************************************************************************/
+            System.out.println(resultList.get(0).toString());
             return resultList;
 
         } catch (IOException e) {
@@ -311,6 +472,119 @@ public class UserController {
 
     }
 
+    public List<ReviewsModel> GetAllReviews(Integer id,HttpServletRequest request ) {
+        //HttpServletRequest request;
+        String result = "<a href=\"#\" onclick=\"history.back()\"><img SRC=\"images\\back_button.jpg\"></a></br></br>";
+        result += "Reviews ";
+        boolean hasReviews = false;
+
+        List<ReviewsModel> reviews = reviewRepo.findAll();
+
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+
+            String UserEmail = ((String) session.getAttribute("Email"));
+            int UserId = ((Integer) session.getAttribute("ID"));
+            int LocationId = ((Integer) session.getAttribute("location_id"));
+            System.out.println(LocationId);
+            System.out.println(id);
+            result += " for city with id " + LocationId + " and which has the following information</br>";
+            //get location information
+            List<LocationModel> locs = locationRepo.findAll();
+            for (LocationModel l : locs) {
+                if (l.getLocationID() == LocationId) {
+                    result += " name: " + l.getname() + ", in " + l.getState() + " state in " +
+                            l.getCountry() + " country with " + l.getPopulation() + " population and " +
+                            l.getLatitude() + "," + l.getLongitude() + " latitude and longitude and is capital (" + l.getIs_capital() + ")</br></br>";
+                    break;
+                }
+            }
+            //get user information
+            result += "<TABLE border=\"1\" summary=\"User info\"> " +
+                    "<CAPTION><EM>user Info Table</EM></CAPTION>" +
+                    "<TR><TH>User_id<TH>first Name<TH>Last Name<TH>Password<TH>Email</TR>";
+
+            List<UserModel> users = userRepo.findAll();
+            for (UserModel u : users) {
+                if (u.getID() == UserId) {
+                    result += "Made by user: " + "</br>";
+                    result += "<TR><TD>" + u.getID() + "<TD>" + u.getFirstName() +
+                            "<TD>" + u.getLastName() + "<TD>" + u.getPassword() + "<TD>" + u.getEmail() + "</TR>";
+
+                    break;
+                }
+            }
+            result += "</TABLE></br>";
+
+            result += "<TABLE border=\"1\" summary=\"Review info\"> " +
+                    "<CAPTION><EM>Review Info Table</EM></CAPTION>" +
+                    "<TR><TH>Review_Id<TH>Made by user<TH>content<TH>rating<TH>time<TH>Location_ID<TH>Reply to Review</TR>";
+
+
+//            for (ReviewsModel rm : reviews) {
+//                if (LocationId == rm.getLocationID()) {
+//
+//                    result += "<TR><TD>" + rm.getReviewD();
+//
+//                    for (UserModel u: users) {
+//                        if (u.getID() == rm.getID())
+//                        {
+//                            result += "<TD>ID: " + u.getID() + "</br> " +
+//                                    "FirstName: " +  u.getFirstName() + "</br>" +
+//                                    "LastName: " +  u.getLastName();
+//                            break;
+//                        }
+//                    }
+//                    result += "<TD>"  + rm.getContent();
+//                    result += "<TD>";
+//                    int rat = rm.getRating();
+//                    result += "<form action=\"/Reviews/rating\" method=\"post\">" +
+//                            "<select name=\"ratingMenu\" id=\"ratingMenu\">";
+//                    if (rat == 0)
+//                        rat = 3;
+//                    if (rat == 1)
+//                        result +=  "<option value=\"1\" selected>1</option>";
+//                    else
+//                        result +=  "<option value=\"1\">1</option>";
+//                    if (rat == 2)
+//                        result +="<option value=\"2\" selected>2</option>" ;
+//                    else
+//                        result +="<option value=\"2\">2</option>";
+//                    if (rat == 3)
+//                        result +="<option value=\"3\" selected>3</option>" ;
+//                    else
+//                        result +="<option value=\"3\">3</option>" ;
+//                    if (rat == 4)
+//                        result +="<option value=\"4\" selected>4</option>" ;
+//                    else
+//                        result +="<option value=\"4\">4</option>" ;
+//                    if (rat == 5)
+//                        result += "<option value=\"5\" selected>5</option>" ;
+//                    else
+//                        result +="<option value=\"5\">5</option>";
+//                    result += "</select>" +
+//                            "<input type=\"submit\" value=\"Update\">" +
+//                            "</form>" +
+//
+//                            "<TD>" + rm.getTime()  +
+//                            "<TD>" + rm.getLocationID() +
+//                            "<TD>" +  rm.getReplyToReview() +
+//                            "</TR>";
+//
+//                    hasReviews = true;
+//                }
+//            }
+//            result += "</table></br>";
+            return reviews;
+        } else {
+            fileLogger.log("You must be logged in to view reviews");
+            return null;
+        }
+//        if (!hasReviews){
+        //result += "no Reviews for this city";
+        //return null;
+//    }
+    }
     /***
      * method ReadKeys() helper method: read keys of Ninja City API and Google Maps API from the "Keys.properties" file
      * parameters: none

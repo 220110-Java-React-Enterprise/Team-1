@@ -75,6 +75,15 @@ public class UserModel {
         this.email = email;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "ID=" + ID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
 

@@ -2,11 +2,6 @@
 white: background-color: rgb(245, 249, 247);
 */
 
-#review-input-box {
-	width: 100%;
-	height: 5vh;
-}
-
 input {
 	margin-left: auto;
 	margin-right: auto;
@@ -33,8 +28,56 @@ input {
 	width: 50%;
 }
 
+#overlay {
+	position: absolute;
+	z-index: 5;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	top: 0px;
+	left: 0px;
+	opacity: 70%;
+}
+
+#overlay-login {
+	margin: auto;
+	position: absolute;
+	z-index: 10;
+	top: 5vh;
+	left: 10vh;
+	background-color: rgb(245, 249, 247);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 80%;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.title-text {
+	font-family: "Licorice", cursive;
+	font-size: 5em;
+	font-weight: normal;
+	margin-left: auto;
+}
+
+.login-container {
+	width: 100%;
+}
+
+.login-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	column-gap: 30vh;
+}
+
+button,
 input[type="submit"] {
 	background-color: #01a2e8;
+	margin: auto;
+	width: 100%;
 	margin-top: 0.5vh;
 	border-radius: 4px;
 	border: 0px;
@@ -49,6 +92,8 @@ input[type="submit"] {
 h2 {
 	margin-top: 0px;
 	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
 	font-family: "Arial", sans-serif;
 }
 
