@@ -4,17 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import com.revature.springbootdemo.beans.utils.FileLogger;
 
-import com.revature.springbootdemo.beans.models.UserModel;
-import com.revature.springbootdemo.beans.repositories.UserRepo;
-import com.revature.springbootdemo.beans.utils.ApplicationContextProvider;
-import com.revature.springbootdemo.beans.utils.FileLogger;
-import org.apache.coyote.Response;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.ApplicationContext;
 
 import org.springframework.web.bind.annotation.*;
 import java.io.*;
@@ -30,13 +21,8 @@ import java.net.URL;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-//@SpringBootApplication
 @SpringBootApplication(scanBasePackages={"com.revature.springbootdemo.beans"})
 @RestController
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class SpringBootDemoApplication {
 
 	public static FileLogger fileLogger;
@@ -49,7 +35,6 @@ public class SpringBootDemoApplication {
 	 */
 	//main method: print a testing message, configure the port of the server to 8080
 	public static void main(String[] args) {
-		//System.out.println("printing");
 		SpringApplication app = new SpringApplication(SpringBootDemoApplication.class);
 		app.setDefaultProperties(Collections
 				.singletonMap("server.port", "8080"));
@@ -73,10 +58,8 @@ public class SpringBootDemoApplication {
 				BufferedInputStream bis = new BufferedInputStream(new FileInputStream(PropertiesPath));
 				props.load(bis);
 				String NinjaKey = props.getProperty("x-api-key");
-				//String MapKey = props.getProperty("MapKey");
 				ArrayList<String> keys  =new ArrayList<String>();
 				keys.add(NinjaKey);
-				//keys.add(MapKey);
 				return keys;
 			}
 			catch(Exception exc)
@@ -112,7 +95,6 @@ public class SpringBootDemoApplication {
 		}
 
 		NinjaCityKey = keys.get(0);
-		//MapKey = keys.get(1);
 
 		try {
 			url = new URL("https://api.api-ninjas.com/v1/city?name=" + cityName);
@@ -133,7 +115,6 @@ public class SpringBootDemoApplication {
 			result += root.path("fact").asText();
 			result += root.asText();
 			result += root.toString();
-			System.out.println(result);
 
 		} catch (MalformedURLException e) {
 			fileLogger.log(e);

@@ -73,7 +73,6 @@ public class UserController {
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<String> RegisterNewUser(@RequestBody UserModel newUser) {
-        //System.out.println(newUser.toString());
         try {
             UserModel user = userRepo.save(newUser);
 
@@ -99,7 +98,6 @@ public class UserController {
         //verify user exists
         CustomUserRepoImpl CustomRepoImp = new CustomUserRepoImpl();
         UserModel u = CustomRepoImp.findByName(userSession.getEmail(), userSession.getPassword());
-//        System.out.println(u.toString());
         try {
             if (u != null) {
                 //returns all users registered and return them
@@ -118,11 +116,8 @@ public class UserController {
                 session.setMaxInactiveInterval(50000);
                 fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + userSession.getEmail() + ". creation time is: " +
                         session.getCreationTime() + " session inactive Interval is: 50000");
-                //System.out.println("user is logged in");
-//                return "Logged in successful. \nHello " + Email + " with password: " + Password + "\nList of all users: \n" + jsonText;
                 return ResponseEntity.accepted().body("{\"result\":true}");
             } else
-                //ln("user is NOT logged in");
             return ResponseEntity.badRequest().body("{\"result\":false}");
         } catch (Exception exc) {
             fileLogger.log(exc);
@@ -159,7 +154,6 @@ public class UserController {
         String MapKey = ""; //google map keygit
         List<String> keys = ReadKeys();
         if (keys != null) {
-            //System.out.println("success reading keys");
         }else {
             fileLogger.log("Error in reading key's property file");
             return "Error in reading key's property file";
@@ -281,10 +275,8 @@ public class UserController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
     public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity, HttpServletRequest request){
-        //System.out.println(userEnteredCity);
         List<Object> resultList = new ArrayList<>();
         HttpSession session = null;
-        //HttpServletRequest request = null;
         String LocationAddedResult = null;
         String result = null;
         LocationModel newLocation = null;
@@ -295,7 +287,7 @@ public class UserController {
 
             InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
             List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
-            //serachf or the city in the db
+            //serach for the city in the db
             List<LocationModel> list = locationRepo.findAll();
             boolean found = false;
             for (LocationModel li : list) {
@@ -304,7 +296,6 @@ public class UserController {
                     session = request.getSession(false);
                     if (session != null) {
                         session.setAttribute("location_id", li.getLocationID());
-                        //System.out.println("location is added to session");
                         found = true;
                         break;
                     }
@@ -319,14 +310,6 @@ public class UserController {
                         locationModelList.get(0).getPopulation(),
                         locationModelList.get(0).getIs_capital());
                 newLocation = locationRepo.save(l);
-                LocationAddedResult = String.format("have added the location %s and %s and %s and %s and %s and %s and %s " +
-                        " successfully", newLocation.getLocationID(), locationModelList.get(0).getname(),
-                        locationModelList.get(0).getCountry(),
-                        locationModelList.get(0).getState(),
-                        locationModelList.get(0).getLatitude(),
-                        locationModelList.get(0).getLongitude(),
-                        locationModelList.get(0).getPopulation(),
-                        locationModelList.get(0).getIs_capital());
                 //add the Location_id to the current session. store the location_id in the session
                 session = request.getSession();
                 if (session != null) {
@@ -342,7 +325,6 @@ public class UserController {
             List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
             resultList.add(countryAPIModels.get(0));
 
-            String res = "";
             if (!found){
                 resultList.add(newLocation);
                List<ReviewsModel> reviewsModelList = GetAllReviews(newLocation.getLocationID(), request);
@@ -376,7 +358,6 @@ public class UserController {
         HttpSession session = request.getSession(false);
         if (session != null) {
 
-            String UserEmail = ((String) session.getAttribute("Email"));
             int UserId = ((Integer) session.getAttribute("ID"));
             int LocationId = ((Integer) session.getAttribute("location_id"));
 
@@ -391,21 +372,17 @@ public class UserController {
             List<UserModel> users = userRepo.findAll();
             for (UserModel u : users) {
                 if (u.getID() == UserId) {
-
                     break;
                 }
             }
-
-
-
-
+            
             return reviews;
         } else {
             fileLogger.log("You must be logged in to view reviews");
             return null;
         }
-
     }
+    
     /***
      * method ReadKeys() helper method: read keys of Ninja City API and Google Maps API from the "Keys.properties" file
      * parameters: none
@@ -433,6 +410,4 @@ public class UserController {
         }
         return null;
     }
-
-
 }
