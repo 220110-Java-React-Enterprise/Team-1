@@ -44,7 +44,7 @@ public class CustomUserRepoImpl implements CustomUserRepo{
      * @param password: password of user
      * @return: UserModel object.
      */
-    public UserModel findByName(String email, String password, HttpServletRequest request){
+    public UserModel findByName(String email, String password){
 
         try
         {

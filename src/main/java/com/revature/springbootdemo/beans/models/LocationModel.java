@@ -13,8 +13,8 @@ public class LocationModel {
     private Integer LocationID;
 
 
-    @Column(name = "city")
-    private String city;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "country")
     private String country;
@@ -44,12 +44,12 @@ public class LocationModel {
         LocationID = locationID;
     }
 
-    public String getCity() {
-        return city;
+    public String getname() {
+        return name;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setname(String name) {
+        this.name = name;
     }
 
     public String getCountry() {
@@ -99,7 +99,7 @@ public class LocationModel {
         this.population = population;
     }
 
-    public boolean isIs_capital() {
+    public boolean getIs_capital() {
         return is_capital;
     }
 
@@ -107,11 +107,11 @@ public class LocationModel {
         this.is_capital = is_capital;
     }
 
-    public LocationModel(String city, String country, String state,
+    public LocationModel(String name, String country, String state,
                          double latitude, double longitude, int population, boolean is_capital)
     {
         this.LocationID = LocationID;
-        this.city = city;
+        this.name = name;
         this.country = country;
         this.state = state;
         this.latitude = latitude;
@@ -120,5 +120,18 @@ public class LocationModel {
         this.is_capital = is_capital;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "\"LocationID\":" + LocationID +
+                ", \"name\":'" + name + '\'' +
+                ", \"country\":'" + country + '\'' +
+                ", \"state\":'" + state + '\'' +
+                ", \"latitude\":" + latitude +
+                ", \"longitude\":" + longitude +
+                ", \"population\":" + population +
+                ", \"is_capital\":" + is_capital +
+                '}';
+    }
 }
 

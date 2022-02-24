@@ -8,6 +8,7 @@ import com.revature.springbootdemo.beans.repositories.ReviewRepo;
 import com.revature.springbootdemo.beans.repositories.UserRepo;
 import com.revature.springbootdemo.beans.utils.FileLogger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +54,9 @@ public class ReviewController {
     @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public String CreateReview(@RequestParam(value = "ReviewContent", defaultValue = "dummy review") String content, HttpServletRequest request) {
+    public String CreateReview(@RequestParam(value = "ReviewContent", defaultValue = "dummy review") String content, HttpServletRequest request ) {
+
+       // HttpServletRequest request = null;
         try
         {
             //get id of the current logged user
@@ -90,6 +93,7 @@ public class ReviewController {
 
     @GetMapping("/View")
     public String DisplayReviews(@RequestParam(value = "ReviewContent", defaultValue = "Dummy Review") String content, HttpServletRequest request) {
+       // HttpServletRequest request = null;
         String result = "<a href=\"#\" onclick=\"history.back()\"><img SRC=\"images\\back_button.jpg\"></a></br></br>";
         result += "Reviews ";
         boolean hasReviews = false;
@@ -109,9 +113,9 @@ public class ReviewController {
             {
                 if (l.getLocationID() == LocationId)
                 {
-                    result += " name: " + l.getCity() + ", in " + l.getState() +" state in " +
+                    result += " name: " + l.getname() + ", in " + l.getState() +" state in " +
                             l.getCountry() + " country with " + l.getPopulation() + " population and " +
-                            l.getLatitude() + "," + l.getLongitude() + " latitude and longitude and is capital (" + l.isIs_capital() + ")</br></br>";
+                            l.getLatitude() + "," + l.getLongitude() + " latitude and longitude and is capital (" + l.getIs_capital() + ")</br></br>";
                     break;
                 }
             }
