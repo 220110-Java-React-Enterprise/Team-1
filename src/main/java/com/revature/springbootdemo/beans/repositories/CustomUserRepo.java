@@ -8,5 +8,5 @@ import javax.servlet.http.HttpServletRequest;
 //https://stackoverflow.com/questions/11880924/how-to-add-custom-method-to-spring-data-jpa
 
 public interface CustomUserRepo {
-     UserModel findByName(String email, String password, HttpServletRequest request);
+     UserModel findByName(String email, String password);
 }
