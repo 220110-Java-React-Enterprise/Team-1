@@ -1,5 +1,7 @@
 package com.revature.springbootdemo.beans.utils;
 
+import com.revature.springbootdemo.SpringBootDemoApplication;
+
 import java.io.FileWriter;
 import java.io.Writer;
 import java.time.LocalDateTime;
@@ -94,7 +96,7 @@ public class FileLogger {
             fileWriter.write(text);
         } catch (Exception e) {
             e.printStackTrace();
-            //TODO - figure out what to do if the excepton lgger throws an exception
+            //TODO - figure out what to do if the exception logger throws an exception
         }
 
     }

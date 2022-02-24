@@ -85,7 +85,7 @@ public class SpringBootDemoApplication {
 				fileLogger.log(exc);
 			}
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			fileLogger.log(e);
 		}
 		return null;
 	}
@@ -136,9 +136,9 @@ public class SpringBootDemoApplication {
 			System.out.println(result);
 
 		} catch (MalformedURLException e) {
-			e.printStackTrace();
+			fileLogger.log(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			fileLogger.log(e);
 		}
 
 
@@ -150,7 +150,7 @@ public class SpringBootDemoApplication {
 			bw.write("<h1>Data about " + cityName +"</h1></br>" + result);
 			bw.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			fileLogger.log(e);
 		}
 
 
@@ -176,7 +176,7 @@ public class SpringBootDemoApplication {
 			bw.write(mapHTML);
 			bw.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			fileLogger.log(e);
 		}
 
 		return mapHTML;

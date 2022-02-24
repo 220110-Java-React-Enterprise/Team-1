@@ -105,14 +105,12 @@ public class CustomUserRepoImpl implements CustomUserRepo{
             catch(Exception exc)
             {
                 fileLogger.log(exc);
-                exc.printStackTrace();
             }
 
         }
         catch(Exception exc)
         {
             fileLogger.log(exc);
-            exc.printStackTrace();
         }
         return null;
     }

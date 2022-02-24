@@ -21,7 +21,6 @@ public class CityAPIService {
             //return okHttpResponse.body().string();
             return okHttpResponse.body().byteStream();
         } catch (Exception e) {
-            e.printStackTrace();
             SpringBootDemoApplication.fileLogger.log(e);
             
             return null;
