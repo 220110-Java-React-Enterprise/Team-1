@@ -350,86 +350,98 @@ public class UserController {
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity){
+    public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity, HttpServletRequest request){
         System.out.println(userEnteredCity);
         List<Object> resultList = new ArrayList<>();
-        //HttpSession session;
-       // HttpServletRequest request = null;
+        HttpSession session;
+        //HttpServletRequest request = null;
         String LocationAddedResult = null;
         String result = null;
 
-//        try {
-//
-//            ObjectMapper mapper = new ObjectMapper();
-//
-//            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
-//            //List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
-//            List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
-//            System.out.println(locationModelList.get(0).toString());
-//            //serachf or the city in the db
-//            List<LocationModel> list = locationRepo.findAll();
-//            boolean found = false;
-//            for (LocationModel li : list) {
-//                if (li.getname().equals(userEnteredCity)) {
-//                    //add the Location_id to the current session. store the location_id in the session
-//                    session = request.getSession(false);
-//                    if (session != null) {
-//                        session.setAttribute("location_id", li.getLocationID());
-//                        found = true;
-//                        break;
-//                    }
-//                }
-//            }
-//            if (!found) {
-//                LocationModel l = new LocationModel(locationModelList.get(0).getname(),
-//                        locationModelList.get(0).getCountry(),
-//                        locationModelList.get(0).getState(),
-//                        locationModelList.get(0).getLatitude(),
-//                        locationModelList.get(0).getLongitude(),
-//                        locationModelList.get(0).getPopulation(),
-//                        locationModelList.get(0).getIs_capital());
-//                LocationModel newLocation = locationRepo.save(l);
-//                LocationAddedResult = String.format("have added the location %s and %s and %s and %s and %s and %s and %s " +
-//                        " successfully", newLocation.getLocationID(), locationModelList.get(0).getname(),
-//                        locationModelList.get(0).getCountry(),
-//                        locationModelList.get(0).getState(),
-//                        locationModelList.get(0).getLatitude(),
-//                        locationModelList.get(0).getLongitude(),
-//                        locationModelList.get(0).getPopulation(),
-//                        locationModelList.get(0).getIs_capital());
-//                //add the Location_id to the current session. store the location_id in the session
-//                session = request.getSession();
-//                if (session != null) {
-//                    session.setAttribute("location_id", newLocation.getLocationID());
-//                }
-//            }
-            //result = WelcomeMessage + "\n<hr>" + CityInfo + "\n<hr>" + LocationAddedResult + "\n<hr>";
-try{
-            // API methods return streams, we use stream to map data to object using object mapper.
-            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+        try {
+
             ObjectMapper mapper = new ObjectMapper();
 
-            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
-//            resultList.add(cityAPIModels.get(0));
-
-
+            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+            //List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
+            List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
+            System.out.println(locationModelList.get(0).toString());
+            //serachf or the city in the db
+            List<LocationModel> list = locationRepo.findAll();
+            boolean found = false;
+            for (LocationModel li : list) {
+                if (li.getname().equals(userEnteredCity)) {
+                    //add the Location_id to the current session. store the location_id in the session
+                    session = request.getSession(false);
+                    if (session != null) {
+                        session.setAttribute("location_id", li.getLocationID());
+                        System.out.println("location is added to session");
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) {
+                LocationModel l = new LocationModel(locationModelList.get(0).getname(),
+                        locationModelList.get(0).getCountry(),
+                        locationModelList.get(0).getState(),
+                        locationModelList.get(0).getLatitude(),
+                        locationModelList.get(0).getLongitude(),
+                        locationModelList.get(0).getPopulation(),
+                        locationModelList.get(0).getIs_capital());
+                LocationModel newLocation = locationRepo.save(l);
+                LocationAddedResult = String.format("have added the location %s and %s and %s and %s and %s and %s and %s " +
+                        " successfully", newLocation.getLocationID(), locationModelList.get(0).getname(),
+                        locationModelList.get(0).getCountry(),
+                        locationModelList.get(0).getState(),
+                        locationModelList.get(0).getLatitude(),
+                        locationModelList.get(0).getLongitude(),
+                        locationModelList.get(0).getPopulation(),
+                        locationModelList.get(0).getIs_capital());
+                //add the Location_id to the current session. store the location_id in the session
+                session = request.getSession();
+                if (session != null) {
+                    session.setAttribute("location_id", newLocation.getLocationID());
+                    System.out.println("location has been added to session variable " + newLocation.getLocationID());
+                }
+            }
+            //result = WelcomeMessage + "\n<hr>" + CityInfo + "\n<hr>" + LocationAddedResult + "\n<hr>";
             stream = WeatherAPIService.getCityWeather(userEnteredCity);
             WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
             resultList.add(weatherAPIModel);
 
-            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
+            stream = CountryAPIService.getCountryInfo(locationModelList.get(0).getCountry());
             List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
             resultList.add(countryAPIModels.get(0));
-
-
-            //List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
-            //System.out.println(resultList.toString());
-            //serachf or the city in the db
-
-            //ReviewController reviewController = new ReviewController(this.reviewRepo,userRepo, locationRepo);
-            //resultList.add(reviewController.DisplayReviews(""));
-            //resultList.add(GetAllReviews(request));
-            System.out.println(resultList.toString());
+            resultList.add(locationModelList.get(0));
+/*******************************************************************************************************************************/
+            //try{
+//            // API methods return streams, we use stream to map data to object using object mapper.
+////            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
+////            ObjectMapper mapper = new ObjectMapper();
+////
+////            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
+//////            resultList.add(cityAPIModels.get(0));
+////
+////
+////            stream = WeatherAPIService.getCityWeather(userEnteredCity);
+////            WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
+////            resultList.add(weatherAPIModel);
+////
+////            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
+////            List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
+////            resultList.add(countryAPIModels.get(0));
+//
+//
+//            //List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
+//            //System.out.println(resultList.toString());
+//            //serachf or the city in the db
+//
+//            //ReviewController reviewController = new ReviewController(this.reviewRepo,userRepo, locationRepo);
+//            //resultList.add(reviewController.DisplayReviews(""));
+//            //resultList.add(GetAllReviews(request));
+           /*******************************************************************************************************************************/
+            System.out.println(resultList.get(0).toString());
             return resultList;
 
         } catch (IOException e) {

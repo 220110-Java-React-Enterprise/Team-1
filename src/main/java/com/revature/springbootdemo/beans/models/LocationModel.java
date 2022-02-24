@@ -120,5 +120,18 @@ public class LocationModel {
         this.is_capital = is_capital;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "\"LocationID\":" + LocationID +
+                ", \"name\":'" + name + '\'' +
+                ", \"country\":'" + country + '\'' +
+                ", \"state\":'" + state + '\'' +
+                ", \"latitude\":" + latitude +
+                ", \"longitude\":" + longitude +
+                ", \"population\":" + population +
+                ", \"is_capital\":" + is_capital +
+                '}';
+    }
 }
 
