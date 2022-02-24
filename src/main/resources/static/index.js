@@ -137,12 +137,17 @@ function showLoginOverlay() {
 
 function hideLoginOverlay() {
 	//TODO: don't forget to remove this later - this is for testing *****************************
-	event.preventDefault();
+
 	console.log("Login overlay hidden");
 	document
 		.getElementById("login-container")
 		.classList.remove("login-boxes-visible");
 	document.getElementById("login-container").classList.add("hidden");
+
+	// reveal comment section
+	document.getElementById("review-write-container").classList.remove("hidden");
+	//document.getElementById("review-write-container")
+	review - write - container;
 }
 
 function removeSplash() {
@@ -237,6 +242,12 @@ async function doLogin(user) {
 	}
 	console.log("raw result: ");
 	console.log(stuff);
+
+	if (stuff.result) {
+		doSignin();
+	} else {
+		alert("Sorry, wrong user ID and password!");
+	}
 }
 
 async function doRegister(user) {
@@ -261,4 +272,11 @@ async function doRegister(user) {
 	}
 	console.log("raw result: ");
 	console.log(stuff);
+
+	// is this valid?
+	if (stuff) {
+		doSignin();
+	} else {
+		alert("Sorry, registration failed!");
+	}
 }
