@@ -150,12 +150,14 @@ public class SpringBootDemoApplication {
 
 
 		String FilePath= new File("data.html").getAbsolutePath();
+
 		try {
 			File f = new File(FilePath);
 			FileWriter sw = new FileWriter(f);
 			BufferedWriter bw = new BufferedWriter(sw);
 			bw.write("<h1>Data about " + cityName +"</h1></br>" + result);
 			bw.close();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

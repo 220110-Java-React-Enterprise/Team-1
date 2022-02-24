@@ -28,6 +28,7 @@ import java.util.List;
 @RequestMapping("/register")
 public class UserController {
 
+    // declare the User repository as final
     public  final UserRepo userRepo;
 
     @Autowired
@@ -36,7 +37,9 @@ public class UserController {
         this.userRepo = userRepo;
     }
 
-    //register new user
+    /**
+     * *     Register new user
+     */
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -47,12 +50,17 @@ public class UserController {
 
         UserModel user = new UserModel( FirstName, LastName, Password, Email);
         userRepo.save(user);
-        return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
+
+        return String.format("have added the user  %s and %s and %s nad %s successfully",
+                                FirstName, LastName, Password, Email);
 
     }
 
 
-    //login method, get username and password and verify the user exists
+    /**
+     * *    Login method, get username and password and verify if the user exists
+     */
+
     @RequestMapping(value ="/login", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
@@ -62,14 +70,18 @@ public class UserController {
         CustomUserRepoImpl CustomRepoImp = new CustomUserRepoImpl();
         UserModel u = CustomRepoImp.findByName(Email, Password);
 
-        if (u != null)
-            return "Logged in successful. \nHello " + Email + " with password: " +  Password;
-        else
-            return "User doesn't exist or wrong credentials";
+        if (u != null) {
+            return "Logged in successful. \nHello " + Email + " with password: " + Password;
 
+        }else{
+                return "User doesn't exist or wrong credentials";
+            }
     }
 
-    //search method, retrieve all search results 
+    /**
+     * *  Search method, retrieve all search results
+     */
+
     @RequestMapping(value="/search", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
@@ -96,10 +108,10 @@ public class UserController {
             resultList.add(countryAPIModels.get(0));
             System.out.println(resultList.toString());
 
-
             return resultList;
+
         } catch (Exception e) {
-            //e.printStackTrace();
+
             SpringBootDemoApplication.fileLogger.log(e);
         }
 
