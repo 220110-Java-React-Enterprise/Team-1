@@ -55,7 +55,7 @@ public class ReviewController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public String CreateReview(@RequestParam(value = "ReviewContent", defaultValue = "dummy review") String content, HttpServletRequest request ) {
-
+        System.out.println("I am here");
        // HttpServletRequest request = null;
         try
         {
