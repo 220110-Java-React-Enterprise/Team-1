@@ -267,12 +267,11 @@ async function doLogin(user) {
 	}
 	console.log("raw result: ");
 	console.log(stuff);
-}
-
-if (stuff.result == true) {
-	doSignin();
-} else {
-	alert("Sorry, wrong user ID and password!");
+	if (stuff.result == true) {
+		doSignin();
+	} else {
+		alert("Sorry, wrong user ID and password!");
+	}
 }
 
 async function doRegister(user) {
