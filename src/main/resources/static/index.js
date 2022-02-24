@@ -5,16 +5,11 @@ window.onload = (event) => {
 	const searchButtons = document.querySelectorAll(`[id^="button-search"]`);
 	for (let i = 0; i < searchButtons.length; i++) {
 		searchButtons[i].addEventListener("click", (event) => {
-			//console.log(event);
 			// TODO: Take out preventDefault if we want the form to be submitted (this is debug) *********
 			event.preventDefault();
 
 			// Identify which search box 1 or 2 is it
 			let idName = "searchbox" + event.target.id.slice(-1);
-			console.log("search pressed");
-			//console.log(event);
-			console.log(idName);
-
 			const searchTerm = document.getElementById(idName).value;
 			console.log("Searching for: " + searchTerm);
 			doTakeoff();
