@@ -270,7 +270,7 @@ async function getData(city) {
 		`latitude: ${city_data.latitude} longitude: ${city_data.longitude}`
 	);
 	console.log(city_data); */
-	updateMap(latitude, longitude);
+	updateMap(city_data.latitude, city_data.longitude);
 }
 
 function populate(idName, value) {
