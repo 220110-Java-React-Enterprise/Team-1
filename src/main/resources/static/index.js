@@ -95,6 +95,29 @@ window.onload = (event) => {
 		console.log(user);
 	});
 
+	document
+		.getElementById("button-review")
+		.addEventListener("click", (event) => {
+			event.preventDefault();
+			//const reviewText = event.target.value;
+			const reviewText = document.getElementById("review-input-box").value;
+			console.log("Comment: " + reviewText);
+		});
+
+	const reportButtons = document.getElementsByClassName("button-report");
+	// change to for... of?
+	for (let i = 0; i < reportButtons.length; i++) {
+		reportButtons[i].addEventListener("click", (event) => {
+			event.preventDefault();
+			const messageNumber = event.target.id.slice(7);
+			const messageText = document.getElementById(
+				"review-" + messageNumber
+			).innerText;
+			console.log("message #" + messageNumber + " to be reported");
+			console.log(messageText);
+		});
+	}
+
 	// Add event handler to registration/login buttons to dismiss login screen
 	// re-enable this later
 	/*
@@ -120,7 +143,8 @@ function doSignin() {
 	// For testing - sessionStorage, but for actual use - localStorage
 	//sessionStorage.setItem("email");
 	hideLoginOverlay();
-	document.getElementById("review-write-container").display = "block";
+	document.getElementById("overlay").classList.add("hidden");
+	//document.getElementById("review-write-container").display = "block";
 }
 
 function doSignOut() {
@@ -147,7 +171,7 @@ function hideLoginOverlay() {
 	// reveal comment section
 	document.getElementById("review-write-container").classList.remove("hidden");
 	//document.getElementById("review-write-container")
-	review - write - container;
+	//review - write - container;
 }
 
 function removeSplash() {
@@ -242,12 +266,12 @@ async function doLogin(user) {
 	}
 	console.log("raw result: ");
 	console.log(stuff);
+}
 
-	if (stuff.result) {
-		doSignin();
-	} else {
-		alert("Sorry, wrong user ID and password!");
-	}
+if (stuff.result) {
+	doSignin();
+} else {
+	alert("Sorry, wrong user ID and password!");
 }
 
 async function doRegister(user) {

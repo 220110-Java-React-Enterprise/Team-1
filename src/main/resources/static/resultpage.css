@@ -27,17 +27,18 @@ header {
 	display: block;
 	margin: auto;
 	padding: auto;
-	width: 100%;
+	width: 80%;
 	text-align: center;
+	max-height: 100px;
 }
 
 #header-image {
 	width: 20%;
-	height: 20%;
+	height: 100px;
 	position: relative;
 	z-index: -1;
-	left: -20vh;
-	top: -10vh;
+	left: -25vh;
+	top: -18vh;
 }
 
 /* these are for the result page layout */
@@ -142,6 +143,11 @@ h3 {
 /* Comments box */
 #component-write {
 	grid-area: write;
+}
+
+#review-input-box {
+	width: 100%;
+	height: 5vh;
 }
 
 @media only screen and (max-width: 600px) {
