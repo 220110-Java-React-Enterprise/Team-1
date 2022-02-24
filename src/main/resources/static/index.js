@@ -226,6 +226,7 @@ async function getData(city) {
 	console.log(stuff[1]);
 	let weather_data = stuff[0];
 	let country_data = stuff[1];
+	let city_data = stuff[2];
 
 	populate("city-header", city + ", " + country_data.name);
 	//populate("statistics-population", country_data.population);
@@ -240,6 +241,10 @@ async function getData(city) {
 	populate("weather-humidity", weather_data.humidity);
 	populate("weather-wind-speed", weather_data.wind_speed);
 	populate("weather-wind-degrees", weather_data.wind_degrees);
+	console.log(
+		`latitude: ${city_data.latitude} longitude: ${city_data.longitude}`
+	);
+	console.log(city_data);
 }
 
 function populate(idName, value) {
