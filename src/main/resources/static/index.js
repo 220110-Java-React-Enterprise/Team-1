@@ -1,5 +1,4 @@
-// Setting up event listener for the index page
-// registration/login prompt on page load
+// Setting up event listeners for the index page
 window.onload = (event) => {
 	// submit button handler
 	const searchButtons = document.querySelectorAll(`[id^="button-search"]`);
@@ -73,10 +72,7 @@ window.onload = (event) => {
 		});
 	}
 
-	//const registerButtonNode = document.getElementById("login-button-new").addEventListener("click", (event) => {
-	//	doRegister();
-	//});
-
+	// listeners for login/registration
 	document
 		.getElementById("button-register")
 		.addEventListener("click", (event) => {
@@ -101,6 +97,7 @@ window.onload = (event) => {
 		console.log(user);
 	});
 
+	// listener for posting a review
 	document
 		.getElementById("button-review")
 		.addEventListener("click", (event) => {
@@ -110,8 +107,9 @@ window.onload = (event) => {
 			console.log("Comment: " + reviewText);
 		});
 
+	// unused - this tells you which review was reported
 	const reportButtons = document.getElementsByClassName("button-report");
-	// change to for... of?
+
 	for (let i = 0; i < reportButtons.length; i++) {
 		reportButtons[i].addEventListener("click", (event) => {
 			event.preventDefault();
@@ -123,19 +121,9 @@ window.onload = (event) => {
 			console.log(messageText);
 		});
 	}
-
-	// Add event handler to registration/login buttons to dismiss login screen
-	// re-enable this later
-	/*
-	const loginButtons = document.getElementsByClassName("login-button");
-	for (let i = 0; i < loginButtons.length; i++) {
-		loginButtons[i].addEventListener("click", hideLoginOverlay);
-	} */
-	// delay showing login for 3 seconds
-	// Should probably add a check if the person has previously logged in here
-	//setTimeout(showLoginOverlay, 1500);
 };
 
+// Triggers takeoff animation for Buddy Sr.
 function doTakeoff() {
 	document.getElementsByTagName("body")[0].style.overflowX = "hidden";
 	const buddyLogoNode = document.getElementById("buddy-logo");
@@ -144,6 +132,7 @@ function doTakeoff() {
 	setTimeout(removeSplash, 2500);
 }
 
+// Triggers takeoff animation for Buddy Jr.
 function doTakeoffSmol() {
 	document.getElementsByTagName("body")[0].style.overflowX = "hidden";
 	const buddyLogoNode = document.getElementById("buddy-logo-smol");
@@ -152,7 +141,7 @@ function doTakeoffSmol() {
 	setTimeout(resetBuddySmol, 2500);
 }
 
-// If we add some sort of sign out option, this will do stuff
+//  Triggers when user clicks register / login
 function doSignin() {
 	// For testing - sessionStorage, but for actual use - localStorage
 	//sessionStorage.setItem("email");
@@ -163,11 +152,13 @@ function doSignin() {
 	//document.getElementById("review-write-container").display = "block";
 }
 
+// If we add some sort of sign out option, this will do stuff
 function doSignOut() {
 	// same as dosignin
 	showLoginOverlay();
 }
 
+// Shows the login overlay
 function showLoginOverlay() {
 	console.log("Login overlay displayed");
 	const loginNode = document.getElementById("login-container");
@@ -175,6 +166,7 @@ function showLoginOverlay() {
 	loginNode.classList.add("login-boxes-visible");
 }
 
+// Hides the login overlay
 function hideLoginOverlay() {
 	//TODO: don't forget to remove this later - this is for testing *****************************
 
@@ -190,6 +182,7 @@ function hideLoginOverlay() {
 	//review - write - container;
 }
 
+// This is a callback function used after the first animation completes
 function removeSplash() {
 	// Undo the hiding from the animation
 	document.getElementsByTagName("body")[0].style.overflowX = "visible";
@@ -214,6 +207,7 @@ function removeSplash() {
 	}
 }
 
+// Callback function used after second animation and resets position
 function resetBuddySmol() {
 	// Undo the hiding from the animation
 	document.getElementsByTagName("body")[0].style.overflowX = "visible";
@@ -223,6 +217,7 @@ function resetBuddySmol() {
 	buddyLogoNode.classList.remove("takeoff-animation-smol");
 }
 
+// Makes the api call to our backend when search hit
 async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
 	const url = "http://localhost:8080/controller/search?userEnteredCity=" + city;
@@ -270,13 +265,15 @@ async function getData(city) {
 		`latitude: ${city_data.latitude} longitude: ${city_data.longitude}`
 	);
 	console.log(city_data); */
-	updateMap(latitude, longitude);
+	updateMap(city_data.latitude, city_data.longitude);
 }
 
+// Helper function to add values
 function populate(idName, value) {
 	document.getElementById(idName).textContent = value;
 }
 
+// Makes api call to do login
 async function doLogin(user) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
 	const url = "http://localhost:8080/controller/login";
@@ -305,6 +302,7 @@ async function doLogin(user) {
 	}
 }
 
+// Makes api call to do registration
 async function doRegister(user) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
 	const url = `http://localhost:8080/controller/register`;
