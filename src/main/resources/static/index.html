@@ -17,22 +17,25 @@
 </head>
 
 <body>
+	<div class="vertical-container">
+
+	</div>
 	<header class="result-page hidden">
 		TravelBuddy
 		<input type="text" id="searchbox" placeholder="Where to?">
 		<input type="submit" value="Let's go!" id="button-search" class="search-button" />
 		<img id="header-image" src="image/buddy.gif" id="buddy-logo" alt="">
 	</header>
-<main class="splash-layout" id="main-container">
-	<div id="splash-search" class="splash-screen">
-		<span class="title">TravelBuddy</span>
-		<form action="localhost" method="post">
-			<input type="text" id="searchbox" placeholder="Where are you headed?">
-			<input type="submit" value="Let's go!" id="button-search" class="search-button" />
-			<!-- onclick="window.location.href = 'https://website.com/my-account';" -->
-		</form>
-		<img src="image/buddy.gif" id="buddy-logo" alt="">
-	</div>
+	<main class="splash-layout" id="main-container">
+		<div id="splash-search" class="splash-screen">
+			<span class="title">TravelBuddy</span>
+			<form action="localhost" method="post">
+				<input type="text" id="searchbox" placeholder="Where are you headed?">
+				<input type="submit" value="Let's go!" id="button-search" class="search-button" />
+				<!-- onclick="window.location.href = 'https://website.com/my-account';" -->
+			</form>
+			<img src="image/buddy.gif" id="buddy-logo" alt="">
+		</div>
 <!--
 	<div id="#component-header" class="result-page hidden">
 		<input type="text" id="searchbox" placeholder="Enter a city" class="header-row city-search-input">
@@ -78,7 +81,6 @@
 		<div id="login-container">
 			<div class="register-box">
 				<h3>New user?</h3>
-				<form action="localhost" method="post">
 					<label for="first-name">First name: </label>
 					<input type="text" name="first-name" class="register" /><br />
 		
@@ -89,12 +91,10 @@
 					<input type="text" name="email" class="register" /><br />
 		
 					<input type="submit" value="Register" class="login-button" />
-				</form>
 			</div>
 		
 			<div class="register-box">
 				<h2>Existing user?</h2>
-				<form action="localhost" method="post">
 					<label for="username">Username: </label>
 					<input type="text" name="username" class="register" /><br />
 		
@@ -102,11 +102,10 @@
 					<input type="text" name="password" class="register" /><br />
 		
 					<input type="submit" value="Log in" class="login-button" />
-				</form>
 			</div>
 		</div>
-		<div id="review-write-container">
-			<h1>Leave a review</h1>
+		<div id="review-write-container" class="hidden">
+			<h2>Leave a review</h2>
 			<label for="review-text">Review:</label><br />
 			<input type="textarea" name="review-text" class="review" id="review-input-box" /><br />
 			<input type="hidden" name="review-rating" id="review-rating" class="review" value="1" /><br />

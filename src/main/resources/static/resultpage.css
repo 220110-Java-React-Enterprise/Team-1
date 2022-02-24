@@ -24,18 +24,20 @@ header {
 	font-family: "Licorice", cursive;
 	font-size: 3em;
 	z-index: 5;
-	display: inline;
+	display: block;
 	margin: auto;
-	padding-top: 30px;
+	padding: auto;
+	width: 100%;
+	text-align: center;
 }
 
 #header-image {
 	width: 20%;
 	height: 20%;
-	position: absolute;
+	position: relative;
 	z-index: -1;
-	left: 30vh;
-	top: 10px;
+	left: -20vh;
+	top: -10vh;
 }
 
 /* these are for the result page layout */

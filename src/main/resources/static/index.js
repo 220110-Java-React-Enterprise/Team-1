@@ -84,9 +84,22 @@ function doTakeoff() {
 	setTimeout(removeSplash, 2400);
 }
 
+// If we add some sort of sign out option, this will do stuff
+function doSignin() {
+	// For testing - sessionStorage, but for actual use - localStorage
+	//sessionStorage.setItem("email");
+	hideLoginOverlay();
+	document.getElementById("review-write-container").display = "block";
+}
+
+function doSignOut() {
+	// same as dosignin
+	showLoginOverlay();
+}
+
 function showLoginOverlay() {
 	console.log("Login overlay displayed");
-	const loginNode = document.getElementById("login");
+	const loginNode = document.getElementById("login-container");
 	loginNode.classList.remove("hidden");
 	loginNode.classList.add("login-boxes-visible");
 }
@@ -95,8 +108,10 @@ function hideLoginOverlay() {
 	//TODO: don't forget to remove this later - this is for testing *****************************
 	event.preventDefault();
 	console.log("Login overlay hidden");
-	document.getElementById("login").classList.remove("login-boxes-visible");
-	document.getElementById("login").classList.add("hidden");
+	document
+		.getElementById("login-container")
+		.classList.remove("login-boxes-visible");
+	document.getElementById("login-container").classList.add("hidden");
 }
 
 function removeSplash() {
@@ -170,18 +185,15 @@ function populate(idName, value) {
 	document.getElementById(idName).textContent = value;
 }
 
-async function getData(email, password) {
+async function doLogin(user) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
-	const url =
-		"http://localhost:8080/controller/login?myEmail=" +
-		email +
-		"&myPassword=" +
-		password;
+	const url = "http://localhost:8080/controller/login";
 
 	let stuff;
 	try {
 		let promise = await fetch(url, {
-			method: "GET",
+			method: "POST",
+			body: JSON.stringify(user),
 			headers: {
 				"Content-Type": "application/json",
 			},
@@ -192,4 +204,30 @@ async function getData(email, password) {
 		console.log("Error: \n" + error);
 		//console.log("Response: \n" + response);
 	}
+	console.log("raw result: ");
+	console.log(stuff);
+}
+
+async function doRegister(user) {
+	//localhost:8080/register/search?userEnteredCity=Pasadena
+	const url = `http://localhost:8080/controller/register`;
+
+	let stuff;
+	try {
+		let promise = await fetch(url, {
+			method: "POST",
+			body: JSON.stringify(user),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			//.then((response) => console.log(response))
+			.then((result) => (stuff = result));
+	} catch (error) {
+		console.log("Error: \n" + error);
+		//console.log("Response: \n" + response);
+	}
+	console.log("raw result: ");
+	console.log(stuff);
 }
