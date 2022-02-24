@@ -144,6 +144,7 @@ function doSignin() {
 	//sessionStorage.setItem("email");
 	hideLoginOverlay();
 	document.getElementById("overlay").classList.add("hidden");
+	document.getElementById("overlay-login").classList.add("hidden");
 	//document.getElementById("review-write-container").display = "block";
 }
 
