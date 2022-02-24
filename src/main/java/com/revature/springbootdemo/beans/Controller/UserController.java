@@ -108,12 +108,12 @@ public class UserController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<String> Login(@RequestBody UserModel newUser, HttpServletRequest request) {
+    public ResponseEntity<String> Login(@RequestBody SessionModel userSession, HttpServletRequest request) {
 
 
         //verify user exists
         CustomUserRepoImpl CustomRepoImp = new CustomUserRepoImpl();
-        UserModel u = CustomRepoImp.findByName(newUser.getEmail(), newUser.getPassword());
+        UserModel u = CustomRepoImp.findByName(userSession.getEmail(), userSession.getPassword());
 //        System.out.println(u.toString());
         try {
             if (u != null) {
@@ -127,10 +127,11 @@ public class UserController {
                 }
                 //create a new session and session variable
                 HttpSession session = request.getSession();
-                session.setAttribute("Email", newUser.getEmail());
+                session.setAttribute("Email", u.getEmail());
                 session.setAttribute("ID", u.getID());
+                session.setAttribute("location_id", userSession.getLocation_id());
                 session.setMaxInactiveInterval(50000);
-                fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + newUser.getEmail() + ". creation time is: " +
+                fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + userSession.getEmail() + ". creation time is: " +
                         session.getCreationTime() + " session inactive Interval is: 50000");
                 System.out.println("user is logged in");
 //                return "Logged in successful. \nHello " + Email + " with password: " + Password + "\nList of all users: \n" + jsonText;
@@ -353,10 +354,11 @@ public class UserController {
     public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity, HttpServletRequest request){
         System.out.println(userEnteredCity);
         List<Object> resultList = new ArrayList<>();
-        HttpSession session;
+        HttpSession session = null;
         //HttpServletRequest request = null;
         String LocationAddedResult = null;
         String result = null;
+        LocationModel newLocation = null;
 
         try {
 
@@ -389,7 +391,7 @@ public class UserController {
                         locationModelList.get(0).getLongitude(),
                         locationModelList.get(0).getPopulation(),
                         locationModelList.get(0).getIs_capital());
-                LocationModel newLocation = locationRepo.save(l);
+                newLocation = locationRepo.save(l);
                 LocationAddedResult = String.format("have added the location %s and %s and %s and %s and %s and %s and %s " +
                         " successfully", newLocation.getLocationID(), locationModelList.get(0).getname(),
                         locationModelList.get(0).getCountry(),
@@ -413,7 +415,19 @@ public class UserController {
             stream = CountryAPIService.getCountryInfo(locationModelList.get(0).getCountry());
             List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
             resultList.add(countryAPIModels.get(0));
-            resultList.add(locationModelList.get(0));
+//            resultList.add(locationModelList.get(0));
+            String res = "";
+            if (!found){
+                resultList.add(newLocation);
+               res =  GetAllReviews(newLocation.getLocationID(), request);
+            }else{
+                resultList.add(locationRepo.getById((Integer) session.getAttribute("location_id")));
+                res = GetAllReviews((Integer) session.getAttribute("location_id"), request);
+            }
+            System.out.println(res);
+
+
+
 /*******************************************************************************************************************************/
             //try{
 //            // API methods return streams, we use stream to map data to object using object mapper.
@@ -452,7 +466,7 @@ public class UserController {
 
     }
 
-    public String GetAllReviews(HttpServletRequest request )
+    public String GetAllReviews(Integer id,HttpServletRequest request )
     {
         //HttpServletRequest request;
         String result = "<a href=\"#\" onclick=\"history.back()\"><img SRC=\"images\\back_button.jpg\"></a></br></br>";
@@ -467,6 +481,8 @@ public class UserController {
             String UserEmail = ((String) session.getAttribute("Email"));
             int UserId = ((Integer)session.getAttribute("ID"));
             int LocationId = ((Integer)session.getAttribute("location_id"));
+            System.out.println(LocationId);
+            System.out.println(id);
             result += " for city with id " + LocationId + " and which has the following information</br>";
             //get location information
             List<LocationModel> locs = locationRepo.findAll();
