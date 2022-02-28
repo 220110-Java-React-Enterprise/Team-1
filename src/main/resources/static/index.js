@@ -1,5 +1,4 @@
-// Setting up event listener for the index page
-// registration/login prompt on page load
+// Setting up event listeners for the index page
 window.onload = (event) => {
 	// submit button handler
 	const searchButtons = document.querySelectorAll(`[id^="button-search"]`);
@@ -12,7 +11,13 @@ window.onload = (event) => {
 			let idName = "searchbox" + event.target.id.slice(-1);
 			const searchTerm = document.getElementById(idName).value;
 			console.log("Searching for: " + searchTerm);
-			doTakeoff();
+			if (event.target.id.slice(-1) == 2) {
+				console.log("2!");
+				doTakeoffSmol();
+			} else {
+				console.log("1!");
+				doTakeoff();
+			}
 			getData(searchTerm);
 		});
 	}
@@ -67,10 +72,7 @@ window.onload = (event) => {
 		});
 	}
 
-	//const registerButtonNode = document.getElementById("login-button-new").addEventListener("click", (event) => {
-	//	doRegister();
-	//});
-
+	// listeners for login/registration
 	document
 		.getElementById("button-register")
 		.addEventListener("click", (event) => {
@@ -95,6 +97,7 @@ window.onload = (event) => {
 		console.log(user);
 	});
 
+	// listener for posting a review
 	document
 		.getElementById("button-review")
 		.addEventListener("click", (event) => {
@@ -104,8 +107,9 @@ window.onload = (event) => {
 			console.log("Comment: " + reviewText);
 		});
 
+	// unused - this tells you which review was reported
 	const reportButtons = document.getElementsByClassName("button-report");
-	// change to for... of?
+
 	for (let i = 0; i < reportButtons.length; i++) {
 		reportButtons[i].addEventListener("click", (event) => {
 			event.preventDefault();
@@ -117,42 +121,44 @@ window.onload = (event) => {
 			console.log(messageText);
 		});
 	}
-
-	// Add event handler to registration/login buttons to dismiss login screen
-	// re-enable this later
-	/*
-	const loginButtons = document.getElementsByClassName("login-button");
-	for (let i = 0; i < loginButtons.length; i++) {
-		loginButtons[i].addEventListener("click", hideLoginOverlay);
-	} */
-	// delay showing login for 3 seconds
-	// Should probably add a check if the person has previously logged in here
-	//setTimeout(showLoginOverlay, 1500);
 };
 
+// Triggers takeoff animation for Buddy Sr.
 function doTakeoff() {
 	document.getElementsByTagName("body")[0].style.overflowX = "hidden";
 	const buddyLogoNode = document.getElementById("buddy-logo");
 	buddyLogoNode.classList.add("takeoff-animation");
 	// Make sure this is after the animation
-	setTimeout(removeSplash, 2400);
+	setTimeout(removeSplash, 2500);
 }
 
-// If we add some sort of sign out option, this will do stuff
+// Triggers takeoff animation for Buddy Jr.
+function doTakeoffSmol() {
+	document.getElementsByTagName("body")[0].style.overflowX = "hidden";
+	const buddyLogoNode = document.getElementById("buddy-logo-smol");
+	buddyLogoNode.classList.add("takeoff-animation-smol");
+	// Make sure this is after the animation
+	setTimeout(resetBuddySmol, 2500);
+}
+
+//  Triggers when user clicks register / login
 function doSignin() {
 	// For testing - sessionStorage, but for actual use - localStorage
 	//sessionStorage.setItem("email");
 	hideLoginOverlay();
 	document.getElementById("overlay").classList.add("hidden");
+	document.getElementById("overlay-login").classList.remove("flexed");
 	document.getElementById("overlay-login").classList.add("hidden");
 	//document.getElementById("review-write-container").display = "block";
 }
 
+// If we add some sort of sign out option, this will do stuff
 function doSignOut() {
 	// same as dosignin
 	showLoginOverlay();
 }
 
+// Shows the login overlay
 function showLoginOverlay() {
 	console.log("Login overlay displayed");
 	const loginNode = document.getElementById("login-container");
@@ -160,6 +166,7 @@ function showLoginOverlay() {
 	loginNode.classList.add("login-boxes-visible");
 }
 
+// Hides the login overlay
 function hideLoginOverlay() {
 	//TODO: don't forget to remove this later - this is for testing *****************************
 
@@ -175,6 +182,7 @@ function hideLoginOverlay() {
 	//review - write - container;
 }
 
+// This is a callback function used after the first animation completes
 function removeSplash() {
 	// Undo the hiding from the animation
 	document.getElementsByTagName("body")[0].style.overflowX = "visible";
@@ -199,6 +207,17 @@ function removeSplash() {
 	}
 }
 
+// Callback function used after second animation and resets position
+function resetBuddySmol() {
+	// Undo the hiding from the animation
+	document.getElementsByTagName("body")[0].style.overflowX = "visible";
+
+	// remove the flight animation class to prepare for the next press
+	const buddyLogoNode = document.getElementById("buddy-logo-smol");
+	buddyLogoNode.classList.remove("takeoff-animation-smol");
+}
+
+// Makes the api call to our backend when search hit
 async function getData(city) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
 	const url = "http://localhost:8080/controller/search?userEnteredCity=" + city;
@@ -226,9 +245,11 @@ async function getData(city) {
 	console.log(stuff[1]);
 	let weather_data = stuff[0];
 	let country_data = stuff[1];
+	let city_data = stuff[2];
 
 	populate("city-header", city + ", " + country_data.name);
-	//populate("statistics-population", country_data.population);
+	populate("statistics-population", city_data.population);
+	populate("statistics-currency", city_data.currency);
 	populate("statistics-gdp", country_data.gdp);
 	populate("statistics-unemployment", country_data.unemployment);
 	populate("statistics-crime-rate", country_data.homicide_rate);
@@ -240,12 +261,19 @@ async function getData(city) {
 	populate("weather-humidity", weather_data.humidity);
 	populate("weather-wind-speed", weather_data.wind_speed);
 	populate("weather-wind-degrees", weather_data.wind_degrees);
+	/* console.log(
+		`latitude: ${city_data.latitude} longitude: ${city_data.longitude}`
+	);
+	console.log(city_data); */
+	updateMap(city_data.latitude, city_data.longitude);
 }
 
+// Helper function to add values
 function populate(idName, value) {
 	document.getElementById(idName).textContent = value;
 }
 
+// Makes api call to do login
 async function doLogin(user) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
 	const url = "http://localhost:8080/controller/login";
@@ -274,6 +302,7 @@ async function doLogin(user) {
 	}
 }
 
+// Makes api call to do registration
 async function doRegister(user) {
 	//localhost:8080/register/search?userEnteredCity=Pasadena
 	const url = `http://localhost:8080/controller/register`;
@@ -303,4 +332,13 @@ async function doRegister(user) {
 	} else {
 		alert("Sorry, registration failed!");
 	}
+}
+
+// Updates the google map, hopefully
+function updateMap(latitude, longitude) {
+	const mapNode = document.getElementById("google-map");
+	// src="https://www.google.com/maps/embed/v1/view?zoom=10&center=40.7128%2C-74.0060&key=AIzaSyD74AJ6FnwjE0_qnAkhIEwRuIGYLPh1R1I
+	let mapSrc = mapNode.src;
+	console.log(mapSrc);
+	mapSrc.contentWindow.location.reload();
 }

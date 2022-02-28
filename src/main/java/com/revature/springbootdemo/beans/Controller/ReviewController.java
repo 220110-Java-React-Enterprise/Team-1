@@ -55,8 +55,6 @@ public class ReviewController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public String CreateReview(@RequestParam(value = "ReviewContent", defaultValue = "dummy review") String content, HttpServletRequest request ) {
-        System.out.println("I am here");
-       // HttpServletRequest request = null;
         try
         {
             //get id of the current logged user
@@ -93,7 +91,6 @@ public class ReviewController {
 
     @GetMapping("/View")
     public String DisplayReviews(@RequestParam(value = "ReviewContent", defaultValue = "Dummy Review") String content, HttpServletRequest request) {
-       // HttpServletRequest request = null;
         String result = "<a href=\"#\" onclick=\"history.back()\"><img SRC=\"images\\back_button.jpg\"></a></br></br>";
         result += "Reviews ";
         boolean hasReviews = false;

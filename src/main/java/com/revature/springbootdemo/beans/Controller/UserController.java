@@ -39,7 +39,6 @@ import java.util.List;
 
 
 
-
 @RestController
 @RequestMapping("/controller")
 public class UserController {
@@ -65,20 +64,6 @@ public class UserController {
         fileLogger.log("UserRepo started: " + LocalDateTime.now());
     }
 
-//    //register new user
-//    @ResponseBody
-//    @RequestMapping(value = "/register", method = RequestMethod.POST)
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    public String RegisterNewUser(@RequestParam(value = "myFirstname", defaultValue = "userFirst") String FirstName,
-//                                  @RequestParam(value = "myLastname", defaultValue = "userLast") String LastName,
-//                                  @RequestParam(value = "myPassword", defaultValue = "1111") String Password,
-//                                  @RequestParam(value = "myEmail", defaultValue = "user@gmail.com") String Email) {
-//
-//        UserModel user = new UserModel(FirstName, LastName, Password, Email);
-//        userRepo.save(user);
-//        return String.format("have added the user  %s and %s and %s nad %s successfully", FirstName, LastName, Password, Email);
-//
-//    }
 
     //register new user
     @ResponseBody
@@ -88,7 +73,6 @@ public class UserController {
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<String> RegisterNewUser(@RequestBody UserModel newUser) {
-        System.out.println(newUser.toString());
         try {
             UserModel user = userRepo.save(newUser);
 
@@ -114,7 +98,6 @@ public class UserController {
         //verify user exists
         CustomUserRepoImpl CustomRepoImp = new CustomUserRepoImpl();
         UserModel u = CustomRepoImp.findByName(userSession.getEmail(), userSession.getPassword());
-//        System.out.println(u.toString());
         try {
             if (u != null) {
                 //returns all users registered and return them
@@ -133,11 +116,8 @@ public class UserController {
                 session.setMaxInactiveInterval(50000);
                 fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + userSession.getEmail() + ". creation time is: " +
                         session.getCreationTime() + " session inactive Interval is: 50000");
-                System.out.println("user is logged in");
-//                return "Logged in successful. \nHello " + Email + " with password: " + Password + "\nList of all users: \n" + jsonText;
                 return ResponseEntity.accepted().body("{\"result\":true}");
             } else
-                System.out.println("user is NOT logged in");
             return ResponseEntity.badRequest().body("{\"result\":false}");
         } catch (Exception exc) {
             fileLogger.log(exc);
@@ -145,43 +125,7 @@ public class UserController {
         return ResponseEntity.badRequest().body("{\"result\":false}");
     }
 
-    //login method, get username and password and verify the user exists
-    //so far all users are admins so display all users after the admin logs in
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    @ResponseBody
-//    public String Login(@RequestParam(value = "myEmail", defaultValue = "email") String Email,
-//                        @RequestParam(value = "myPassword", defaultValue = "password1") String Password,
-//                        HttpServletRequest request) {
-//
-//        //verify user exists
-//        CustomUserRepoImpl CustomRepoImp = new CustomUserRepoImpl();
-//        UserModel u = CustomRepoImp.findByName(Email, Password, request);
-//        try {
-//            if (u != null) {
-//                //returns all users registered and return them
-//                List<UserModel> users = userRepo.findAll();
-//                String jsonText = "";
-//                for (UserModel r : users) {
-//                    ObjectMapper mapper = new ObjectMapper();
-//                    String jsonString = mapper.writeValueAsString(r);
-//                    jsonText += jsonString;
-//                }
-//                //create a new session and session variable
-//                HttpSession session = request.getSession();
-//                session.setAttribute("Email", Email);
-//                session.setAttribute("ID", u.getID());
-//                session.setMaxInactiveInterval(50000);
-//                fileLogger.log("a new session has been created for user with ID: " + u.getID() + " and email " + Email + ". creation time is: " +
-//                        session.getCreationTime() + " session inactive Interval is: 50000");
-//                return "Logged in successful. \nHello " + Email + " with password: " + Password + "\nList of all users: \n" + jsonText;
-//            } else
-//                return "User doesn't exist or wrong credentials";
-//        } catch (Exception exc) {
-//            fileLogger.log(exc);
-//        }
-//        return "";
-//    }
+
 
 
     /***
@@ -209,9 +153,8 @@ public class UserController {
         String NinjaCityKey = ""; //ninjacity city key
         String MapKey = ""; //google map keygit
         List<String> keys = ReadKeys();
-        if (keys != null)
-            System.out.println("success reading keys");
-        else {
+        if (keys != null) {
+        }else {
             fileLogger.log("Error in reading key's property file");
             return "Error in reading key's property file";
         }
@@ -234,20 +177,13 @@ public class UserController {
                 connection.setRequestProperty(headerKey, headers.get(headerKey));
             }
 
-            //InputStream responseStream = connection.getInputStream();
-            //ObjectMapper mapper = new ObjectMapper();
-            //JsonNode root = mapper.readTree(responseStream);
-            //CityInfo = root.path("fact").asText();
-            //CityInfo += root.asText();
-            //CityInfo += root.toString();
-            //System.out.println(CityInfo);
+
             InputStream responseStream = connection.getInputStream();
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(responseStream);
             CityInfo += root.path("fact").asText();
             CityInfo += root.asText();
             CityInfo += root.toString();
-            System.out.println(CityInfo);
 
             //manual extraction of City JSON object keys and values
             String JSON = CityInfo;
@@ -261,9 +197,6 @@ public class UserController {
                 Country = elements[3].split(":")[1];
                 population = Integer.parseInt(elements[4].split(":")[1]);
                 is_capital = Boolean.parseBoolean(elements[5].split(":")[1]);
-                //System.out.println("city information: " +
-                //         "city: " + city + "\n, Country: " + Country + ", \nState: " + state + ", \nlatitude: " + latitude +
-                //         ", \nlongitude: " + longitude + ", \npopulation: "+ population + ", \nis_capital: " + is_capital);
             }
 
         } catch (MalformedURLException e) {
@@ -279,11 +212,6 @@ public class UserController {
         if (session != null) {
             String UserEmail = ((String) session.getAttribute("Email"));
             int UserId = ((Integer) session.getAttribute("ID"));
-            //if (UserId != 0)
-            //{
-            // /   fileLogger.log("you must be logged in to search for a city");
-            //    return "you must be logged in to search for a city";
-            //}
             fileLogger.log("active session. Logged in user has ID: " + UserId + " and email: " + UserEmail + ". creation time is: " +
                     session.getCreationTime());
             WelcomeMessage = "Welcome " + UserEmail + " to the TravelBuddy!";
@@ -295,11 +223,6 @@ public class UserController {
 
         String LocationAddedResult = "Location:\n";
 
-        //if the city searched for exists in the location_model table:
-        //      add that city's location_id to the session "location_id" variable.
-        //else
-        //      add a new tuple in the location_model table using the locationRepo (location_model table)
-        //      add the new location's id to the session variable "location_id"
         List<LocationModel> list = locationRepo.findAll();
         boolean found = false;
         for (LocationModel li : list) {
@@ -352,10 +275,8 @@ public class UserController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
     public List<Object> Search(@RequestParam(value = "userEnteredCity") String userEnteredCity, HttpServletRequest request){
-        System.out.println(userEnteredCity);
         List<Object> resultList = new ArrayList<>();
         HttpSession session = null;
-        //HttpServletRequest request = null;
         String LocationAddedResult = null;
         String result = null;
         LocationModel newLocation = null;
@@ -365,10 +286,8 @@ public class UserController {
             ObjectMapper mapper = new ObjectMapper();
 
             InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
-            //List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
             List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
-            System.out.println(locationModelList.get(0).toString());
-            //serachf or the city in the db
+            //serach for the city in the db
             List<LocationModel> list = locationRepo.findAll();
             boolean found = false;
             for (LocationModel li : list) {
@@ -377,7 +296,6 @@ public class UserController {
                     session = request.getSession(false);
                     if (session != null) {
                         session.setAttribute("location_id", li.getLocationID());
-                        System.out.println("location is added to session");
                         found = true;
                         break;
                     }
@@ -392,22 +310,13 @@ public class UserController {
                         locationModelList.get(0).getPopulation(),
                         locationModelList.get(0).getIs_capital());
                 newLocation = locationRepo.save(l);
-                LocationAddedResult = String.format("have added the location %s and %s and %s and %s and %s and %s and %s " +
-                        " successfully", newLocation.getLocationID(), locationModelList.get(0).getname(),
-                        locationModelList.get(0).getCountry(),
-                        locationModelList.get(0).getState(),
-                        locationModelList.get(0).getLatitude(),
-                        locationModelList.get(0).getLongitude(),
-                        locationModelList.get(0).getPopulation(),
-                        locationModelList.get(0).getIs_capital());
                 //add the Location_id to the current session. store the location_id in the session
                 session = request.getSession();
                 if (session != null) {
                     session.setAttribute("location_id", newLocation.getLocationID());
-                    System.out.println("location has been added to session variable " + newLocation.getLocationID());
                 }
             }
-            //result = WelcomeMessage + "\n<hr>" + CityInfo + "\n<hr>" + LocationAddedResult + "\n<hr>";
+
             stream = WeatherAPIService.getCityWeather(userEnteredCity);
             WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
             resultList.add(weatherAPIModel);
@@ -415,8 +324,7 @@ public class UserController {
             stream = CountryAPIService.getCountryInfo(locationModelList.get(0).getCountry());
             List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
             resultList.add(countryAPIModels.get(0));
-//            resultList.add(locationModelList.get(0));
-            String res = "";
+
             if (!found){
                 resultList.add(newLocation);
                List<ReviewsModel> reviewsModelList = GetAllReviews(newLocation.getLocationID(), request);
@@ -430,38 +338,7 @@ public class UserController {
                     resultList.add(model.toString());
                 }
             }
-            System.out.println(resultList.toString());
 
-
-
-/*******************************************************************************************************************************/
-            //try{
-//            // API methods return streams, we use stream to map data to object using object mapper.
-////            InputStream stream = CityAPIService.getCityInfo(userEnteredCity);
-////            ObjectMapper mapper = new ObjectMapper();
-////
-////            List<CityAPIModel> cityAPIModels = Arrays.asList(mapper.readValue(stream, CityAPIModel[].class));
-//////            resultList.add(cityAPIModels.get(0));
-////
-////
-////            stream = WeatherAPIService.getCityWeather(userEnteredCity);
-////            WeatherAPIModel weatherAPIModel = mapper.readValue(stream, WeatherAPIModel.class);
-////            resultList.add(weatherAPIModel);
-////
-////            stream = CountryAPIService.getCountryInfo(cityAPIModels.get(0).getCountry());
-////            List<CountryAPIModel> countryAPIModels = Arrays.asList(mapper.readValue(stream, CountryAPIModel[].class));
-////            resultList.add(countryAPIModels.get(0));
-//
-//
-//            //List<LocationModel> locationModelList = Arrays.asList(mapper.readValue(stream, LocationModel[].class));
-//            //System.out.println(resultList.toString());
-//            //serachf or the city in the db
-//
-//            //ReviewController reviewController = new ReviewController(this.reviewRepo,userRepo, locationRepo);
-//            //resultList.add(reviewController.DisplayReviews(""));
-//            //resultList.add(GetAllReviews(request));
-           /*******************************************************************************************************************************/
-            System.out.println(resultList.get(0).toString());
             return resultList;
 
         } catch (IOException e) {
@@ -473,9 +350,7 @@ public class UserController {
     }
 
     public List<ReviewsModel> GetAllReviews(Integer id,HttpServletRequest request ) {
-        //HttpServletRequest request;
-        String result = "<a href=\"#\" onclick=\"history.back()\"><img SRC=\"images\\back_button.jpg\"></a></br></br>";
-        result += "Reviews ";
+
         boolean hasReviews = false;
 
         List<ReviewsModel> reviews = reviewRepo.findAll();
@@ -483,108 +358,31 @@ public class UserController {
         HttpSession session = request.getSession(false);
         if (session != null) {
 
-            String UserEmail = ((String) session.getAttribute("Email"));
             int UserId = ((Integer) session.getAttribute("ID"));
             int LocationId = ((Integer) session.getAttribute("location_id"));
-            System.out.println(LocationId);
-            System.out.println(id);
-            result += " for city with id " + LocationId + " and which has the following information</br>";
+
             //get location information
             List<LocationModel> locs = locationRepo.findAll();
             for (LocationModel l : locs) {
                 if (l.getLocationID() == LocationId) {
-                    result += " name: " + l.getname() + ", in " + l.getState() + " state in " +
-                            l.getCountry() + " country with " + l.getPopulation() + " population and " +
-                            l.getLatitude() + "," + l.getLongitude() + " latitude and longitude and is capital (" + l.getIs_capital() + ")</br></br>";
                     break;
                 }
             }
-            //get user information
-            result += "<TABLE border=\"1\" summary=\"User info\"> " +
-                    "<CAPTION><EM>user Info Table</EM></CAPTION>" +
-                    "<TR><TH>User_id<TH>first Name<TH>Last Name<TH>Password<TH>Email</TR>";
 
             List<UserModel> users = userRepo.findAll();
             for (UserModel u : users) {
                 if (u.getID() == UserId) {
-                    result += "Made by user: " + "</br>";
-                    result += "<TR><TD>" + u.getID() + "<TD>" + u.getFirstName() +
-                            "<TD>" + u.getLastName() + "<TD>" + u.getPassword() + "<TD>" + u.getEmail() + "</TR>";
-
                     break;
                 }
             }
-            result += "</TABLE></br>";
-
-            result += "<TABLE border=\"1\" summary=\"Review info\"> " +
-                    "<CAPTION><EM>Review Info Table</EM></CAPTION>" +
-                    "<TR><TH>Review_Id<TH>Made by user<TH>content<TH>rating<TH>time<TH>Location_ID<TH>Reply to Review</TR>";
-
-
-//            for (ReviewsModel rm : reviews) {
-//                if (LocationId == rm.getLocationID()) {
-//
-//                    result += "<TR><TD>" + rm.getReviewD();
-//
-//                    for (UserModel u: users) {
-//                        if (u.getID() == rm.getID())
-//                        {
-//                            result += "<TD>ID: " + u.getID() + "</br> " +
-//                                    "FirstName: " +  u.getFirstName() + "</br>" +
-//                                    "LastName: " +  u.getLastName();
-//                            break;
-//                        }
-//                    }
-//                    result += "<TD>"  + rm.getContent();
-//                    result += "<TD>";
-//                    int rat = rm.getRating();
-//                    result += "<form action=\"/Reviews/rating\" method=\"post\">" +
-//                            "<select name=\"ratingMenu\" id=\"ratingMenu\">";
-//                    if (rat == 0)
-//                        rat = 3;
-//                    if (rat == 1)
-//                        result +=  "<option value=\"1\" selected>1</option>";
-//                    else
-//                        result +=  "<option value=\"1\">1</option>";
-//                    if (rat == 2)
-//                        result +="<option value=\"2\" selected>2</option>" ;
-//                    else
-//                        result +="<option value=\"2\">2</option>";
-//                    if (rat == 3)
-//                        result +="<option value=\"3\" selected>3</option>" ;
-//                    else
-//                        result +="<option value=\"3\">3</option>" ;
-//                    if (rat == 4)
-//                        result +="<option value=\"4\" selected>4</option>" ;
-//                    else
-//                        result +="<option value=\"4\">4</option>" ;
-//                    if (rat == 5)
-//                        result += "<option value=\"5\" selected>5</option>" ;
-//                    else
-//                        result +="<option value=\"5\">5</option>";
-//                    result += "</select>" +
-//                            "<input type=\"submit\" value=\"Update\">" +
-//                            "</form>" +
-//
-//                            "<TD>" + rm.getTime()  +
-//                            "<TD>" + rm.getLocationID() +
-//                            "<TD>" +  rm.getReplyToReview() +
-//                            "</TR>";
-//
-//                    hasReviews = true;
-//                }
-//            }
-//            result += "</table></br>";
+            
             return reviews;
         } else {
             fileLogger.log("You must be logged in to view reviews");
             return null;
         }
-//        if (!hasReviews){
-        //result += "no Reviews for this city";
-        //return null;
-//    }
     }
+    
     /***
      * method ReadKeys() helper method: read keys of Ninja City API and Google Maps API from the "Keys.properties" file
      * parameters: none
@@ -605,7 +403,6 @@ public class UserController {
                 keys.add(MapKey);
                 return keys;
             } catch (Exception exc) {
-                System.out.println("Error in reading Kye's properties file: " + exc.getMessage());
                 fileLogger.log(exc);
             }
         } catch (FileNotFoundException e) {
@@ -613,6 +410,4 @@ public class UserController {
         }
         return null;
     }
-
-
 }

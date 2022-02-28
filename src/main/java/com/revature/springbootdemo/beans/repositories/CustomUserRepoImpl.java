@@ -59,8 +59,6 @@ public class CustomUserRepoImpl implements CustomUserRepo{
                 else
                 {
                     entityManager = emf.createEntityManager();
-                    //Note:
-                    //  using parameter didn't work. but using string for sql statement and concatenation worked.
                     //  added the following statements to check for SQL injection manually
                     if ((email.contains("OR") || email.contains(" ")) || (password.contains("OR") || password.contains(" ")))
                     {
@@ -90,9 +88,7 @@ public class CustomUserRepoImpl implements CustomUserRepo{
                     List<UserModel> Users = (List<UserModel>)query.getResultList();
                     if (Users.size() >= 1) //user exists
                     {
-                        //########################## here ############
                         return Users.get(0);
-                        //return new UserModel( "", "", "", ""); //return dummy object (not null the user exits)
                     }
                     else
                     {

@@ -96,7 +96,6 @@ public class FileLogger {
             fileWriter.write(text);
         } catch (Exception e) {
             e.printStackTrace();
-            //TODO - figure out what to do if the exception logger throws an exception
         }
 
     }
